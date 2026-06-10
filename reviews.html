@@ -178,9 +178,9 @@
         </div>
 
         <h2 class="leave-review-title">Оставить отзыв</h2>
-        <form class="review-form" id="review-form">
-            <input type="text" placeholder="Ваше имя" required>
-            <textarea placeholder="Ваш отзыв" rows="3" required></textarea>
+        <form class="review-form" id="review-form" action="https://formspree.io/f/mwvjqdyb" method="POST">
+            <input type="text" name="name" placeholder="Ваше имя" required>
+            <textarea name="review" placeholder="Ваш отзыв" rows="3" required></textarea>
             <button type="submit" class="btn-submit">Отправить отзыв</button>
         </form>
 
@@ -188,16 +188,11 @@
     </div>
 
     <script>
-        document.getElementById('review-form').addEventListener('submit', function (e) {
-            e.preventDefault();
-            var name = this.querySelector('input').value.trim();
-            var text = this.querySelector('textarea').value.trim();
-            if (!name || !text) {
-                alert('Заполните все поля');
-                return;
-            }
-            window.location.href = 'mailto:gold9999@list.ru?subject=Отзыв%20от%20клиента&body=Имя:%20' + encodeURIComponent(name) + '%0A%0AОтзыв:%20' + encodeURIComponent(text);
-            this.reset();
+        document.getElementById('review-form').addEventListener('submit', function () {
+            setTimeout(function () {
+                document.getElementById('review-form').reset();
+                alert('Спасибо за отзыв!');
+            }, 500);
         });
     </script>
 </body>
