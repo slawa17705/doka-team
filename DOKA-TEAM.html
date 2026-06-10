@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOKA-TEAM — Проектирование, строительство и ремонт</title>
+    <style>
+        :root {
+            --primary-color: #222;
+            --accent-color: #d4af37;
+            --text-color: #333;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: var(--text-color);
+            background-color: #9b9b92;
+            background-attachment: fixed;
+            line-height: 1.5;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .header {
+            padding: 15px 0 10px 0;
+        }
+
+        .header .container {
+            background-color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 16px 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        .logo-text {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: var(--primary-color);
+            text-transform: uppercase;
+        }
+
+        .logo-desc {
+            font-size: 12px;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .contacts-block {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .phone-link {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .phone-link:hover {
+            color: var(--accent-color);
+        }
+
+        .btn-callback {
+            background-color: rgb(230, 224, 224);
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 12px 24px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: 4px;
+            letter-spacing: 0.5px;
+            transition: all 0.3s;
+        }
+
+        .btn-callback:hover {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+
+        .hero {
+            padding: 15px 0;
+        }
+
+        .hero .container {
+            background: rgba(255, 255, 255, 0.94);
+            padding: 45px 50px;
+            border-radius: 8px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .hero h1 {
+            font-size: 34px;
+            font-weight: 800;
+            color: var(--primary-color);
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 16px;
+            color: #444;
+            margin-bottom: 22px;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 15px;
+        }
+
+        /* Кнопка-выпадашка */
+        .btn-group {
+            display: inline-block;
+            position: relative;
+        }
+
+        .btn-main {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: #fff;
+            padding: 14px 32px;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 4px;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-main:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            margin-top: 8px;
+            background: #fff;
+            border-radius: 6px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            min-width: 240px;
+            z-index: 100;
+            overflow: hidden;
+        }
+
+        .dropdown.active {
+            display: block;
+        }
+
+        .dropdown a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 20px;
+            color: #222;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .dropdown a:hover {
+            background: #f5f5f5;
+        }
+
+        .dropdown a .icon {
+            font-size: 20px;
+        }
+
+        .stages {
+            padding: 15px 0;
+        }
+
+        .stages .container {
+            background-color: #fff;
+            padding: 45px 50px;
+            border-radius: 8px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .stages-title {
+            text-align: center;
+            font-size: 26px;
+            font-weight: 800;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: #fff;
+            padding: 30px 25px;
+            border-radius: 6px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+            border: 1px solid #eee;
+            border-top: 4px solid transparent;
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-top-color: var(--accent-color);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .card-icon {
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+            text-transform: uppercase;
+        }
+
+        .card p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .footer {
+            padding: 15px 0 40px 0;
+        }
+
+        .footer .container {
+            background-color: #fff;
+            padding: 40px 50px;
+            border-radius: 8px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 35px;
+        }
+
+        .footer-col h4 {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            position: relative;
+        }
+
+        .footer-col h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 25px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+
+        .footer-col p,
+        .footer-col a {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.8;
+            text-decoration: none;
+            display: block;
+        }
+
+        .footer-col a:hover {
+            color: var(--accent-color);
+        }
+
+        .footer-phone {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary-color) !important;
+        }
+
+        .footer-bottom {
+            margin-top: 30px;
+            padding-top: 18px;
+            border-top: 1px solid #eee;
+            text-align: center;
+            font-size: 13px;
+            color: #999;
+        }
+
+        @media (max-width: 992px) {
+            .grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header .container {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+                padding: 15px;
+            }
+
+            .contacts-block {
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .hero .container,
+            .stages .container,
+            .footer .container {
+                padding: 30px 20px;
+            }
+
+            .hero h1 {
+                font-size: 24px;
+            }
+
+            .hero p {
+                font-size: 14px;
+            }
+
+            .stages-title {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="container">
+            <div class="logo-block">
+                <span class="logo-text">Doka-Team</span><br>
+                <span class="logo-desc">Команда профессионалов <br> Проектирование, строительство и ремонт</span>
+            </div>
+            <div class="contacts-block">
+                <a href="tel:+79773379393" class="phone-link">+7 (977) 337-9393 <br> +7 (929) 594-7060</a>
+                <button class="btn-callback">Заказать звонок</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Создаем объекты от идеи до финальной отделки. Без швов и переделок.</h1>
+            <p>Мы не просто строим или ремонтируем. DOKA-TEAM — это полный инженерно-строительный цикл. Мы сами
+                проектируем, сами возводим стены и сами доводим интерьер до идеала. Вам не придется искать компромиссы и
+                переплачивать за чужие ошибки — мы отвечаем за каждый миллиметр результата.</p>
+
+            <div class="btn-group">
+                <button class="btn-main" onclick="document.getElementById('dropdown').classList.toggle('active')">
+                    Обсудить проект с инженером ▾
+                </button>
+                <div class="dropdown" id="dropdown">
+                    <a href="tel:+79773379393"><span class="icon">📞</span> Позвонить</a>
+                    <a href="https://wa.me/79773379393"><span class="icon">💬</span> WhatsApp</a>
+                    <a href="https://t.me/DokaTeam"><span class="icon">✈️</span> Telegram</a>
+                    <a href="mailto:gold9999@list.ru"><span class="icon">📧</span> Написать на почту</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stages">
+        <div class="container">
+            <h2 class="stages-title">3 уровня высшей квалификации DOKA-TEAM</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="card-icon">📐</div>
+                    <h3>1. Проектирование</h3>
+                    <p>Исключаем ошибки на бумаге. Каждому гвоздю и кабелю предшествует точный инженерный расчет. Проект
+                        от DOKA-TEAM — это подробная карта с фиксированной сметой, экономящая до 20% бюджета на
+                        материалах.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🧱</div>
+                    <h3>2. Строительство</h3>
+                    <p>Задаем безупречную геометрию. Возводим фундаменты, коробки и кровли со строгим соблюдением СНиП и
+                        ГОСТ. Готовим базу, которую не придется выравнивать тоннами дорогой штукатурки.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">✨</div>
+                    <h3>3. Ремонт и отделка</h3>
+                    <p>Ювелирный финал. Принимаем объект у самих себя и доводим интерьер до премиального уровня. Теневые
+                        профили, крупноформатный керамогранит, идеальные стыки — реализуем сложные решения с точностью
+                        до миллиметра.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>Контакты</h4>
+                    <a href="tel:+79773379393" class="footer-phone">+7 (977) 337-9393</a>
+                    <a href="tel:+79295947060" class="footer-phone">+7 (929) 594-7060</a>
+                    <a href="mailto:gold9999@list.ru">gold9999@list.ru</a>
+                    <p>г. Москва</p>
+                    <p>Пн-Пт: 9:00 – 19:00</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Услуги</h4>
+                    <a href="#">Проектирование</a>
+                    <a href="#">Строительство</a>
+                    <a href="#">Ремонт и отделка</a>
+                    <a href="#">Инженерные системы</a>
+                </div>
+                <div class="footer-col">
+                    <h4>О компании</h4>
+                    <a href="projects.html">Наши проекты</a>
+                    <a href="#">Отзывы</a>
+                    <a href="#">Блог</a>
+                    <a href="#">Политика конфиденциальности</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                © 2026 DOKA-TEAM. Все права защищены. Проектирование, строительство и ремонт премиум-класса.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('click', function (e) {
+            var dropdown = document.getElementById('dropdown');
+            var btn = document.querySelector('.btn-main');
+            if (!btn.contains(e.target)) {
+                dropdown.classList.remove('active');
+            }
+        });
+    </script>
+
+</body>
+
+</html>

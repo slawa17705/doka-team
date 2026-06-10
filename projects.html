@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Наши проекты — DOKA-TEAM</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #9b9b92;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 32px;
+            color: #222;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .gold-line {
+            width: 60px;
+            height: 3px;
+            background: #d4af37;
+            margin: 0 auto 40px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.03);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            color: #d4af37;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Лайтбокс */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 999;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 6px;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .lightbox .close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #fff;
+            font-size: 40px;
+            cursor: pointer;
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+
+        .lightbox .close:hover {
+            color: #d4af37;
+        }
+
+        @media (max-width: 768px) {
+            .gallery {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .container {
+                padding: 30px 20px;
+            }
+
+            .lightbox .close {
+                top: 10px;
+                right: 15px;
+                font-size: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Наши проекты</h1>
+        <div class="gold-line"></div>
+
+        <div class="gallery">
+            <img src="image/photo1.jpg" alt="Проект 1" onclick="openLightbox(this)">
+            <img src="image/photo2.jpg" alt="Проект 2" onclick="openLightbox(this)">
+            <img src="image/photo3.jpg" alt="Проект 3" onclick="openLightbox(this)">
+            <img src="image/photo4.jpg" alt="Проект 4" onclick="openLightbox(this)">
+            <img src="image/photo5.jpg" alt="Проект 5" onclick="openLightbox(this)">
+            <img src="image/photo6.jpg" alt="Проект 6" onclick="openLightbox(this)">
+            <img src="image/photo7.jpg" alt="Проект 7" onclick="openLightbox(this)">
+            <img src="image/photo8.jpg" alt="Проект 8" onclick="openLightbox(this)">
+            <img src="image/photo9.jpg" alt="Проект 9" onclick="openLightbox(this)">
+        </div>
+
+        <a href="DOKA-TEAM.html" class="back-link">← На главную</a>
+    </div>
+
+    <!-- Лайтбокс -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <span class="close">&times;</span>
+        <img src="" alt="" id="lightbox-img">
+    </div>
+
+    <script>
+        function openLightbox(img) {
+            document.getElementById('lightbox').classList.add('active');
+            document.getElementById('lightbox-img').src = img.src;
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+    </script>
+</body>
+
+</html>
