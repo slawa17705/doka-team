@@ -156,24 +156,36 @@
         }
 
         .btn-main {
-            border: none !important;
-            display: inline-block;
-            background-color: #f1e7ea00;
-            color: #fff;
-            padding: 14px 32px;
-            font-size: 16px;
-            font-weight: 700;
-            text-decoration: none;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
-            transition: all 0.3s;
-            cursor: pointer;
-            position: relative;
-            z-index: 1;
-            -webkit-tap-highlight-color: transparent;
--webkit-appearance: none;
--moz-appearance: none;
-appearance: none;
-        }
+    display: inline-block;
+    background-color: #f1e7ea00;
+    color: #fff;
+    padding: 14px 32px;
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    transition: all 0.3s;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    border: none !important;
+    outline: none !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+}
+
+.btn-main:focus,
+.btn-main:active {
+    border: none !important;
+    outline: none !important;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3) !important;
+}
+
+.btn-main:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+}
 
         .btn-main:focus,
 .btn-main:active {
@@ -446,6 +458,18 @@ appearance: none;
                 font-size: 22px;
             }
         }
+
+button {
+    border: none !important;
+    outline: none !important;
+}
+
+button:focus,
+button:active {
+    border: none !important;
+    outline: none !important;
+}
+        
     </style>
 
     <link rel="icon" type="image/x-icon" href="favicon.ico">
