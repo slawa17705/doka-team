@@ -26,8 +26,6 @@
     </noscript>
     <!-- /Yandex.Metrika counter -->
 
-
-
     <style>
         :root {
             --primary-color: #fff;
@@ -117,11 +115,21 @@
             padding: 15px 0;
         }
 
-        .hero .container {
-            background: rgba(255, 255, 255, 0.94);
+        .hero .container,
+        .works .container,
+        .stages .container,
+        .footer .container {
+            background-image: url('image/glass-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 14px;
+            box-shadow: 0 10px 40px rgba(0, 30, 60, 0.2);
             padding: 45px 50px;
-            border-radius: 8px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .works .container {
+            text-align: center;
         }
 
         .hero h1 {
@@ -202,14 +210,6 @@
             padding: 15px 0;
         }
 
-        .works .container {
-            background-color: #fff;
-            padding: 40px 50px;
-            border-radius: 8px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-            text-align: center;
-        }
-
         .works-title {
             font-size: 26px;
             font-weight: 800;
@@ -260,13 +260,6 @@
             padding: 15px 0;
         }
 
-        .stages .container {
-            background-color: #fff;
-            padding: 45px 50px;
-            border-radius: 8px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-        }
-
         .stages-title {
             text-align: center;
             font-size: 26px;
@@ -282,11 +275,12 @@
         }
 
         .card {
-            background: #fff;
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             padding: 30px 25px;
             border-radius: 6px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
-            border: 1px solid #eee;
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-top: 4px solid transparent;
             transition: all 0.3s;
         }
@@ -317,13 +311,6 @@
 
         .footer {
             padding: 15px 0 40px 0;
-        }
-
-        .footer .container {
-            background-color: #fff;
-            padding: 40px 50px;
-            border-radius: 8px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
         }
 
         .footer-grid {
@@ -374,10 +361,10 @@
         .footer-bottom {
             margin-top: 30px;
             padding-top: 18px;
-            border-top: 1px solid #eee;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
             text-align: center;
             font-size: 13px;
-            color: #999;
+            color: #666;
         }
 
         @media (max-width: 992px) {
@@ -464,10 +451,8 @@
         <div class="container">
             <h1>Создаем объекты от идеи до финальной отделки. Без швов и переделок.</h1>
             <p>Мы не просто строим или ремонтируем. DOKA-TEAM (Дока-Тим) — это полный инженерно-строительный цикл. Мы
-                сами
-                проектируем, сами возводим стены и сами доводим интерьер до идеала. Вам не придется искать компромиссы и
-                переплачивать за чужие ошибки — мы отвечаем за каждый миллиметр результата.</p>
-
+                сами проектируем, сами возводим стены и сами доводим интерьер до идеала. Вам не придется искать
+                компромиссы и переплачивать за чужие ошибки — мы отвечаем за каждый миллиметр результата.</p>
             <div class="btn-group">
                 <button class="btn-main" onclick="document.getElementById('dropdown').classList.toggle('active')">
                     Обсудить проект с инженером ▾
@@ -557,7 +542,6 @@
             <img src="https://informer.yandex.ru/informer/109769602/3_0_FFFFFFFF_EFEFEFFF_0_pageviews"
                 style="width:88px; height:31px; border:0; border-radius:4px;" alt="Яндекс.Метрика" />
         </a>
-
     </footer>
 
     <script>
