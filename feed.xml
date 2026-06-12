@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+    <title>Дока-Тим (Doka-Team) — Ремонт квартир и строительство</title>
+    <link>https://doka-team.ru</link>
+    <description>Статьи о ремонте квартир, строительстве домов, отделке в Москве и МО</description>
+    <language>ru</language>
+    <atom:link href="https://doka-team.ru/feed.xml" rel="self" type="application/rss+xml"/>
+
+    <item>
+        <title>Вы платите за ремонт дважды. И даже не знаете об этом</title>
+        <link>https://doka-team.ru/blog-post-1.html</link>
+        <description>Первый раз — когда начинаете без проекта. Второй — когда переделываете за кривыми руками. В Дока-Тим (DOKA-TEAM) мы делаем один раз и правильно.</description>
+        <pubDate>Thu, 12 Jun 2026 09:00:00 +0300</pubDate>
+    </item>
+
+    <item>
+        <title>Прораб, который не звонит по выходным</title>
+        <link>https://doka-team.ru/blog-post-2.html</link>
+        <description>Когда у бригады есть чёткий план, прорабу не нужно дёргать вас вопросами. Всё решено на этапе проекта.</description>
+        <pubDate>Thu, 12 Jun 2026 10:00:00 +0300</pubDate>
+    </item>
+
+    <item>
+        <title>Почему ваш ремонт дорожает, а наш — нет</title>
+        <link>https://doka-team.ru/blog-post-3.html</link>
+        <description>«Иван Петрович, тут неожиданность — надо ещё 80 тысяч». У нас такого нет. Потому что до начала работ мы делаем проект.</description>
+        <pubDate>Thu, 12 Jun 2026 11:00:00 +0300</pubDate>
+    </item>
+
+    <item>
+        <title>Гарантия срока и качества</title>
+        <link>https://doka-team.ru/blog-post-4.html</link>
+        <description>Строители обещали дом за год, а через два — голые стены и трещины. Почему так? Потому что не было проекта и контроля.</description>
+        <pubDate>Thu, 12 Jun 2026 12:00:00 +0300</pubDate>
+    </item>
+
+    <item>
+        <title>Дом за сезон — это реально</title>
+        <link>https://doka-team.ru/blog-post-5.html</link>
+        <description>Построить дом за тёплый сезон — реально. Если есть проект, материалы и бригада, которая не уходит в запой.</description>
+        <pubDate>Thu, 12 Jun 2026 13:00:00 +0300</pubDate>
+    </item>
+
+    <item>
+        <title>Как не потерять деньги на ремонте</title>
+        <link>https://doka-team.ru/blog-post-6.html</link>
+        <description>Когда нет чёткого плана, ремонт превращается в хаос. В Дока-Тим мы делаем иначе: сначала проект, потом стройка.</description>
+        <pubDate>Thu, 12 Jun 2026 14:00:00 +0300</pubDate>
+    </item>
+
+    <item>
+        <title>Бесплатный проект — экономия до 20%</title>
+        <link>https://doka-team.ru/blog-post-7.html</link>
+        <description>Проект у нас бесплатный. А выгода: фиксированная смета, бригада по плану, никаких «ой, забыли». Москва и МО.</description>
+        <pubDate>Thu, 12 Jun 2026 15:00:00 +0300</pubDate>
+    </item>
+
+</channel>
+</rss>
