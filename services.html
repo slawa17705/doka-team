@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Услуги — Дока-Тим (Doka-Team)</title>
+    <meta name="description"
+        content="Услуги строительной компании Дока-Тим (Doka-Team): проектирование, строительство домов, ремонт квартир, отделка, инженерные системы в Москве и МО.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #9b9b92;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 32px;
+            color: #222;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .service-block {
+            background: #f9f9f9;
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 4px solid #d4af37;
+        }
+
+        .service-block h2 {
+            font-size: 22px;
+            color: #222;
+            margin-bottom: 15px;
+        }
+
+        .service-block ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .service-block ul li {
+            padding: 8px 0;
+            color: #444;
+            font-size: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .service-block ul li:last-child {
+            border-bottom: none;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            color: #d4af37;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .container {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1><img src="image/logoDT3.png" alt="DOKA-TEAM" class="header-logo"
+                style="height: 110px; width: 180px; margin-bottom: 30px;"></h1>
+
+        <div class="services-grid">
+            <div class="service-block">
+                <h2>📐 Проектирование</h2>
+                <ul>
+                    <li>Архитектурное проектирование</li>
+                    <li>Конструктивные решения</li>
+                    <li>Инженерные сети (электрика, отопление, водоснабжение)</li>
+                    <li>Дизайн-проект интерьера</li>
+                    <li>Смета с фиксированной стоимостью</li>
+                </ul>
+            </div>
+
+            <div class="service-block">
+                <h2>🧱 Строительство</h2>
+                <ul>
+                    <li>Фундамент (ленточный, плитный, свайный)</li>
+                    <li>Коробка дома (кирпич, блоки, монолит)</li>
+                    <li>Кровля (металлочерепица, мягкая, фальцевая)</li>
+                    <li>Фасадные работы</li>
+                    <li>Пристройки и гаражи</li>
+                </ul>
+            </div>
+
+            <div class="service-block">
+                <h2>✨ Ремонт и отделка</h2>
+                <ul>
+                    <li>Косметический ремонт</li>
+                    <li>Капитальный ремонт</li>
+                    <li>Дизайнерский ремонт</li>
+                    <li>Плиточные работы</li>
+                    <li>Малярные работы</li>
+                    <li>Натяжные потолки</li>
+                    <li>Укладка напольных покрытий</li>
+                </ul>
+            </div>
+
+            <div class="service-block">
+                <h2>⚡ Инженерные системы</h2>
+                <ul>
+                    <li>Электромонтажные работы</li>
+                    <li>Отопление и котельные</li>
+                    <li>Водоснабжение и канализация</li>
+                    <li>Вентиляция и кондиционирование</li>
+                    <li>Системы «Умный дом»</li>
+                </ul>
+            </div>
+        </div>
+
+        <a href="index.html" class="back-link">← На главную</a>
+    </div>
+</body>
+
+</html>
