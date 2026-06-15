@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Цены и смета | Дока-Тим (Doka-Team)</title>
+    <meta name="description"
+        content="Дока-Тим (Doka-Team) — ремонт квартир под ключ, отделка, шпаклевка, малярные работы, строительство домов в Москве и МО. Пример сметы, калькулятор стоимости.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            margin-top: 150px;
+            background-size: cover;
+            background: url('image/ice-crystals-fon1.webp') no-repeat center center fixed;
+            padding: 40px 20px;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: url('image/price.webp')center/cover no-repeat;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+
+            box-shadow: 0 10px 40px rgba(0, 30, 60, 0.2);
+            padding: 50px;
+        }
+
+        h1,
+        h2,
+        p,
+        label {
+            color: #171718 !important;
+        }
+
+        h1,
+        h2 {
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5) !important;
+        }
+
+        h1 {
+            font-size: 30px;
+            color: #222;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+
+        h2 {
+            font-size: 22px;
+            color: #222;
+            margin: 30px 0 15px;
+        }
+
+        p {
+            font-size: 16px;
+            color: #0a0a0a;
+            margin-bottom: 15px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #050505;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .btn-pdf {
+            display: inline-block;
+            background-color: #f1e7ea00;
+            color: black;
+            padding: 14px 32px;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(63, 53, 21, 0.527);
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+            border: none !important;
+            outline: none !important;
+            -webkit-appearance: none !important;
+            -moz-appearance: none !important;
+            appearance: none !important;
+        }
+
+        #type:hover,
+        #area:hover,
+        .btn-pdf:hover,
+        .btn-rst:hover {
+            background: rgba(117, 117, 113, 0.527) !important;
+            color: black;
+        }
+
+        .btn-rst {
+            display: inline-block !important;
+            background-color: #f1e7ea00 !important;
+            color: black !important;
+            padding: 14px 32px !important;
+            font-size: 16px !important;
+            font-weight: 700 !important;
+            text-decoration: none !important;
+            box-shadow: 0 4px 15px rgba(63, 53, 21, 0.527) !important;
+            transition: all 0.3s !important;
+            cursor: pointer !important;
+            border: none !important;
+            outline: none !important;
+            -webkit-appearance: none !important;
+            -moz-appearance: none !important;
+            appearance: none !important;
+        }
+
+        #type,
+        #area {
+            display: inline-block !important;
+            background-color: #f1e7ea00 !important;
+            color: black !important;
+            padding: 14px 32px !important;
+            font-size: 16px !important;
+            font-weight: 700 !important;
+            text-decoration: none !important;
+            box-shadow: 0 4px 15px rgba(63, 53, 21, 0.527) !important;
+            transition: all 0.3s !important;
+            cursor: pointer !important;
+            border: none !important;
+            outline: none !important;
+            -webkit-appearance: none !important;
+            -moz-appearance: none !important;
+            appearance: none !important;
+        }
+
+        .calc {
+            display: inline-block;
+            background-color: #f1e7ea00;
+            color: #fff;
+            padding: 14px 32px;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+            border: none !important;
+            outline: none !important;
+            -webkit-appearance: none !important;
+            -moz-appearance: none !important;
+            appearance: none !important;
+        }
+
+        .calc input,
+        .calc select {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .calc button {
+            background: #d4af37;
+            color: #fff;
+            padding: 14px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .calc button:hover {
+            background: #c5952e;
+        }
+
+        .result {
+            font-size: 20px;
+            font-weight: 700;
+            color: #222;
+            text-align: center;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Цены и смета</h1>
+        <div class="gold-line"></div>
+
+        <p>Точную стоимость ремонта мы называем только после выезда на объект. Но для ориентира можно посмотреть пример
+            сметы или воспользоваться калькулятором.</p>
+
+        <a href="doka-smeta.pdf" download class="btn-pdf">📄 Скачать пример сметы (PDF)</a>
+
+        <h2>Калькулятор стоимости ремонта</h2>
+        <p>Примерный расчёт. Точная цена — после замера.</p>
+
+        <div class="calc">
+            <label>Тип ремонта:</label>
+            <select id="type">
+                <option value="kosmetika">Косметический</option>
+                <option value="kapital">Капитальный</option>
+                <option value="euro">Дизайнерский</option>
+            </select>
+
+            <label>Площадь (м²):</label>
+            <input type="number" id="area" placeholder="Например: 50" min="1">
+
+            <button class="btn-rst" onclick="calculate()">Рассчитать</button>
+
+            <div class="result" id="result"></div>
+        </div>
+
+        <p style="font-size:14px; color:#888;">* Это ориентировочная стоимость. Точная смета — после выезда мастера.</p>
+
+        <a href="index.html" class="back-link">← На главную</a>
+    </div>
+
+    <script>
+        function calculate() {
+            var type = document.getElementById('type').value;
+            var area = parseInt(document.getElementById('area').value);
+            if (!area || area < 1) { document.getElementById('result').innerHTML = 'Введите площадь'; return; }
+            var price = 0;
+            if (type === 'kosmetika') price = area * 20000;
+            if (type === 'kapital') price = area * 35000;
+            if (type === 'euro') price = area * 45000;
+            document.getElementById('result').innerHTML = 'Ориентировочно: ' + price.toLocaleString() + ' ₽';
+        }
+    </script>
+</body>
+
+</html>
