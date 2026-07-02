@@ -70,6 +70,7 @@
         .logo-block {
             display: flex;
             justify-content: space-around;
+            align-items: center;
         }
 
         .logo-text {
@@ -88,7 +89,7 @@
 
         .header-logo {
             height: 140px;
-            width: 210px;
+            width: auto;
         }
 
         .contacts-block {
@@ -374,6 +375,11 @@
             color: #fff;
         }
 
+        /* ========== ДЕСКТОП: без изменений ========== */
+        .mobile-logo {
+            display: none;
+        }
+
         /* Бургер-меню скрыт на десктопе */
         .burger-btn,
         .mobile-menu,
@@ -381,6 +387,7 @@
             display: none;
         }
 
+        /* ========== ПЛАНШЕТ ========== */
         @media (max-width: 992px) {
             .grid {
                 grid-template-columns: 1fr 1fr;
@@ -395,20 +402,27 @@
             }
         }
 
+        /* ========== МОБИЛКИ ========== */
         @media (max-width: 768px) {
-            .header .container {
-                flex-direction: column;
-                align-items: center;
-                padding: 15px 0;
-                margin: 0;
-                height: 150px;
+            body {
+                background: url('image/bodyMob.jpg') no-repeat center center fixed;
+                background-size: cover;
             }
 
 
-            .header-logo {
 
+            .header .container {
+                flex-direction: column;
+                align-items: center;
+                padding: 0;
+                margin: 0;
+
+            }
+
+            .header-logo {
                 height: 100px;
                 width: auto;
+
             }
 
             .header .container>img.header-logo {
@@ -416,10 +430,6 @@
             }
 
             .contacts-block {
-                display: none;
-            }
-
-            .logo-block img:first-child {
                 display: none;
             }
 
@@ -449,7 +459,7 @@
             .stages .container,
             .footer .container,
             .works .container {
-                padding: 30px 20px;
+                padding: 10px 20px;
             }
 
             .hero h1 {
@@ -464,6 +474,21 @@
                 display: none;
             }
 
+            /* Скрываем desktop-лого, показываем mobile-лого */
+            .desktop-logo {
+                display: none;
+            }
+
+            .mobile-logo {
+                display: block;
+                height: auto;
+                width: 100%;
+                max-width: 400px;
+                margin: 0 auto;
+                margin-bottom: -25px;
+            }
+
+            /* Бургер */
             .burger-wrapper {
                 position: relative;
                 width: 100%;
@@ -473,14 +498,19 @@
             }
 
             .burger-btn {
-                display: block;
+                display: flex;
+                flex-direction: column;
+                line-height: 0;
                 background: transparent;
                 border: none;
-                font-size: 30px;
-                color: black;
                 cursor: pointer;
-                padding: 0 5px;
+                padding: 5px;
             }
+
+            .burger-btn span {
+                box-shadow: -5px 5px 4px rgba(0, 0, 0, 0.5);
+            }
+
 
             .mobile-menu {
                 display: none;
@@ -489,21 +519,19 @@
                 left: 50%;
                 transform: translateX(-50%);
                 width: 100%;
-                height: auto;
                 max-width: 1100px;
                 background-image: url(image/glass-bg.webp);
-                padding: 15px;
+                padding: 0;
                 z-index: 1001;
                 overflow-y: auto;
-                max-height: 60vh;
-
+                max-height: auto;
             }
 
             .mobile-menu.active {
                 display: block;
+                height: 335px;
+                margin-top: 30px;
             }
-
-            /* --- ИСПРАВЛЕНИЕ ЦЕНТРИРОВАНИЯ --- */
 
             .mobile-menu .menu-item {
                 color: #fff;
@@ -511,17 +539,13 @@
                 padding: 12px 0;
                 font-size: 20px;
                 cursor: pointer;
-
                 text-align: center;
-                /* Центрирует текст "Контакты" */
             }
 
             .mobile-menu .submenu {
                 display: none;
                 padding-left: 0;
-                /* Убираем отступ слева */
                 text-align: center;
-                /* Центрируем содержимое подменю */
             }
 
             .mobile-menu .submenu.active {
@@ -534,9 +558,7 @@
                 padding: 8px 0;
                 font-size: 20px;
                 text-decoration: none;
-
                 text-align: center;
-                /* Центрирует текст в подменю */
             }
 
             .mobile-menu a {
@@ -545,16 +567,11 @@
                 padding: 12px 0;
                 text-decoration: none;
                 font-size: 20px;
-
                 text-align: center;
-                /* Центрирует все остальные ссылки */
             }
 
 
 
-            .overlay.active {
-                display: block;
-            }
         }
 
         button {
@@ -566,20 +583,6 @@
         button:active {
             border: none !important;
             outline: none !important;
-        }
-
-        .footer {
-            padding: 10px 0 20px 0;
-        }
-
-        .footer .container {
-            padding: 15px;
-        }
-
-        .footer-bottom {
-            margin-top: 10px;
-            padding-top: 10px;
-            font-size: 11px;
         }
     </style>
 
@@ -598,8 +601,12 @@
     <header class="header">
         <div class="container">
             <div class="logo-block">
-                <img src="image/logoDT3.png" alt="DOKA-TEAM" class="header-logo">
-                <img src="image/logoDT4.png" alt="DOKA-TEAM" class="header-logo">
+                <!-- Десктопные логотипы -->
+                <img src="image/logoDT3.png" alt="DOKA-TEAM" class="header-logo desktop-logo">
+                <img src="image/logoDT4.png" alt="DOKA-TEAM" class="header-logo desktop-logo">
+                <!-- Мобильный логотип -->
+                <img src="image/logoMob.PNG" alt="DOKA-TEAM" class="mobile-logo">
+
                 <div class="contacts-block">
                     <div class="phone-block">
                         <a href="tel:+79773379393" class="phone-link">+7 (977) 337-9393</a>
@@ -610,9 +617,13 @@
             </div>
 
             <div class="burger-wrapper">
-                <button class="burger-btn" onclick="toggleMenu()">☰</button>
+                <button class="burger-btn" onclick="toggleMenu()">
+                    <span style="display:block; width:40px; height:7px; background:#fff;  margin:0; "></span>
+                    <span style="display:block; width:40px; height:7px; background:#0039a6;  margin:0; "></span>
+                    <span style="display:block; width:40px; height:7px; background:#d52b1e;  margin:0; "></span>
+                </button>
                 <div class="mobile-menu" id="mobileMenu">
-                    <div class="menu-item" onclick="toggleSubmenu('contacts')"> Контакты</div>
+                    <div class="menu-item" onclick="toggleSubmenu('contacts')">Контакты</div>
                     <div class="submenu" id="contacts">
                         <a href="tel:+79773379393">+7 (977) 337-9393</a>
                         <a href="tel:+79295947060">+7 (929) 594-7060</a>
@@ -623,18 +634,16 @@
                     <a href="service-design.html">Проектирование</a>
                     <a href="service-repair.html">Ремонт и отделка</a>
                     <a href="projects.html">Наши проекты</a>
-                    <a href="price.html"> Калькулятор </a>
+                    <a href="price.html">Калькулятор</a>
                     <a href="contract.html">Уговор</a>
                 </div>
             </div>
-
-
         </div>
     </header>
 
     <section class="hero">
         <div class="container">
-            <h1>Создаем объекты от идеи до финальной отделки. Без швов и переделок.</h1>
+            <h1>От идеи до финальной отделки</h1>
             <p>Мы не просто строим или ремонтируем. DOKA-TEAM (Дока-Тим) — это полный инженерно-строительный цикл. Мы
                 сами проектируем, сами возводим стены и сами доводим интерьер до идеала. Вам не придется искать
                 компромиссы и переплачивать за чужие ошибки — мы отвечаем за каждый миллиметр результата.</p>
@@ -722,7 +731,6 @@
                 </div>
             </div>
             <div class="footer-bottom">
-
                 © 2026 DOKA-TEAM/Дока-Тим. Все права защищены. Проектирование, строительство домов и ремонт квартир
                 премиум-класса.
             </div>
@@ -733,10 +741,7 @@
         </a>
     </footer>
 
-    <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
-
     <script>
-        // Закрытие выпадающего списка "Оставить заявку" при клике вне его
         document.addEventListener('click', function (e) {
             var dropdown = document.getElementById('dropdown');
             var btn = document.querySelector('.btn-main');
@@ -745,50 +750,34 @@
             }
         });
 
-        // Открытие/закрытие всего бургер-меню
         function toggleMenu() {
             var menu = document.getElementById('mobileMenu');
             var overlay = document.getElementById('overlay');
-
             menu.classList.toggle('active');
-            overlay.classList.toggle('active');
-
-            // Закрываем подменю "Контакты" при закрытии всего меню, чтобы не висело
             if (!menu.classList.contains('active')) {
                 document.getElementById('contacts').classList.remove('active');
-                showAllMenuItems(); // Вернуть все ссылки обратно
+                showAllMenuItems();
             }
         }
 
-        // Функция для скрытия всех ссылок, кроме "Контакты"
         function hideOtherMenuItems() {
             var allLinks = document.querySelectorAll('.mobile-menu a:not(.submenu a)');
-            allLinks.forEach(function (link) {
-                link.style.display = 'none';
-            });
+            allLinks.forEach(function (link) { link.style.display = 'none'; });
         }
 
-        // Функция для показа всех ссылок обратно
         function showAllMenuItems() {
             var allLinks = document.querySelectorAll('.mobile-menu a:not(.submenu a)');
-            allLinks.forEach(function (link) {
-                link.style.display = 'block';
-            });
+            allLinks.forEach(function (link) { link.style.display = 'block'; });
         }
 
-        // Открытие/закрытие подменю "Контакты"
         function toggleSubmenu(id) {
             var submenu = document.getElementById(id);
-
-            // Если подменю закрыто -> открываем
             if (!submenu.classList.contains('active')) {
                 submenu.classList.add('active');
-                hideOtherMenuItems(); // Скрыть остальные ссылки
-            }
-            // Если подменю открыто -> закрываем
-            else {
+                hideOtherMenuItems();
+            } else {
                 submenu.classList.remove('active');
-                showAllMenuItems(); // Показать остальные ссылки обратно
+                showAllMenuItems();
             }
         }
     </script>
