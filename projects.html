@@ -227,21 +227,14 @@ function openLightbox(img) {
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightbox-img');
     
-    const pageImages = Array.from(document.querySelectorAll('.gallery img'));
-    galleryImages = pageImages.map(el => el.src);
-    
-    allImages.forEach(src => {
-        if (!galleryImages.includes(src)) {
-            galleryImages.push(src);
-        }
-    });
+    galleryImages = [...allImages];
     
     currentIndex = galleryImages.indexOf(img.src);
     if (currentIndex === -1) currentIndex = 0;
     
     lightboxImg.src = galleryImages[currentIndex];
     lightbox.classList.add('active');
-    lightbox.addEventListener('touchstart', handleTouchStart, {once: true});
+    lightboxImg.addEventListener('touchstart', handleTouchStart, {once: true});
 }
 
 function closeLightbox() {
@@ -261,7 +254,7 @@ function prevImage() {
 let touchStartX = 0;
 function handleTouchStart(e) {
     touchStartX = e.touches[0].clientX;
-    document.getElementById('lightbox').addEventListener('touchend', handleTouchEnd, {once: true});
+    document.getElementById('lightbox-img').addEventListener('touchend', handleTouchEnd, {once: true});
 }
 
 function handleTouchEnd(e) {
@@ -270,6 +263,7 @@ function handleTouchEnd(e) {
         if (diff > 0) nextImage();
         else prevImage();
     }
+}
 }</script>
 
 </body>
