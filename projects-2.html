@@ -222,7 +222,7 @@ function openLightbox(img) {
     
     galleryImages = [...allImages];
     
-    currentIndex = galleryImages.indexOf(img.src);
+    currentIndex = galleryImages.indexOf(img.getAttribute('src'));
     if (currentIndex === -1) currentIndex = 0;
     
     lightboxImg.src = galleryImages[currentIndex];
