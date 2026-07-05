@@ -234,7 +234,7 @@ function openLightbox(img) {
     
     lightboxImg.src = galleryImages[currentIndex];
     lightbox.classList.add('active');
-    lightboxImg.addEventListener('touchstart', handleTouchStart, {once: true});
+    lightboxImg.addEventListener('touchstart', handleTouchStart);
 }
 
 function closeLightbox() {
