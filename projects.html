@@ -203,52 +203,75 @@
     <span onclick="nextImage()" style="position:absolute; right:15px; top:50%; transform:translateY(-50%); color:#fff; font-size:40px; cursor:pointer; z-index:1000;">›</span>
     <img src="" alt="" id="lightbox-img" onclick="event.stopPropagation()">
 </div>
-
 <script>
-    let currentIndex = 0;
-    let galleryImages = [];
+let currentIndex = 0;
+let galleryImages = [];
 
-    function openLightbox(img) {
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightbox-img');
-        galleryImages = Array.from(document.querySelectorAll('.gallery img'));
-        currentIndex = galleryImages.indexOf(img);
+const project1Images = [
+    'image/photo1.webp', 'image/photo2.webp', 'image/photo3.webp',
+    'image/photo4.webp', 'image/photo5.webp', 'image/photo6.webp',
+    'image/photo7.webp', 'image/photo8.webp', 'image/photo9.webp',
+    'image/photo10.webp', 'image/photo11.webp', 'image/photo12.webp',
+    'image/photo13.webp', 'image/photo14.webp'
+];
+const project2Images = [
+    'image/photo15.webp', 'image/photo16.webp', 'image/photo17.webp',
+    'image/photo18.webp', 'image/photo19.webp', 'image/photo20.webp',
+    'image/photo21.webp', 'image/photo22.webp', 'image/photo23.webp',
+    'image/photo24.webp', 'image/photo25.webp', 'image/photo26.webp',
+    'image/photo27.webp', 'image/photo28.webp', 'image/photo29.webp'
+];
+const allImages = [...project1Images, ...project2Images];
 
-        lightboxImg.src = img.src;
-        lightbox.classList.add('active');
-
-        lightboxImg.addEventListener('touchstart', handleTouchStart, { once: true });
-    }
-
-    function closeLightbox() {
-        document.getElementById('lightbox').classList.remove('active');
-    }
-
-    function nextImage() {
-        currentIndex = (currentIndex + 1) % galleryImages.length;
-        document.getElementById('lightbox-img').src = galleryImages[currentIndex].src;
-    }
-
-    function prevImage() {
-        currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
-        document.getElementById('lightbox-img').src = galleryImages[currentIndex].src;
-    }
-
-    let touchStartX = 0;
-
-    function handleTouchStart(e) {
-        touchStartX = e.touches[0].clientX;
-        document.getElementById('lightbox-img').addEventListener('touchend', handleTouchEnd, { once: true });
-    }
-
-    function handleTouchEnd(e) {
-        const diff = touchStartX - e.changedTouches[0].clientX;
-        if (Math.abs(diff) > 50) {
-            if (diff > 0) nextImage();
-            else prevImage();
+function openLightbox(img) {
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    
+    const pageImages = Array.from(document.querySelectorAll('.gallery img'));
+    galleryImages = pageImages.map(el => el.src);
+    
+    allImages.forEach(src => {
+        if (!galleryImages.includes(src)) {
+            galleryImages.push(src);
         }
+    });
+    
+    currentIndex = galleryImages.indexOf(img.src);
+    if (currentIndex === -1) currentIndex = 0;
+    
+    lightboxImg.src = galleryImages[currentIndex];
+    lightbox.classList.add('active');
+    lightbox.addEventListener('touchstart', handleTouchStart, {once: true});
+}
+
+function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+}
+
+function nextImage() {
+    currentIndex = (currentIndex + 1) % galleryImages.length;
+    document.getElementById('lightbox-img').src = galleryImages[currentIndex];
+}
+
+function prevImage() {
+    currentIndex = (currentIndex - 1 + galleryImages.length) % galleryImages.length;
+    document.getElementById('lightbox-img').src = galleryImages[currentIndex];
+}
+
+let touchStartX = 0;
+function handleTouchStart(e) {
+    touchStartX = e.touches[0].clientX;
+    document.getElementById('lightbox').addEventListener('touchend', handleTouchEnd, {once: true});
+}
+
+function handleTouchEnd(e) {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) {
+        if (diff > 0) nextImage();
+        else prevImage();
     }
-</script>
+}</script>
+
 </body>
 
 </html>
