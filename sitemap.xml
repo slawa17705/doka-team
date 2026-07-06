@@ -64,4 +64,12 @@
         <loc>https://doka-team.ru/blog-post-7.html</loc>
         <priority>0.7</priority>
     </url>
+        <url>
+        <loc>https://doka-team.ru/price.html</loc>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://doka-team.ru/contract.html</loc>
+        <priority>0.6</priority>
+    </url>
 </urlset>
