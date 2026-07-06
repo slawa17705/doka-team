@@ -1,6 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /image/
-
-Host: doka-team.ru
-Sitemap: https://doka-team.ru/sitemap.xml
