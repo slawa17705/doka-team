@@ -697,12 +697,20 @@
                 <button class="btn-main" onclick="document.getElementById('dropdown').classList.toggle('active')">
                     Оставить заявку ▾
                 </button>
-                <div class="dropdown" id="dropdown">
-                    <a href="tel:+79773379393"><span class="icon">📞</span> Позвонить</a>
-                    <a href="https://wa.me/79773379393"><span class="icon">💬</span> WhatsApp</a>
-                    <a href="https://t.me/DOKA_TEAM_Remont"><span class="icon">✈️</span> Telegram</a>
-                    <a href="mailto:gold9999@list.ru"><span class="icon">📧</span> Написать на почту</a>
-                </div>
+              <div class="dropdown" id="dropdown">
+    <a href="tel:+79773379393" onclick="ym(109769602, 'reachGoal', 'phone_call'); return true;">
+        <span class="icon">📞</span> Позвонить
+    </a>
+    <a href="https://wa.me/79773379393" onclick="ym(109769602, 'reachGoal', 'whatsapp_click'); return true;">
+        <span class="icon">💬</span> WhatsApp
+    </a>
+    <a href="https://t.me/DOKA_TEAM_Remont" onclick="ym(109769602, 'reachGoal', 'telegram_click'); return true;">
+        <span class="icon">✈️</span> Telegram
+    </a>
+    <a href="mailto:gold9999@list.ru" onclick="ym(109769602, 'reachGoal', 'email_click'); return true;">
+        <span class="icon">📧</span> Написать на почту
+    </a>
+</div>
             </div>
         </div>
     </section>
