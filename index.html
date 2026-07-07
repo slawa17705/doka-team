@@ -665,7 +665,7 @@
             </div>
 
             <div class="burger-wrapper">
-                <button class="burger-btn" onclick="toggleMenu()" aria-label="Меню">
+                <button class="burger-btn" onclick="toggleMenu()" aria-label="Открыть меню" aria-expanded="false" id="burgerButton">
                     <span style="display:block; width:50px; height:8px; background:#fff;  margin-bottom:2px; "></span>
                     <span
                         style="display:block; width:50px; height:8px; background:#0039a6;  margin-bottom:2px; "></span>
@@ -812,15 +812,18 @@
             }
         });
 
-        function toggleMenu() {
-            var menu = document.getElementById('mobileMenu');
-            var overlay = document.getElementById('overlay');
-            menu.classList.toggle('active');
-            if (!menu.classList.contains('active')) {
-                document.getElementById('contacts').classList.remove('active');
-                showAllMenuItems();
-            }
-        }
+ function toggleMenu() {
+    var menu = document.getElementById('mobileMenu');
+    var btn = document.getElementById('burgerButton');
+    var overlay = document.getElementById('overlay');
+    menu.classList.toggle('active');
+    btn.setAttribute('aria-expanded', menu.classList.contains('active'));
+    btn.setAttribute('aria-label', menu.classList.contains('active') ? 'Закрыть меню' : 'Открыть меню');
+    if (!menu.classList.contains('active')) {
+        document.getElementById('contacts').classList.remove('active');
+        showAllMenuItems();
+    }
+}
 
         function hideOtherMenuItems() {
             var allLinks = document.querySelectorAll('.mobile-menu a:not(.submenu a)');
