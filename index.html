@@ -131,6 +131,7 @@
         .works .container,
         .stages .container,
         .footer .container {
+            min-height: 320px; 
             position: relative;
             background-image: url('image/glass-bg.webp');
             background-size: cover;
@@ -484,9 +485,10 @@
 
             .mobile-logo {
                 display: block;
-                height: 266px;
+                height: auto;
                 width: 100%;
                 max-width: 400px;
+                aspect-ratio: 400 / 266;
                 margin: 0 auto;
                 margin-bottom: -23px;
             }
