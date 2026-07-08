@@ -5,10 +5,17 @@
     <meta charset="UTF-8">
     <link rel="canonical" href="https://doka-team.ru/price.html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ремонт квартиры под ключ | Цены и смета | Дока-Тим (Doka-Team)</title>
+    <title>Калькулятор стоимости ремонта | Дока-Тим</title>
     <meta name="description"
-        content="Дока-Тим (Doka-Team) — ремонт квартир под ключ, отделка, шпаклевка, малярные работы, строительство домов в Москве и МО. Пример сметы, калькулятор стоимости.">
+        content="Калькулятор стоимости ремонта квартир и ванных комнат в Москве и МО. Онлайн-расчёт сметы от Дока-Тим.">
     <style>
+        :root {
+            --accent: #d4af37;
+            --glass: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.12);
+            --text: #fff;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -17,270 +24,700 @@
         }
 
         body {
-            margin-top: 150px;
-            background-size: cover;
             background: url('image/ice-crystals-fon1.webp') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             padding: 40px 20px;
-            line-height: 1.7;
+            color: var(--text);
         }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: url('image/price.webp')center/cover no-repeat;
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-
-            box-shadow: 0 10px 40px rgba(0, 30, 60, 0.2);
-            padding: 50px;
-        }
-
-        h1,
-        h2,
-        p,
-        label {
-            color: #171718 !important;
-        }
-
-        h1,
-        h2 {
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5) !important;
+        .calculator {
+            max-width: 600px;
+            width: 100%;
+            background: url('image/glass-bg1.webp') no-repeat center center;
+            background-size: cover;
+            border-radius: 14px;
+            padding: 40px 35px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
         }
 
         h1 {
-            font-size: 30px;
-            color: #222;
-            margin-bottom: 10px;
+            text-align: center;
+            font-size: 22px;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .gold-line {
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+            margin: 0 auto 30px;
+        }
+
+        .step-indicator {
+            text-align: center;
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .step {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .step.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .step-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 15px;
             text-align: center;
         }
 
-
-        h2 {
-            font-size: 22px;
-            color: #222;
-            margin: 30px 0 15px;
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 25px;
         }
 
-        p {
+        .option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 18px;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 15px;
+            user-select: none;
+        }
+
+        .option:hover {
+            border-color: var(--accent);
+        }
+
+        .option.selected {
+            border-color: var(--accent);
+            background: rgba(212, 175, 55, 0.12);
+        }
+
+        .option .radio,
+        .option .check {
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+
+        .option .radio {
+            border-radius: 50%;
+        }
+
+        .option .check {
+            border-radius: 4px;
+        }
+
+        .option.selected .radio,
+        .option.selected .check {
+            border-color: var(--accent);
+        }
+
+        .option.selected .radio::after {
+            content: '';
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent);
+        }
+
+        .option.selected .check::after {
+            content: '✓';
+            color: var(--accent);
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .option.master {
+            border-color: var(--accent);
+            background: rgba(212, 175, 55, 0.18);
+            font-weight: 700;
             font-size: 16px;
-            color: #0a0a0a;
-            margin-bottom: 15px;
+        }
+
+        .option.sub {
+            padding-left: 40px;
+            font-size: 14px;
+            justify-content: space-between;
+        }
+
+        .qty-group {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .qty-group button {
+            width: 26px;
+            height: 26px;
+            border-radius: 6px;
+            border: 1px solid var(--border);
+            background: var(--glass);
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .qty-group span {
+            font-size: 14px;
+            font-weight: 700;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        .area-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .area-row input,
+        .calc-row input,
+        .calc-row select {
+            padding: 12px 16px;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 16px;
+            text-align: center;
+            outline: none;
+        }
+
+        .area-row input {
+            width: 120px;
+        }
+
+        .calc-row select {
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .calc-row select option {
+            background: #1a1a2e;
+            color: #fff;
+        }
+
+        .calc-row input {
+            width: 100%;
+            text-align: left;
+        }
+
+        .dunno {
+            font-size: 14px;
+            opacity: 0.7;
+            cursor: pointer;
+            text-decoration: underline;
+            user-select: none;
+        }
+
+        .dunno:hover {
+            color: var(--accent);
+            opacity: 1;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 14px 32px;
+            font-size: 15px;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            border: none;
+            text-transform: uppercase;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .btn-back {
+            background: var(--glass);
+            color: #fff;
+            border: 1px solid var(--border);
+        }
+
+        .btn-back:hover {
+            border-color: var(--accent);
+        }
+
+        .btn-next {
+            background: var(--accent);
+            color: #000;
+        }
+
+        .btn-next:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn:disabled {
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        .final-block {
+            text-align: center;
+        }
+
+        .final-block input {
+            width: 100%;
+            padding: 12px 16px;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 15px;
+            outline: none;
+            margin-bottom: 12px;
+        }
+
+        .final-block input:focus {
+            border-color: var(--accent);
+        }
+
+        .final-block input.error {
+            border-color: #e74c3c;
+        }
+
+        .result-block {
+            text-align: center;
+            padding: 20px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--accent);
+            border-radius: 12px;
+            margin-bottom: 25px;
+        }
+
+        .result-block .price {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--accent);
         }
 
         .back-link {
-            display: inline-block;
+            display: block;
+            text-align: center;
             margin-top: 20px;
-            color: #050505;
+            color: var(--accent);
             text-decoration: none;
             font-weight: 700;
+            font-size: 14px;
         }
 
         .back-link:hover {
             text-decoration: underline;
         }
 
-        .btn-pdf {
-            display: inline-block;
-            background-color: #f1e7ea00;
-            color: black;
-            padding: 14px 32px;
-            font-size: 16px;
-            font-weight: 700;
-            text-decoration: none;
-            box-shadow: 0 4px 15px rgba(63, 53, 21, 0.527);
-            transition: all 0.3s;
-            cursor: pointer;
-            position: relative;
-            z-index: 1;
-            border: none !important;
-            outline: none !important;
-            -webkit-appearance: none !important;
-            -moz-appearance: none !important;
-            appearance: none !important;
+        .hidden-opt {
+            display: none !important;
         }
 
-        #type:hover,
-        #area:hover,
-        .btn-pdf:hover,
-        .btn-rst:hover {
-            background: rgba(117, 117, 113, 0.527) !important;
-            color: black;
-        }
-
-        .btn-rst {
-            display: inline-block !important;
-            background-color: #f1e7ea00 !important;
-            color: black !important;
-            padding: 14px 32px !important;
-            font-size: 16px !important;
-            font-weight: 700 !important;
-            text-decoration: none !important;
-            box-shadow: 0 4px 15px rgba(63, 53, 21, 0.527) !important;
-            transition: all 0.3s !important;
-            cursor: pointer !important;
-            border: none !important;
-            outline: none !important;
-            -webkit-appearance: none !important;
-            -moz-appearance: none !important;
-            appearance: none !important;
-        }
-
-        #type,
-        #area {
-            display: inline-block !important;
-            background-color: #f1e7ea00 !important;
-            color: black !important;
-            padding: 14px 32px !important;
-            font-size: 16px !important;
-            font-weight: 700 !important;
-            text-decoration: none !important;
-            box-shadow: 0 4px 15px rgba(63, 53, 21, 0.527) !important;
-            transition: all 0.3s !important;
-            cursor: pointer !important;
-            border: none !important;
-            outline: none !important;
-            -webkit-appearance: none !important;
-            -moz-appearance: none !important;
-            appearance: none !important;
-        }
-
-        .calc {
-            display: inline-block;
-            background-color: #f1e7ea00;
-            color: #fff;
-            padding: 14px 32px;
-            font-size: 16px;
-            font-weight: 700;
-            text-decoration: none;
-            transition: all 0.3s;
-            cursor: pointer;
-            position: relative;
-            z-index: 1;
-            border: none !important;
-            outline: none !important;
-            -webkit-appearance: none !important;
-            -moz-appearance: none !important;
-            appearance: none !important;
-        }
-
-        .calc input,
-        .calc select {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            border: 2px solid #ddd;
-            border-radius: 4px;
-            font-size: 16px;
-        }
-
-        .calc button {
-            background: #d4af37;
-            color: #fff;
-            padding: 14px;
-            border: none;
-            border-radius: 4px;
-            font-size: 16px;
-            font-weight: 700;
-            cursor: pointer;
-            width: 100%;
-        }
-
-        .calc button:hover {
-            background: #c5952e;
-        }
-
-        .result {
-            font-size: 20px;
-            font-weight: 700;
-            color: #222;
+        .success-msg {
             text-align: center;
+            color: var(--accent);
+            font-weight: 700;
             margin-top: 15px;
+            display: none;
+        }
+
+        .error-msg {
+            color: #e74c3c;
+            font-size: 13px;
+            margin-top: -8px;
+            margin-bottom: 8px;
+            display: none;
+            text-align: left;
+        }
+
+        @media (max-width:500px) {
+            .calculator {
+                padding: 25px 16px;
+            }
+
+            .btn {
+                padding: 12px 16px;
+                font-size: 13px;
+            }
         }
     </style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "name": "Калькулятор стоимости ремонта и отделки квартир",
-  "description": "Рассчитайте стоимость ремонта квартиры под ключ в Москве и МО. Фиксированная смета.",
-  "provider": {
-    "@type": "LocalBusiness",
-    "name": "Дока-Тим (Doka-Team)"
-  },
-  "areaServed": {
-    "@type": "City",
-    "name": "Москва"
-  },
-  "offers": {
-    "@type": "Offer",
-    "price": "8000",
-    "priceCurrency": "RUB",
-    "unitText": "м²",
-    "description": "от 8 000 ₽ за квадратный метр"
-  }
-}
-</script>
-
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://doka-team.ru/" },
-    { "@type": "ListItem", "position": 2, "name": "Калькулятор стоимости", "item": "https://doka-team.ru/price.html" }
-  ]
-}
-</script>
-    
 </head>
 
 <body>
-    <div class="container">
-
+    <div class="calculator">
         <h1>Калькулятор</h1>
+        <div class="gold-line"></div>
+        <div class="step-indicator" id="stepIndicator">Шаг 1 из 4</div>
 
-
-
-        <p>Точную стоимость ремонта мы называем только после выезда на объект. Но для ориентира можно посмотреть пример
-            сметы или воспользоваться калькулятором.</p>
-
-
-        <p>Примерный расчёт. Точная цена — после замера.</p>
-
-        <div class="calc">
-            <label>Тип ремонта:</label>
-            <select id="type">
-                <option value="kosmetika">Косметический</option>
-                <option value="kapital">Капитальный</option>
-                <option value="euro">Дизайнерский</option>
-            </select>
-
-            <label>Площадь (м²):</label>
-            <input type="number" id="area" placeholder="Например: 50" min="1">
-
-            <button class="btn-rst" onclick="calculate()">Рассчитать</button>
-
-            <div class="result" id="result"></div>
+        <!-- Шаг 0: Выбор типа -->
+        <div class="step active" id="step0">
+            <div class="step-title">Что считаем?</div>
+            <div class="options" id="calcTypeOptions">
+                <div class="option" data-value="flat"><span class="radio"></span>Вся квартира</div>
+                <div class="option" data-value="bath"><span class="radio"></span>Ванная комната</div>
+            </div>
+            <div class="nav-buttons">
+                <div></div><button class="btn btn-next" id="next0" disabled>Далее</button>
+            </div>
         </div>
 
-        <p style="font-size:14px; color:#888;">* Это ориентировочная стоимость. Точная смета — после выезда мастера.</p>
+        <!-- Квартира -->
+        <div class="step" id="stepFlat">
+            <div class="step-title">Квартира — быстрый расчёт</div>
+            <div class="calc-row" style="display:flex;flex-direction:column;gap:15px;">
+                <label style="font-size:15px;font-weight:600;">Тип ремонта:</label>
+                <select id="flatType">
+                    <option value="Косметический">Косметический</option>
+                    <option value="Капитальный">Капитальный</option>
+                    <option value="Дизайнерский">Дизайнерский</option>
+                </select>
+                <label style="font-size:15px;font-weight:600;">Площадь (м²):</label>
+                <input type="number" id="flatArea" placeholder="Например: 50" min="1" value="50">
+                <button class="btn btn-next" onclick="calcFlat()" style="width:100%;">Рассчитать</button>
+                <div class="result-block" id="flatResult" style="display:none;">
+                    <div class="price" id="flatPrice">0 ₽</div>
+                    <p style="font-size:13px;opacity:0.7;margin-top:5px;">Ориентировочно. Точная смета — после замера.
+                    </p>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn btn-back" onclick="goTo(0)">Назад</button>
+                <button class="btn btn-next" onclick="goTo(4)">Далее</button>
+            </div>
+        </div>
 
+        <!-- Ванная -->
+        <div class="step" id="stepBath1">
+            <div class="step-title">Где хотите сделать ремонт?</div>
+            <div class="options" id="bathTypeOptions">
+                <div class="option" data-value="Совмещённый санузел"><span class="radio"></span>Совмещённый санузел
+                </div>
+                <div class="option" data-value="Ванная комната"><span class="radio"></span>Ванная комната</div>
+                <div class="option" data-value="Туалет"><span class="radio"></span>Туалет</div>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn btn-back" onclick="goTo(0)">Назад</button>
+                <button class="btn btn-next" id="nextBath1" disabled>Далее</button>
+            </div>
+        </div>
+
+        <div class="step" id="stepBath2">
+            <div class="step-subtitle" id="bathSubtitle2" style="font-size:12px;text-align:center;margin-bottom:5px;">
+            </div>
+            <div class="step-title">Площадь помещения</div>
+            <div class="area-row">
+                <input type="number" id="bathArea" value="4" min="1" max="100" step="0.5"><span>м²</span>
+                <span class="dunno" id="dunnoArea">Пока не знаю</span>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn btn-back" onclick="goTo('bath1')">Назад</button>
+                <button class="btn btn-next" onclick="goTo('bath3')">Далее</button>
+            </div>
+        </div>
+
+        <div class="step" id="stepBath3">
+            <div class="step-subtitle" id="bathSubtitle3" style="font-size:12px;text-align:center;margin-bottom:5px;">
+            </div>
+            <div class="step-title">Выберите работы</div>
+            <div class="options" id="workOptions">
+                <div class="option master" id="optAll"><span class="check"></span>🔑 Под ключ</div>
+                <div class="option" data-val="Демонтаж"><span class="check"></span>Демонтаж</div>
+                <div class="option" data-val="Плитка на пол"><span class="check"></span>Плитка на пол</div>
+                <div class="option" data-val="Плитка на стены"><span class="check"></span>Плитка на стены</div>
+                <div class="option" data-val="Подвесной потолок"><span class="check"></span>Подвесной потолок</div>
+                <div class="option" data-val="Установка двери"><span class="check"></span>Установка двери</div>
+                <div class="option" data-val="Ванна" id="optBathTub"><span class="check"></span>Ванна</div>
+                <div class="option" data-val="Душевая кабина" id="optShower"><span class="check"></span>Душевая кабина
+                </div>
+                <div class="option" data-val="Раковина" id="optSink"><span class="check"></span>Раковина</div>
+                <div class="option" data-val="Смесители" id="optMixer"><span class="check"></span>Смесители</div>
+                <div class="option" data-val="Унитаз" id="optToiletDefault"><span class="check"></span>Унитаз</div>
+                <div class="option" data-val="Унитаз (инсталляция)" id="optToiletInstall"><span
+                        class="check"></span>Унитаз (инсталляция)</div>
+                <div class="option sub" id="optSocket">
+                    <span style="display:flex;align-items:center;gap:10px;"><span class="check"></span>Розетка</span>
+                    <span class="qty-group">
+                        <button onclick="changeQty('socket',-1,event)">−</button>
+                        <span id="qty_socket">0</span>
+                        <button onclick="changeQty('socket',1,event)">+</button>
+                        <span style="font-size:12px;opacity:0.7;">шт</span>
+                    </span>
+                </div>
+                <div class="option sub" id="optNiche">
+                    <span style="display:flex;align-items:center;gap:10px;"><span class="check"></span>Ниша в
+                        стене</span>
+                    <span class="qty-group">
+                        <button onclick="changeQty('niche',-1,event)">−</button>
+                        <span id="qty_niche">0</span>
+                        <button onclick="changeQty('niche',1,event)">+</button>
+                        <span style="font-size:12px;opacity:0.7;">шт</span>
+                    </span>
+                </div>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn btn-back" onclick="goTo('bath2')">Назад</button>
+                <button class="btn btn-next" id="nextBath3" disabled>Далее</button>
+            </div>
+        </div>
+
+        <!-- Шаг 4: Форма -->
+        <div class="step" id="step4">
+            <div class="step-title">Остался последний шаг!</div>
+            <div class="final-block">
+                <p style="margin-bottom:15px;font-size:14px;">Узнайте стоимость в 2-х вариантах: <strong>Эконом</strong>
+                    и <strong>Стандарт</strong></p>
+                <p style="margin-bottom:20px;font-size:13px;">💰 Скидка 3% от нашей компании</p>
+                <input type="text" id="userName" placeholder="Введите ваше имя" required>
+                <input type="tel" id="userPhone" placeholder="+7 (___) ___-__-__" required>
+                <div class="error-msg" id="phoneError">Введите номер в формате +7 (999) 123-45-67</div>
+                <button class="btn btn-next" onclick="submitForm()" style="width:100%;">Получить расчёт</button>
+                <div class="success-msg" id="successMsg">✅ Заявка отправлена! Мы скоро перезвоним.</div>
+            </div>
+            <div class="nav-buttons" style="margin-top:15px;">
+                <button class="btn btn-back" onclick="goTo(0)">Назад</button>
+            </div>
+        </div>
         <a href="index.html" class="back-link">← На главную</a>
     </div>
 
     <script>
-        function calculate() {
-            var type = document.getElementById('type').value;
-            var area = parseInt(document.getElementById('area').value);
-            if (!area || area < 1) { document.getElementById('result').innerHTML = 'Введите площадь'; return; }
-            var price = 0;
-            if (type === 'kosmetika') price = area * 20000;
-            if (type === 'kapital') price = area * 35000;
-            if (type === 'euro') price = area * 45000;
-            document.getElementById('result').innerHTML = 'Ориентировочно: ' + price.toLocaleString() + ' ₽';
+        let calcType = null;
+        let bathType = null;
+        const qty = { socket: 0, niche: 0 };
+        const MASTER = {
+            'Совмещённый санузел': ['Демонтаж', 'Плитка на пол', 'Плитка на стены', 'Подвесной потолок', 'Ванна', 'Раковина', 'Смесители', 'Унитаз'],
+            'Ванная комната': ['Демонтаж', 'Плитка на пол', 'Плитка на стены', 'Подвесной потолок', 'Ванна', 'Раковина', 'Смесители'],
+            'Туалет': ['Демонтаж', 'Плитка на пол', 'Плитка на стены', 'Подвесной потолок', 'Унитаз']
+        };
+        let flatData = {};
+
+        function goTo(n) {
+            document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+            const map = { 0: 'step0', flat: 'stepFlat', bath1: 'stepBath1', bath2: 'stepBath2', bath3: 'stepBath3', 4: 'step4' };
+            const el = document.getElementById(map[n] || map[n]);
+            if (el) el.classList.add('active');
+            document.getElementById('stepIndicator').textContent =
+                n === 0 ? 'Выберите тип расчёта' :
+                    n === 'flat' || n === 'bath1' ? 'Шаг 1 из 3' :
+                        n === 'bath2' ? 'Шаг 2 из 3' :
+                            n === 'bath3' ? 'Шаг 3 из 3' : 'Шаг 4 из 4';
+            if (n === 'bath2') {
+                const sub2 = document.getElementById('bathSubtitle2');
+                if (sub2) sub2.textContent = 'Вы выбрали: ' + (bathType || '—');
+            }
+            if (n === 'bath3') {
+                const sub3 = document.getElementById('bathSubtitle3');
+                if (sub3) sub3.textContent = 'Вы выбрали: ' + (bathType || '—');
+                resetBathWorks(); setBathVisibility(); checkBathNext();
+            }
         }
+
+        // Шаг 0
+        document.querySelectorAll('#calcTypeOptions .option').forEach(o => {
+            o.addEventListener('click', function () {
+                document.querySelectorAll('#calcTypeOptions .option').forEach(x => x.classList.remove('selected'));
+                this.classList.add('selected');
+                calcType = this.dataset.value;
+                document.getElementById('next0').disabled = false;
+            });
+        });
+        document.getElementById('next0').addEventListener('click', () => goTo(calcType === 'flat' ? 'flat' : 'bath1'));
+
+        // Квартира
+        function calcFlat() {
+            const type = document.getElementById('flatType').value;
+            const area = parseInt(document.getElementById('flatArea').value);
+            if (!area || area < 1) return alert('Введите площадь');
+            const prices = { 'Косметический': 20000, 'Капитальный': 35000, 'Дизайнерский': 45000 };
+            const price = area * (prices[type] || 20000);
+            document.getElementById('flatPrice').textContent = price.toLocaleString('ru-RU') + ' ₽';
+            document.getElementById('flatResult').style.display = 'block';
+            flatData = { type, area, price };
+        }
+
+        // Ванная
+        document.querySelectorAll('#bathTypeOptions .option').forEach(o => {
+            o.addEventListener('click', function () {
+                document.querySelectorAll('#bathTypeOptions .option').forEach(x => x.classList.remove('selected'));
+                this.classList.add('selected');
+                bathType = this.dataset.value;
+                document.getElementById('nextBath1').disabled = false;
+            });
+        });
+        document.getElementById('nextBath1').addEventListener('click', () => goTo('bath2'));
+        document.getElementById('dunnoArea').addEventListener('click', function () {
+            document.getElementById('bathArea').value = 4;
+            this.textContent = 'Поставлено 4 м²';
+            setTimeout(() => this.textContent = 'Пока не знаю', 2000);
+        });
+
+        function resetBathWorks() {
+            document.querySelectorAll('#workOptions .option').forEach(o => o.classList.remove('selected'));
+            qty.socket = 0; qty.niche = 0;
+            document.getElementById('qty_socket').textContent = '0';
+            document.getElementById('qty_niche').textContent = '0';
+        }
+        function getBathSelected() {
+            return [...document.querySelectorAll('#workOptions .option')].filter(o =>
+                o.classList.contains('selected') && !o.classList.contains('hidden-opt') && o.dataset.val
+            ).map(o => o.dataset.val);
+        }
+        function checkBathNext() {
+            document.getElementById('nextBath3').disabled = getBathSelected().length === 0 && qty.socket === 0 && qty.niche === 0;
+        }
+        function setBathVisibility() {
+            const isBath = bathType === 'Ванная комната';
+            const isToilet = bathType === 'Туалет';
+            ['optBathTub', 'optShower', 'optSink', 'optMixer'].forEach(id => document.getElementById(id).classList.toggle('hidden-opt', isToilet));
+            ['optToiletDefault', 'optToiletInstall'].forEach(id => document.getElementById(id).classList.toggle('hidden-opt', isBath));
+        }
+
+        document.getElementById('optAll').addEventListener('click', function () {
+            if (this.classList.contains('selected')) { resetBathWorks(); }
+            else {
+                if (!bathType) return;
+                resetBathWorks();
+                (MASTER[bathType] || []).forEach(v => {
+                    const el = document.querySelector(`#workOptions .option[data-val="${v}"]`);
+                    if (el && !el.classList.contains('hidden-opt')) el.classList.add('selected');
+                });
+                this.classList.add('selected');
+            }
+            checkBathNext();
+        });
+
+        document.querySelectorAll('#workOptions .option:not(.sub):not(.master)').forEach(o => {
+            o.addEventListener('click', function (e) {
+                if (e.target.closest('button')) return;
+                this.classList.toggle('selected');
+                const v = this.dataset.val;
+                if (v === 'Ванна' && this.classList.contains('selected')) document.getElementById('optShower')?.classList.remove('selected');
+                if (v === 'Душевая кабина' && this.classList.contains('selected')) document.getElementById('optBathTub')?.classList.remove('selected');
+                if (v === 'Унитаз' && this.classList.contains('selected')) document.getElementById('optToiletInstall')?.classList.remove('selected');
+                if (v === 'Унитаз (инсталляция)' && this.classList.contains('selected')) document.getElementById('optToiletDefault')?.classList.remove('selected');
+                checkBathNext();
+            });
+        });
+
+        document.getElementById('nextBath3').addEventListener('click', () => goTo(4));
+
+        window.changeQty = function (type, d, ev) {
+            ev.stopPropagation();
+            qty[type] = Math.max(0, Math.min(99, qty[type] + d));
+            document.getElementById(`qty_${type}`).textContent = qty[type];
+            document.getElementById(type === 'socket' ? 'optSocket' : 'optNiche').classList.toggle('selected', qty[type] > 0);
+            checkBathNext();
+        };
+
+        // Маска телефона
+        const phoneInput = document.getElementById('userPhone');
+        phoneInput.addEventListener('input', function (e) {
+            let val = this.value.replace(/\D/g, '');
+            if (val.length === 11 && val.startsWith('8')) val = '7' + val.slice(1);
+            if (val.length > 11) val = val.slice(0, 11);
+            let formatted = '+7';
+            if (val.length > 1) formatted += ' (' + val.slice(1, 4);
+            if (val.length >= 4) formatted += ') ' + val.slice(4, 7);
+            if (val.length >= 7) formatted += '-' + val.slice(7, 9);
+            if (val.length >= 9) formatted += '-' + val.slice(9, 11);
+            this.value = formatted;
+            document.getElementById('phoneError').style.display = 'none';
+            this.classList.remove('error');
+        });
+
+        function validatePhone(phone) {
+            const cleaned = phone.replace(/\D/g, '');
+            return cleaned.length === 11 && (cleaned.startsWith('7') || cleaned.startsWith('8'));
+        }
+
+        function submitForm() {
+            const name = document.getElementById('userName').value.trim();
+            const phone = document.getElementById('userPhone').value.trim();
+
+            if (!name) return alert('Введите имя');
+            if (!validatePhone(phone)) {
+                document.getElementById('phoneError').style.display = 'block';
+                document.getElementById('userPhone').classList.add('error');
+                return;
+            }
+
+            document.getElementById('phoneError').style.display = 'none';
+            document.getElementById('userPhone').classList.remove('error');
+
+            let message = `🔔 Новая заявка с калькулятора!\nИмя: ${name}\nТелефон: ${phone}\n`;
+
+            if (calcType === 'flat') {
+                message += `\nТип расчёта: Вся квартира\nТип ремонта: ${flatData.type || '—'}\nПлощадь: ${flatData.area || '—'} м²\nОриентировочно: ${(flatData.price || 0).toLocaleString('ru-RU')} ₽`;
+            } else {
+                const works = getBathSelected();
+                if (qty.socket > 0) works.push(`Розетка ×${qty.socket}`);
+                if (qty.niche > 0) works.push(`Ниша ×${qty.niche}`);
+                message += `\nТип расчёта: Ванная\nТип санузла: ${bathType || '—'}\nПлощадь: ${document.getElementById('bathArea').value} м²\nРаботы:\n${works.map(w => '— ' + w).join('\n')}`;
+            }
+
+            fetch('https://formspree.io/f/mwvjqdyb', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: name,
+                    phone: phone,
+                    review: message,
+                    _subject: 'Заявка с калькулятора Doka-Team'
+                })
+            }).then(() => {
+                document.getElementById('successMsg').style.display = 'block';
+                document.querySelector('#step4 .btn-next').style.display = 'none';
+            }).catch(() => {
+                alert('Ошибка отправки. Позвоните нам: +7 (977) 337-9393');
+            });
+        }
+
+        goTo(0);
     </script>
-    <p>Цены на ремонт квартир и строительство домов в Москве и МО. Смета фиксированная, оплата поэтапная. Работаем по договору. Звоните: +7 (977) 337-9393.</p>
 </body>
 
 </html>
