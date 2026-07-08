@@ -393,7 +393,6 @@
         <div class="gold-line"></div>
         <div class="step-indicator" id="stepIndicator">Шаг 1 из 4</div>
 
-        <!-- Шаг 0: Выбор типа -->
         <div class="step active" id="step0">
             <div class="step-title">Что считаем?</div>
             <div class="options" id="calcTypeOptions">
@@ -405,7 +404,6 @@
             </div>
         </div>
 
-        <!-- Квартира -->
         <div class="step" id="stepFlat">
             <div class="step-title">Квартира — быстрый расчёт</div>
             <div class="calc-row" style="display:flex;flex-direction:column;gap:15px;">
@@ -430,7 +428,6 @@
             </div>
         </div>
 
-        <!-- Ванная -->
         <div class="step" id="stepBath1">
             <div class="step-title">Где хотите сделать ремонт?</div>
             <div class="options" id="bathTypeOptions">
@@ -504,18 +501,20 @@
             </div>
         </div>
 
-        <!-- Шаг 4: Форма -->
         <div class="step" id="step4">
             <div class="step-title">Остался последний шаг!</div>
             <div class="final-block">
                 <p style="margin-bottom:15px;font-size:14px;">Узнайте стоимость в 2-х вариантах: <strong>Эконом</strong>
                     и <strong>Стандарт</strong></p>
                 <p style="margin-bottom:20px;font-size:13px;">💰 Скидка 3% от нашей компании</p>
-                <input type="text" id="userName" placeholder="Введите ваше имя" required>
-                <input type="tel" id="userPhone" placeholder="+7 (___) ___-__-__" required>
-                <div class="error-msg" id="phoneError">Введите номер в формате +7 (999) 123-45-67</div>
-                <button class="btn btn-next" onclick="submitForm()" style="width:100%;">Получить расчёт</button>
-                <div class="success-msg" id="successMsg">✅ Заявка отправлена! Мы скоро перезвоним.</div>
+                <form id="calcForm" action="https://formspree.io/f/mwvjqdyb" method="POST">
+                    <input type="hidden" name="review" id="hiddenMessage">
+                    <input type="text" name="name" id="userName" placeholder="Введите ваше имя" required>
+                    <input type="tel" name="phone" id="userPhone" placeholder="+7 (___) ___-__-__" required>
+                    <div class="error-msg" id="phoneError">Введите номер в формате +7 (999) 123-45-67</div>
+                    <button type="submit" class="btn btn-next" style="width:100%;">Получить расчёт</button>
+                    <div class="success-msg" id="successMsg">✅ Заявка отправлена! Мы скоро перезвоним.</div>
+                </form>
             </div>
             <div class="nav-buttons" style="margin-top:15px;">
                 <button class="btn btn-back" onclick="goTo(0)">Назад</button>
@@ -556,7 +555,6 @@
             }
         }
 
-        // Шаг 0
         document.querySelectorAll('#calcTypeOptions .option').forEach(o => {
             o.addEventListener('click', function () {
                 document.querySelectorAll('#calcTypeOptions .option').forEach(x => x.classList.remove('selected'));
@@ -567,7 +565,6 @@
         });
         document.getElementById('next0').addEventListener('click', () => goTo(calcType === 'flat' ? 'flat' : 'bath1'));
 
-        // Квартира
         function calcFlat() {
             const type = document.getElementById('flatType').value;
             const area = parseInt(document.getElementById('flatArea').value);
@@ -579,7 +576,6 @@
             flatData = { type, area, price };
         }
 
-        // Ванная
         document.querySelectorAll('#bathTypeOptions .option').forEach(o => {
             o.addEventListener('click', function () {
                 document.querySelectorAll('#bathTypeOptions .option').forEach(x => x.classList.remove('selected'));
@@ -653,9 +649,8 @@
             checkBathNext();
         };
 
-        // Маска телефона
         const phoneInput = document.getElementById('userPhone');
-        phoneInput.addEventListener('input', function (e) {
+        phoneInput.addEventListener('input', function () {
             let val = this.value.replace(/\D/g, '');
             if (val.length === 11 && val.startsWith('8')) val = '7' + val.slice(1);
             if (val.length > 11) val = val.slice(0, 11);
@@ -674,7 +669,8 @@
             return cleaned.length === 11 && (cleaned.startsWith('7') || cleaned.startsWith('8'));
         }
 
-        function submitForm() {
+        document.getElementById('calcForm').addEventListener('submit', function (e) {
+            e.preventDefault();
             const name = document.getElementById('userName').value.trim();
             const phone = document.getElementById('userPhone').value.trim();
 
@@ -699,22 +695,10 @@
                 message += `\nТип расчёта: Ванная\nТип санузла: ${bathType || '—'}\nПлощадь: ${document.getElementById('bathArea').value} м²\nРаботы:\n${works.map(w => '— ' + w).join('\n')}`;
             }
 
-  const formData = new FormData();
-formData.append('name', name);
-formData.append('phone', phone);
-formData.append('review', message);
-formData.append('_subject', 'Заявка с калькулятора Doka-Team');
-
-fetch('https://formspree.io/f/mwvjqdyb', {
-    method: 'POST',
-    headers: { 'Accept': 'application/json' },
-    body: formData
-}).then(() => {
-    document.getElementById('successMsg').style.display = 'block';
-    document.querySelector('#step4 .btn-next').style.display = 'none';
-}).catch(() => {
-    alert('Ошибка отправки. Позвоните нам: +7 (977) 337-9393');
-});
+            document.getElementById('hiddenMessage').value = message;
+            document.getElementById('successMsg').style.display = 'block';
+            this.submit();
+        });
 
         goTo(0);
     </script>
