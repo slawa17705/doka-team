@@ -211,13 +211,6 @@
     <a href="index.html" class="back-link">← На главную</a>
 </div>
 
-<!-- Скрытая форма (как в отзывах) -->
-<form id="hiddenCalcForm" action="https://formspree.io/f/xlgyyjnj" method="POST" target="_blank" style="display:none;">
-    <input type="hidden" name="review">
-    <input type="hidden" name="name">
-    <input type="hidden" name="phone">
-</form>
-
 <script>
     let calcType = null;
     let bathType = null;
@@ -389,14 +382,19 @@
             message += `\nТип расчёта: Ванная\nТип санузла: ${bathType || '—'}\nПлощадь: ${document.getElementById('bathArea').value} м²\nРаботы:\n${works.map(w => '— ' + w).join('\n')}`;
         }
 
-        const hiddenForm = document.getElementById('hiddenCalcForm');
-        hiddenForm.querySelector('input[name="review"]').value = message;
-        hiddenForm.querySelector('input[name="name"]').value = name;
-        hiddenForm.querySelector('input[name="phone"]').value = phone;
-
         document.getElementById('successMsg').style.display = 'block';
         document.querySelector('#step4 .btn-next').style.display = 'none';
-        hiddenForm.submit();
+
+        const formData = new FormData();
+        formData.append('name', name);
+        formData.append('phone', phone);
+        formData.append('review', message);
+
+        fetch('https://formspree.io/f/xlgyyjnj', {
+            method: 'POST',
+            headers: { 'Accept': 'application/json' },
+            body: formData
+        });
     }
 
     goTo(0);
