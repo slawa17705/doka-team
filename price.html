@@ -699,22 +699,22 @@
                 message += `\nТип расчёта: Ванная\nТип санузла: ${bathType || '—'}\nПлощадь: ${document.getElementById('bathArea').value} м²\nРаботы:\n${works.map(w => '— ' + w).join('\n')}`;
             }
 
-            fetch('https://formspree.io/f/mwvjqdyb', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    name: name,
-                    phone: phone,
-                    review: message,
-                    _subject: 'Заявка с калькулятора Doka-Team'
-                })
-            }).then(() => {
-                document.getElementById('successMsg').style.display = 'block';
-                document.querySelector('#step4 .btn-next').style.display = 'none';
-            }).catch(() => {
-                alert('Ошибка отправки. Позвоните нам: +7 (977) 337-9393');
-            });
-        }
+  const formData = new FormData();
+formData.append('name', name);
+formData.append('phone', phone);
+formData.append('review', message);
+formData.append('_subject', 'Заявка с калькулятора Doka-Team');
+
+fetch('https://formspree.io/f/mwvjqdyb', {
+    method: 'POST',
+    headers: { 'Accept': 'application/json' },
+    body: formData
+}).then(() => {
+    document.getElementById('successMsg').style.display = 'block';
+    document.querySelector('#step4 .btn-next').style.display = 'none';
+}).catch(() => {
+    alert('Ошибка отправки. Позвоните нам: +7 (977) 337-9393');
+});
 
         goTo(0);
     </script>
