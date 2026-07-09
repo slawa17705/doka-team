@@ -1,174 +1,64 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
     <meta charset="UTF-8">
     <link rel="canonical" href="https://doka-team.ru/faq.html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Частые вопросы о ремонте квартир | Дока-Тим</title>
-    <meta name="description"
-        content="Ремонт квартир под ключ в Москве и МО: от 8 000 ₽/м². Косметический ремонт — от 2 недель, капитальный — от 1,5 месяцев. Фиксированная смета, гарантия по договору, проект и смета бесплатно. Выезд на объект без оплаты. Видео с реальных объектов и калькулятор цены. Дока-Тим.">
+    <meta name="description" content="Ремонт квартир под ключ в Москве и МО: от 8 000 ₽/м². Косметический ремонт — от 2 недель, капитальный — от 1,5 месяцев. Фиксированная смета, гарантия по договору, проект и смета бесплатно. Выезд на объект без оплаты. Видео с реальных объектов и калькулятор цены. Дока-Тим.">
     <style>
-        :root {
-            --accent: #d4af37;
-            --glass: rgba(255, 255, 255, 0.05);
-            --text: #fff;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
+        :root { --accent: #d4af37; --glass: rgba(255,255,255,0.05); --text: #fff; }
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif; }
         body {
             background: url('image/ice-crystals-fon1.webp') no-repeat center center fixed;
-            background-size: cover;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 40px 20px;
-            color: var(--text);
+            background-size: cover; min-height:100vh; display:flex; justify-content:center;
+            align-items:center; padding:40px 20px; color:var(--text);
         }
-
         .container {
-            max-width: 750px;
-            width: 100%;
-            background: url('image/glass-bg1.webp') no-repeat center center;
-            background-size: cover;
-            border-radius: 14px;
-            padding: 40px 35px;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+            max-width:750px; width:100%; background:url('image/glass-bg1.webp') no-repeat center center;
+            background-size:cover; border-radius:14px; padding:40px 35px;
+            box-shadow:0 25px 60px rgba(0,0,0,0.5);
         }
-
-        h1 {
-            text-align: center;
-            font-size: 24px;
-            font-weight: 800;
-            text-transform: uppercase;
-            margin-bottom: 8px;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-        }
-
-        .gold-line {
-            width: 50px;
-            height: 3px;
-            background: var(--accent);
-            margin: 0 auto 30px;
-        }
-
-        .faq-item {
-            margin-bottom: 25px;
-        }
-
+        h1 { text-align:center; font-size:24px; font-weight:800; text-transform:uppercase; margin-bottom:8px; text-shadow:0 2px 10px rgba(0,0,0,0.5); }
+        .gold-line { width:50px; height:3px; background:var(--accent); margin:0 auto 30px; }
+        .faq-item { margin-bottom:5px; border-bottom:1px solid rgba(255,255,255,0.08); }
         .faq-item h3 {
-            font-size: 17px;
-            font-weight: 700;
-            color: var(--accent);
-            margin-bottom: 8px;
+            font-size:17px; font-weight:700; color:var(--accent); padding:14px 0; cursor:pointer;
+            display:flex; justify-content:space-between; align-items:center; user-select:none;
         }
-
-        .faq-item p {
-            font-size: 15px;
-            opacity: 0.9;
-            line-height: 1.6;
+        .faq-item h3::after { content:'▾'; font-size:14px; transition:transform 0.3s; }
+        .faq-item.open h3::after { transform:rotate(180deg); }
+        .faq-item .answer {
+            max-height:0; overflow:hidden; transition:max-height 0.3s ease;
+            font-size:15px; opacity:0.9; line-height:1.6; padding-bottom:0;
         }
-
-        .faq-item a {
-            color: var(--accent);
-            text-decoration: underline;
-        }
-
-        .faq-item a:hover {
-            opacity: 0.8;
-        }
-
-        .links-block {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .links-block h3 {
-            color: var(--accent);
-            margin-bottom: 10px;
-        }
-
-        .video-desc {
-            font-size: 13px;
-            opacity: 0.7;
-            margin-top: 4px;
-        }
-
-        .links-block a {
-            display: block;
-            color: #fff;
-            opacity: 0.8;
-            margin-bottom: 6px;
-        }
-
-        .back-link {
-            display: block;
-            text-align: center;
-            margin-top: 25px;
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 14px;
-        }
-
-        .back-link:hover {
-            text-decoration: underline;
-        }
+        .faq-item.open .answer { max-height:300px; padding-bottom:14px; }
+        .faq-item .answer a { color:var(--accent); text-decoration:underline; }
+        .faq-item .answer a:hover { opacity:0.8; }
+        .links-block { margin-top:30px; padding-top:20px; border-top:1px solid rgba(255,255,255,0.1); }
+        .links-block h3 { color:var(--accent); margin-bottom:10px; }
+        .video-desc { font-size:13px; opacity:0.7; margin-top:4px; }
+        .links-block a { display:block; color:#fff; opacity:0.8; margin-bottom:6px; }
+        .back-link { display:block; text-align:center; margin-top:25px; color:var(--accent); text-decoration:none; font-weight:700; font-size:14px; }
+        .back-link:hover { text-decoration:underline; }
     </style>
-
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "FAQPage",
       "mainEntity": [
-        {
-          "@type": "Question", "name": "Сколько стоит ремонт квартиры под ключ в Москве?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Цена ремонта квартиры — от 8 000 ₽/м² по полу. Смета фиксированная: цена не меняется в процессе." }
-        },
-        {
-          "@type": "Question", "name": "Какие сроки ремонта квартиры?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Косметический ремонт квартиры — от 2 недель. Капитальный ремонт квартиры — от 1,5 месяцев. Точный срок ремонта квартиры определяем после замера." }
-        },
-        {
-          "@type": "Question", "name": "Даёте ли гарантию на ремонт квартиры?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Да, гарантия на ремонт квартиры по договору. Если обнаружится брак — исправляем за свой счёт." }
-        },
-        {
-          "@type": "Question", "name": "Проект и смета бесплатно?",
-          "acceptedAnswer": { "@type": "Answer", "text": "При заказе ремонта квартиры под ключ проект и смета — бесплатно." }
-        },
-        {
-          "@type": "Question", "name": "Где вы делаете ремонт квартир?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Москва и Московская область. Выезд на объект бесплатный." }
-        },
-        {
-          "@type": "Question", "name": "Что входит в ремонт квартиры под ключ?",
-          "acceptedAnswer": { "@type": "Answer", "text": "В ремонт квартиры под ключ входит: шпатлёвка и покраска стен, укладка плитки, натяжные потолки, отделка полов, замена электрики и сантехники. Полный цикл чистовой отделки квартиры." }
-        },
-        {
-          "@type": "Question", "name": "Что если при ремонте квартиры обнаружатся скрытые дефекты?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Если при ремонте квартиры обнаруживаем скрытые проблемы (аварийная стяжка, старая проводка и т. п.), сразу сообщаем заказчику. Составляем допсоглашение с фиксированной стоимостью этих работ — никаких сюрпризов." }
-        },
-        {
-          "@type": "Question", "name": "Как вы контролируете качество ремонта квартиры?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Контролируем качество на каждом этапе ремонта квартиры: проверяем ровность стен, углы, стыки. На каждом этапе мастер делает фотоотчёт. Финальный осмотр — вместе с заказчиком." }
-        },
-        {
-          "@type": "Question", "name": "Какой договор вы заключаете на ремонт квартиры?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Работаем по договору подряда на ремонт квартиры. В нём фиксируем смету, сроки, гарантию и порядок оплаты. Копию договора можно посмотреть на странице условий." }
-        }
+        { "@type": "Question", "name": "Сколько стоит ремонт квартиры под ключ в Москве?", "acceptedAnswer": { "@type": "Answer", "text": "Цена ремонта квартиры — от 8 000 ₽/м² по полу. Смета фиксированная: цена не меняется в процессе." } },
+        { "@type": "Question", "name": "Какие сроки ремонта квартиры?", "acceptedAnswer": { "@type": "Answer", "text": "Косметический ремонт квартиры — от 2 недель. Капитальный ремонт квартиры — от 1,5 месяцев. Точный срок ремонта квартиры определяем после замера." } },
+        { "@type": "Question", "name": "Даёте ли гарантию на ремонт квартиры?", "acceptedAnswer": { "@type": "Answer", "text": "Да, гарантия на ремонт квартиры по договору. Если обнаружится брак — исправляем за свой счёт." } },
+        { "@type": "Question", "name": "Проект и смета бесплатно?", "acceptedAnswer": { "@type": "Answer", "text": "При заказе ремонта квартиры под ключ проект и смета — бесплатно." } },
+        { "@type": "Question", "name": "Где вы делаете ремонт квартир?", "acceptedAnswer": { "@type": "Answer", "text": "Москва и Московская область. Выезд на объект бесплатный." } },
+        { "@type": "Question", "name": "Что входит в ремонт квартиры под ключ?", "acceptedAnswer": { "@type": "Answer", "text": "В ремонт квартиры под ключ входит: шпатлёвка и покраска стен, укладка плитки, натяжные потолки, отделка полов, замена электрики и сантехники. Полный цикл чистовой отделки квартиры." } },
+        { "@type": "Question", "name": "Что если при ремонте квартиры обнаружатся скрытые дефекты?", "acceptedAnswer": { "@type": "Answer", "text": "Если при ремонте квартиры обнаруживаем скрытые проблемы (аварийная стяжка, старая проводка и т. п.), сразу сообщаем заказчику. Составляем допсоглашение с фиксированной стоимостью этих работ — никаких сюрпризов." } },
+        { "@type": "Question", "name": "Как вы контролируете качество ремонта квартиры?", "acceptedAnswer": { "@type": "Answer", "text": "Контролируем качество на каждом этапе ремонта квартиры: проверяем ровность стен, углы, стыки. На каждом этапе мастер делает фотоотчёт. Финальный осмотр — вместе с заказчиком." } },
+        { "@type": "Question", "name": "Какой договор вы заключаете на ремонт квартиры?", "acceptedAnswer": { "@type": "Answer", "text": "Работаем по договору подряда на ремонт квартиры. В нём фиксируем смету, сроки, гарантию и порядок оплаты. Копию договора можно посмотреть на странице условий." } }
       ]
     }
     </script>
-
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -180,89 +70,71 @@
     }
     </script>
 </head>
-
 <body>
-    <div class="container">
-        <h1>Частые вопросы</h1>
-        <div class="gold-line"></div>
+<div class="container">
+    <h1>Частые вопросы</h1>
+    <div class="gold-line"></div>
 
-        <div class="faq-item">
-            <h3>💰 Сколько стоит ремонт квартиры под ключ в Москве?</h3>
-            <p>Цена ремонта квартиры — от 8 000 ₽/м² по полу. Смета фиксированная: цена не меняется в процессе. <a
-                    href="price.html">Калькулятор цены ремонта квартиры →</a></p>
-        </div>
-
-        <div class="faq-item">
-            <h3>📅 Какие сроки ремонта квартиры?</h3>
-            <p>Косметический ремонт квартиры — от 2 недель. Капитальный ремонт квартиры — от 1,5 месяцев. Точный срок
-                ремонта квартиры определяем после замера.</p>
-        </div>
-
-        <div class="faq-item">
-            <h3>✅ Даёте ли гарантию на ремонт квартиры?</h3>
-            <p>Да, гарантия на ремонт квартиры по <a href="contract.html">договору</a>. Если обнаружится брак —
-                исправляем за свой счёт.</p>
-        </div>
-
-        <div class="faq-item">
-            <h3>📐 Проект и смета бесплатно?</h3>
-            <p>При заказе ремонта квартиры под ключ — проект и смета бесплатно. <a href="service-design.html">Подробнее
-                    о проектировании →</a></p>
-        </div>
-
-        <div class="faq-item">
-            <h3>📍 Где вы делаете ремонт квартир?</h3>
-            <p>Москва и Московская область. Выезд на объект бесплатный.</p>
-        </div>
-
-        <div class="faq-item">
-            <h3>🧱 Что входит в ремонт квартиры под ключ?</h3>
-            <p>В ремонт квартиры под ключ входит: шпатлёвка и покраска стен, укладка плитки, натяжные потолки, отделка
-                полов, замена электрики и сантехники. Полный цикл чистовой отделки квартиры.</p>
-        </div>
-
-        <div class="faq-item">
-            <h3>⚠️ Что если при ремонте квартиры обнаружатся скрытые дефекты?</h3>
-            <p>Если при ремонте квартиры обнаруживаем скрытые проблемы (например, аварийную стяжку или старую проводку),
-                сразу сообщаем. Составляем допсоглашение с фиксированной стоимостью этих работ — никаких сюрпризов.</p>
-        </div>
-
-        <div class="faq-item">
-            <h3>🔍 Как вы контролируете качество ремонта квартиры?</h3>
-            <p>Контролируем качество на каждом этапе ремонта квартиры: ровность стен, стыки, углы. На каждом этапе
-                мастер делает фотоотчёт. Финальный осмотр — вместе с заказчиком.</p>
-        </div>
-
-        <div class="faq-item">
-            <h3>📄 Какой договор вы заключаете на ремонт квартиры?</h3>
-            <p>Работаем по договору подряда на ремонт квартиры: фиксируем смету, сроки, гарантию и порядок оплаты. <a
-                    href="contract.html">Посмотреть образец договора →</a></p>
-        </div>
-
-        <div class="links-block">
-            <h3>📹 Видео с реальных объектов ремонта квартир</h3>
-            <a href="https://dzen.ru/shorts/6a4171d7e5ce0a2952a1a595" target="_blank">▸ Шпаклёвка стен в квартире —
-                Дзен</a>
-            <div class="video-desc">Этап чистовой отделки: как выводим ровные углы и стыки при ремонте квартиры.</div>
-
-            <a href="https://dzen.ru/shorts/6a4af1940909a02b819bce01" target="_blank">▸ Отделка ванной комнаты под ключ
-                — Дзен</a>
-            <div class="video-desc">Укладка плитки и монтаж коробов: показываем реальные узлы и примыкания при отделке
-                ванной в квартире.</div>
-
-            <a href="https://dzen.ru/shorts/6a47d3afa9c19105255096ae" target="_blank">▸ Ремонт квартиры в Москве —
-                Дзен</a>
-            <div class="video-desc">Общий ход работ: от демонтажа до чистовой отделки в типовой квартире под ключ.</div>
-
-            <a href="https://youtube.com/shorts/F6dGNwE1bzM" target="_blank">▸ Ремонт квартиры — YouTube</a>
-            <div class="video-desc">Краткий разбор этапов и типичных решений на объекте при ремонте квартиры.</div>
-
-            <a href="https://t.me/DT_Remont" target="_blank">▸ Telegram-канал о ремонте квартир</a>
-            <a href="projects.html">▸ Все проекты ремонта квартир →</a>
-        </div>
-
-        <a href="index.html" class="back-link">← На главную</a>
+    <div class="faq-item">
+        <h3 onclick="this.parentElement.classList.toggle('open')">💰 Сколько стоит ремонт квартиры под ключ в Москве?</h3>
+        <div class="answer"><p>Цена ремонта квартиры — от 8 000 ₽/м² по полу. Смета фиксированная: цена не меняется в процессе. <a href="price.html">Калькулятор цены ремонта квартиры →</a></p></div>
     </div>
-</body>
 
+    <div class="faq-item">
+        <h3 onclick="this.parentElement.classList.toggle('open')">📅 Какие сроки ремонта квартиры?</h3>
+        <div class="answer"><p>Косметический ремонт квартиры — от 2 недель. Капитальный ремонт квартиры — от 1,5 месяцев. Точный срок ремонта квартиры определяем после замера.</p></div>
+    </div>
+
+    <div class="faq-item">
+        <h3 onclick="this.parentElement.classList.toggle('open')">✅ Даёте ли гарантию на ремонт квартиры?</h3>
+        <div class="answer"><p>Да, гарантия на ремонт квартиры по <a href="contract.html">договору</a>. Если обнаружится брак — исправляем за свой счёт.</p></div>
+    </div>
+
+    <div class="faq-item">
+        <h3 onclick="this.parentElement.classList.toggle('open')">📐 Проект и смета бесплатно?</h3>
+        <div class="answer"><p>При заказе ремонта квартиры под ключ — проект и смета бесплатно. <a href="service-design.html">Подробнее о проектировании →</a></p></div>
+    </div>
+
+    <div class="faq-item">
+        <h3 onclick="this.parentElement.classList.toggle('open')">📍 Где вы делаете ремонт квартир?</h3>
+        <div class="answer"><p>Москва и Московская область. Выезд на объект бесплатный.</p></div>
+    </div>
+
+    <div class="faq-item">
+        <h3 onclick="this.parentElement.classList.toggle('open')">🧱 Что входит в ремонт квартиры под ключ?</h3>
+        <div class="answer"><p>В ремонт квартиры под ключ входит: шпатлёвка и покраска стен, укладка плитки, натяжные потолки, отделка полов, замена электрики и сантехники. Полный цикл чистовой отделки квартиры.</p></div>
+    </div>
+
+    <div class="faq-item">
+        <h3 onclick="this.parentElement.classList.toggle('open')">⚠️ Что если при ремонте квартиры обнаружатся скрытые дефекты?</h3>
+        <div class="answer"><p>Если при ремонте квартиры обнаруживаем скрытые проблемы (например, аварийную стяжку или старую проводку), сразу сообщаем. Составляем допсоглашение с фиксированной стоимостью этих работ — никаких сюрпризов.</p></div>
+    </div>
+
+    <div class="faq-item">
+        <h3 onclick="this.parentElement.classList.toggle('open')">🔍 Как вы контролируете качество ремонта квартиры?</h3>
+        <div class="answer"><p>Контролируем качество на каждом этапе ремонта квартиры: ровность стен, стыки, углы. На каждом этапе мастер делает фотоотчёт. Финальный осмотр — вместе с заказчиком.</p></div>
+    </div>
+
+    <div class="faq-item">
+        <h3 onclick="this.parentElement.classList.toggle('open')">📄 Какой договор вы заключаете на ремонт квартиры?</h3>
+        <div class="answer"><p>Работаем по договору подряда на ремонт квартиры: фиксируем смету, сроки, гарантию и порядок оплаты. <a href="contract.html">Посмотреть образец договора →</a></p></div>
+    </div>
+
+    <div class="links-block">
+        <h3>📹 Видео с реальных объектов ремонта квартир</h3>
+        <a href="https://dzen.ru/shorts/6a4171d7e5ce0a2952a1a595" target="_blank">▸ Шпаклёвка стен в квартире — Дзен</a>
+        <div class="video-desc">Этап чистовой отделки: как выводим ровные углы и стыки при ремонте квартиры.</div>
+        <a href="https://dzen.ru/shorts/6a4af1940909a02b819bce01" target="_blank">▸ Отделка ванной комнаты под ключ — Дзен</a>
+        <div class="video-desc">Укладка плитки и монтаж коробов: показываем реальные узлы и примыкания при отделке ванной в квартире.</div>
+        <a href="https://dzen.ru/shorts/6a47d3afa9c19105255096ae" target="_blank">▸ Ремонт квартиры в Москве — Дзен</a>
+        <div class="video-desc">Общий ход работ: от демонтажа до чистовой отделки в типовой квартире под ключ.</div>
+        <a href="https://youtube.com/shorts/F6dGNwE1bzM" target="_blank">▸ Ремонт квартиры — YouTube</a>
+        <div class="video-desc">Краткий разбор этапов и типичных решений на объекте при ремонте квартиры.</div>
+        <a href="https://t.me/DT_Remont" target="_blank">▸ Telegram-канал о ремонте квартир</a>
+        <a href="projects.html">▸ Все проекты ремонта квартир →</a>
+    </div>
+
+    <a href="index.html" class="back-link">← На главную</a>
+</div>
+</body>
 </html>
