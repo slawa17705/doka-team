@@ -90,4 +90,17 @@
         <loc>https://doka-team.ru/contacts.html</loc>
         <priority>0.7</priority>
     </url>
+        <url>
+        <loc>https://doka-team.ru/about.html</loc>
+        <priority>0.6</priority>
+    </url>
+    <url>
+        <loc>https://doka-team.ru/privacy.html</loc>
+        <priority>0.3</priority>
+    </url>
+    <url>
+        <loc>https://doka-team.ru/ai.html</loc>
+        <priority>0.6</priority>
+    </url>
+</urlset>
 </urlset>
