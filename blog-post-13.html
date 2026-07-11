@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="canonical" href="https://doka-team.ru/blog-post-13.html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Замена электропроводки в квартире: расчёты, нормы и ошибки монтажа | Дока‑Тим</title>
+    <meta name="description"
+        content="Техническое руководство по замене проводки: расчёт сечения, выбор кабеля, компоновка щита, штробление по ПУЭ. Практика бригады Дока‑Тим.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #9b9b92;
+            padding: 40px 20px;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #222;
+            margin-bottom: 20px;
+        }
+
+        .gold-line {
+            width: 60px;
+            height: 3px;
+            background: #d4af37;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 22px;
+            color: #222;
+            margin: 30px 0 15px;
+        }
+
+        p {
+            font-size: 17px;
+            color: #444;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+
+        ul li {
+            margin-bottom: 8px;
+            font-size: 16px;
+            color: #444;
+        }
+
+        ol {
+            margin-bottom: 20px;
+            padding-left: 20px;
+        }
+
+        ol li {
+            margin-bottom: 8px;
+            font-size: 16px;
+            color: #444;
+        }
+
+        .highlight {
+            background: #f9f9f9;
+            padding: 20px;
+            border-left: 4px solid #d4af37;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0 30px;
+        }
+
+        table th {
+            background: #d4af37;
+            color: #fff;
+            padding: 12px;
+            text-align: left;
+            font-size: 15px;
+        }
+
+        table td {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+            font-size: 15px;
+            color: #444;
+        }
+
+        a {
+            color: #d4af37;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .btn-link {
+            display: inline-block;
+            background: #d4af37;
+            color: #fff;
+            padding: 14px 28px;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+
+        .btn-link:hover {
+            opacity: 0.9;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            color: #d4af37;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .date-stamp {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+
+        @media (max-width:600px) {
+            .container {
+                padding: 25px 15px;
+            }
+
+            h1 {
+                font-size: 22px;
+            }
+        }
+    </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Замена электропроводки в квартире: расчёты, нормы и ошибки монтажа",
+      "datePublished": "2026-07-12",
+      "dateModified": "2026-07-12",
+      "author": { "@type": "Organization", "name": "Дока‑Тим" },
+      "publisher": { "@type": "Organization", "name": "Дока‑Тим", "logo": { "@type": "ImageObject", "url": "https://doka-team.ru/image/logoDT3.png" } },
+      "mainEntityOfPage": { "@id": "https://doka-team.ru/blog-post-13.html" }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "Можно ли менять проводку без капитального ремонта?", "acceptedAnswer": { "@type": "Answer", "text": "Да. Замена проводки возможна на этапе косметического ремонта. Работаем аккуратно, штробим по минимуму, закрываем трассы." } },
+        { "@type": "Question", "name": "Нужно ли менять алюминиевую проводку?", "acceptedAnswer": { "@type": "Answer", "text": "Да. Алюминиевая проводка не рассчитана на современные нагрузки и пожароопасна." } },
+        { "@type": "Question", "name": "Когда можно пользоваться электричеством после замены?", "acceptedAnswer": { "@type": "Answer", "text": "Частично — в день монтажа. Полностью — после финальных тестов и подписания акта." } },
+        { "@type": "Question", "name": "Сколько стоит замена проводки в квартире?", "acceptedAnswer": { "@type": "Answer", "text": "Однушка — от 75 000 ₽, двушка — от 140 000 ₽, трёшка — от 230 000 ₽. Точная смета — после замера." } }
+      ]
+    }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Замена электропроводки в квартире: расчёты, нормы и типовые ошибки монтажа</h1>
+        <div class="gold-line"></div>
+        <div class="date-stamp">Обновлено: июль 2026</div>
+
+        <p>Практическое руководство для тех, кто хочет понимать, что происходит в стенах, и контролировать результат.
+            Без маркетинга. Только техническая часть. <strong>Автор: Вячеслав, бригадир «Дока-Тим», Москва. Стаж 24
+                года.</strong></p>
+
+        <h2>1. Алюминий vs медь: почему «просто добавить линию» не работает</h2>
+        <p>В домах постройки до 2000 года используется алюминиевая проводка. Согласно ГОСТ 31565-2012, алюминиевые
+            кабели сечением менее 16 мм² <strong>запрещены</strong> для внутренней проводки. Всё, что меньше — под
+            замену.</p>
+        <p>Основная проблема — <strong>гальваническая пара</strong> при соединении меди с алюминием. Разность
+            электрохимических потенциалов (Cu — +0,34 В, Al — -1,66 В) вызывает коррозию в месте контакта. Переходное
+            сопротивление растёт → нагрев → оплавление изоляции → КЗ.</p>
+        <p><strong>Решение:</strong></p>
+        <ul>
+            <li>Клеммы Wago 2273 с алюминиевой пастой (содержит кварцевый песок для разрушения оксидной плёнки)</li>
+            <li>Гильзы ГМЛ с опрессовкой гидравлическим прессом (усилие 8–12 кН)</li>
+        </ul>
+        <p>Скрутки — вне закона (ПУЭ 2.1.21).</p>
+
+        <h2>2. Расчёт сечения кабеля: математика, а не «на глаз»</h2>
+        <p>Для однофазной сети 220 В, 50 Гц:</p>
+        <p><strong>I = P / (U × cos φ)</strong></p>
+        <p>где:</p>
+        <ul>
+            <li>I — расчётный ток (А)</li>
+            <li>P — суммарная мощность потребителей (Вт)</li>
+            <li>U = 220 В</li>
+            <li>cos φ — коэффициент мощности (для бытовой техники ≈ 0,92–0,98)</li>
+        </ul>
+        <p><strong>Пример: кухня в типовой двушке</strong></p>
+        <ul>
+            <li>Индукционная варочная панель — 7,2 кВт</li>
+            <li>Духовой шкаф — 3,5 кВт</li>
+            <li>Посудомоечная машина — 2,2 кВт</li>
+            <li>СВЧ-печь — 1,5 кВт</li>
+            <li>Чайник — 2,0 кВт</li>
+            <li>Итого установленная мощность: 16,4 кВт</li>
+        </ul>
+        <p>С коэффициентом одновременности k₀ = 0,7: P_расч = 16,4 × 0,7 = 11,48 кВт. I = 11 480 / (220 × 0,95) =
+            <strong>54,9 А</strong>.</p>
+        <p>По ПУЭ табл. 1.3.4 (медь, открытая прокладка): для 55 А — <strong>сечение 10 мм²</strong>. Автомат ввода — 63
+            А.</p>
+
+        <h2>3. Компоновка щита: запас, маркировка, защита</h2>
+        <p>Типовой квартирный щит (однушка/двушка) — минимум 24 модуля. Рекомендую 36 — с запасом на будущее.</p>
+        <table>
+            <tr>
+                <th>Линия</th>
+                <th>Сечение (Cu)</th>
+                <th>Автомат</th>
+            </tr>
+            <tr>
+                <td>Освещение</td>
+                <td>1,5 мм²</td>
+                <td>10 А</td>
+            </tr>
+            <tr>
+                <td>Розетки комнат</td>
+                <td>2,5 мм²</td>
+                <td>16 А</td>
+            </tr>
+            <tr>
+                <td>Кухня (розетки)</td>
+                <td>4,0 мм²</td>
+                <td>25 А</td>
+            </tr>
+            <tr>
+                <td>Варочная панель</td>
+                <td>6,0 мм²</td>
+                <td>32 А</td>
+            </tr>
+            <tr>
+                <td>Стиральная машина</td>
+                <td>2,5 мм²</td>
+                <td>16 А</td>
+            </tr>
+            <tr>
+                <td>Кондиционер</td>
+                <td>2,5 мм²</td>
+                <td>16 А</td>
+            </tr>
+            <tr>
+                <td>Ввод в квартиру</td>
+                <td>10–16 мм²</td>
+                <td>50–63 А</td>
+            </tr>
+        </table>
+        <p>Обязательно: УЗО на «мокрые зоны» (ПУЭ 7.1.82), маркировка каждой линии (ПУЭ 2.1.23), запас модулей 20–30%.
+        </p>
+
+        <h2>4. Штробление: ПУЭ, несущие стены, допуски</h2>
+        <p>ПУЭ 7.1.32: штробы — только вертикальные и горизонтальные. Диагональные — запрещены.</p>
+        <p>Запрещено штробить несущие стены (СП 70.13330.2012). В панельных и монолитных домах кабель пускают по потолку
+            в гофре или за гипсокартоном.</p>
+        <p>Параметры штробы: глубина 15–20 мм, ширина под размер кабеля, слой штукатурки над кабелем не менее 10 мм.</p>
+
+        <h2>5. Марки кабеля: что использовать</h2>
+        <ul>
+            <li><strong>ВВГнг(А)-LS</strong> — негорючий, с пониженным дымо- и газовыделением (ГОСТ 31565-2012).</li>
+            <li><strong>NYM</strong> — немецкий стандарт. Круглый, удобен в монтаже.</li>
+            <li><strong>ПВС</strong> — только для временной схемы. Для стационарной проводки запрещён (ПУЭ 2.1.48).</li>
+        </ul>
+        <p>Для штроб — одножильный кабель (класс гибкости 1). Многожильный (класс 3–5) требует оконцевания наконечниками
+            НШВИ.</p>
+
+        <h2>6. Фотофиксация скрытых работ</h2>
+        <p>До закрытия штроб обязательно:</p>
+        <ol>
+            <li>Общий план трассы с привязкой к углам (рулетка в кадре).</li>
+            <li>Крупный план соединений в распредкоробке.</li>
+            <li>Ввод кабеля в подрозетник и щит.</li>
+            <li>Глубина штробы (штангенциркуль или линейка в кадре).</li>
+        </ol>
+        <p>Фото прикладываются к акту скрытых работ. Через 5 лет вы будете знать, где кабель, и не попадёте в него
+            перфоратором.</p>
+
+        <div class="highlight">
+            <p><strong>Протяжка контактов:</strong> даже при правильной затяжке динамометрической отвёрткой (усилие
+                2,5–3,5 Н·м) винтовые соединения ослабевают. Рекомендую протяжку контактов в щите раз в 2 года.</p>
+        </div>
+
+        <a href="price.html" class="btn-link">Рассчитать стоимость →</a>
+        <br>
+        <a href="service-engineering.html">→ Услуга электрика и инженерные системы</a>
+        <br>
+        <a href="blog.html" class="back-link">← В блог</a>
+
+        <hr style="border:0; border-top:1px solid #eee; margin:40px 0;">
+
+        <h2>Читайте также</h2>
+        <ul>
+            <li><a href="blog-post-12.html">Замена проводки в квартире: что надо знать до начала работ</a></li>
+            <li><a href="blog-post-10.html">Ошибки при ремонте новостройки</a></li>
+            <li><a href="blog-post-3.html">Почему ваш ремонт дорожает, а наш — нет</a></li>
+            <li><a href="service-engineering.html">Электрика и инженерные системы</a></li>
+        </ul>
+    </div>
+</body>
+
+</html>
