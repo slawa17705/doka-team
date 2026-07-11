@@ -4,3 +4,4 @@ Disallow: /image/
 
 Host: doka-team.ru
 Sitemap: https://doka-team.ru/sitemap.xml
+Sitemap: https://doka-team.ru/feed.xml
