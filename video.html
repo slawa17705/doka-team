@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="canonical" href="https://doka-team.ru/video.html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Видео — Дока-Тим (DOKA-TEAM)</title>
+    <meta name="description"
+        content="Видео о ремонте квартир, отделке, строительстве от Дока-Тим. Реальные объекты, советы, процесс работы. Москва и МО.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #9b9b92;
+            padding: 40px 20px;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 50px;
+            border-radius: 8px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #222;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .gold-line {
+            width: 60px;
+            height: 3px;
+            background: #d4af37;
+            margin: 0 auto 30px;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .video-card {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #d4af37;
+        }
+
+        .video-card iframe {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 9/16;
+            border-radius: 6px;
+            border: none;
+        }
+
+        .video-card p {
+            font-size: 14px;
+            color: #444;
+            margin-top: 8px;
+        }
+
+        a {
+            color: #d4af37;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            color: #d4af37;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        @media (max-width:600px) {
+            .container {
+                padding: 25px 15px;
+            }
+
+            h1 {
+                font-size: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Видео наших работ</h1>
+        <div class="gold-line"></div>
+
+        <div class="video-grid">
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/1Nkud90E4y4" allowfullscreen></iframe>
+                <p>Ремонт квартиры — процесс отделки стен</p>
+            </div>
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/sd07vmPZ0n0" allowfullscreen></iframe>
+                <p>Штукатурка стен по маякам</p>
+            </div>
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/Y95eMqoqRFk" allowfullscreen></iframe>
+                <p>Укладка плитки в санузле</p>
+            </div>
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/WoY71HkC8wc" allowfullscreen></iframe>
+                <p>Подготовка пола к отделке</p>
+            </div>
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/yR21zG-w2qk" allowfullscreen></iframe>
+                <p>Натяжной потолок — монтаж</p>
+            </div>
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/6KiwOFev7PY" allowfullscreen></iframe>
+                <p>Демонтаж старой отделки</p>
+            </div>
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/fEeopn3mHoc" allowfullscreen></iframe>
+                <p>Замена электропроводки — процесс</p>
+            </div>
+            <div class="video-card">
+                <iframe src="https://www.youtube.com/embed/F6dGNwE1bzM" allowfullscreen></iframe>
+                <p>Объект до и после ремонта</p>
+            </div>
+        </div>
+
+        <a href="index.html" class="back-link">← На главную</a>
+    </div>
+</body>
+
+</html>
