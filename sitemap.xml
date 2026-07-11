@@ -106,5 +106,8 @@
     <loc>https://doka-team.ru/service-kapital.html</loc>
     <priority>0.8</priority>
 </url>
-</urlset>
+<url>
+    <loc>https://doka-team.ru/blog-post-8.html</loc>
+    <priority>0.7</priority>
+</url>
 </urlset>
