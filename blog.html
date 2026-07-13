@@ -27,41 +27,44 @@
             max-width: 900px;
             margin: 0 auto;
             padding: 0 20px;
+            text-align: center;
         }
 
         .logo {
             text-align: center;
-
         }
 
         .logo img {
             width: 250px;
             height: 170px;
-
         }
 
         h1 {
             font-size: 30px;
             color: #070707;
-            margin-bottom: 10px;
+            margin-bottom: 30px;
             text-align: center;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
 
-
-
         .post {
             background: url('image/glass-bg.webp') no-repeat center center;
             background-size: cover;
-            padding: 25px 30px;
+            padding: 20px 30px;
             border-radius: 8px;
             box-shadow: 0 10px 40px rgba(0, 30, 60, 0.3);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            min-height: 60px;
+            text-align: left;
         }
 
         .post h2 {
             font-size: 20px;
-            margin-bottom: 10px;
+            margin-bottom: 0;
+            white-space: normal;
         }
 
         .post h2 a {
@@ -75,14 +78,12 @@
         }
 
         .post p {
-            font-size: 15px;
-            color: rgba(201, 200, 231, 0.85);
-            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+            display: none;
         }
 
         .back-link {
             display: inline-block;
-            margin-top: 20px;
+            margin-top: 30px;
             color: #d4af37;
             text-decoration: none;
             font-weight: 700;
@@ -91,6 +92,27 @@
 
         .back-link:hover {
             text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 10px;
+            }
+            .post {
+                padding: 15px 20px;
+                margin-bottom: 10px;
+                min-height: 50px;
+            }
+            .post h2 {
+                font-size: 16px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            .logo img {
+                width: 180px;
+                height: 120px;
+            }
         }
     </style>
     <script type="application/ld+json">
@@ -111,76 +133,48 @@
             <img src="image/logoDT3.png" alt="DOKA-TEAM">
         </div>
         <h1>Блог</h1>
-        <div class="gold-line"></div>
 
         <div class="post">
             <h2><a href="blog-post-1.html">Вы платите за ремонт дважды. И даже не знаете об этом</a></h2>
-            <p>Первый раз — когда начинаете без проекта. Второй — когда переделываете за кривыми руками. В Дока-Тим
-                (DOKA-TEAM) мы делаем один раз и правильно.</p>
         </div>
         <div class="post">
             <h2><a href="blog-post-2.html">Прораб, который не звонит по выходным</a></h2>
-            <p>Когда у бригады есть чёткий план, прорабу не нужно дёргать вас вопросами «а куда тут розетку?». Всё
-                решено на этапе проекта.</p>
         </div>
         <div class="post">
             <h2><a href="blog-post-3.html">Почему ваш ремонт дорожает, а наш — нет</a></h2>
-            <p>«Иван Петрович, тут неожиданность — надо ещё 80 тысяч». У нас такого нет. Потому что до начала работ мы
-                делаем проект — бесплатный для вас.</p>
         </div>
         <div class="post">
             <h2><a href="blog-post-4.html">Гарантия срока и качества</a></h2>
-            <p>Строители обещали дом за год, а через два — голые стены и трещины. Почему так? Потому что не было проекта
-                и контроля.</p>
         </div>
         <div class="post">
             <h2><a href="blog-post-5.html">Дом за сезон — это реально</a></h2>
-            <p>Построить дом за тёплый сезон — реально. Если есть проект, материалы и бригада, которая не уходит в
-                запой.</p>
         </div>
         <div class="post">
             <h2><a href="blog-post-6.html">Как не потерять деньги на ремонте</a></h2>
-            <p>Когда нет чёткого плана, ремонт превращается в хаос. В Дока-Тим мы делаем иначе: сначала проект, потом
-                стройка.</p>
         </div>
         <div class="post">
             <h2><a href="blog-post-7.html">Бесплатный проект — экономия до 20%</a></h2>
-            <p>Проект у нас бесплатный. А выгода: фиксированная смета, бригада по плану, никаких «ой, забыли». Москва и
-                МО.</p>
         </div>
         <div class="post">
             <h2><a href="blog-post-8.html">Сколько стоит ремонт квартиры в Москве в 2026 году — цены под ключ</a></h2>
-            <p>Косметический, капитальный, дизайнерский — реальные цены за квадратный метр. Пример расчёта двушки 60 м².
-                Советы, как не переплатить.</p>
         </div>
         <div class="post">
             <h2><a href="blog-post-9.html">Ремонт ванной под ключ в Москве — цена работы в 2026 году</a></h2>
-            <p>Сколько стоит ремонт ванной, туалета и совмещённого санузла. Цены на работу, примеры, советы.</p>
         </div>
         <div class="post">
             <h2><a href="blog-post-10.html">Ошибки при ремонте новостройки — как не потерять деньги</a></h2>
-            <p>5 главных ошибок: усадка, кривые стены, экономия, смена плана, разные подрядчики. Советы Дока-Тим.</p>
         </div>
         <div class="post">
             <h2><a href="blog-post-11.html">Натяжные потолки: виды, плюсы и минусы, актуальные цены в Москве</a></h2>
-            <p>Какие бывают натяжные потолки, на что смотреть при выборе, реальные цены в Москве. Практические советы от
-                мастеров Дока‑Тим.</p>
         </div>
         <div class="post">
-            <h2><a href="blog-post-12.html">Замена проводки в квартире: как понять, что тебе не вешают лапшу на уши</a>
-            </h2>
-            <p>Разбор ошибок при замене проводки. Как проверить электрика и не попасть на переделки. Практика бригады
-                Дока‑Тим.</p>
+            <h2><a href="blog-post-12.html">Замена проводки в квартире: как понять, что тебе не вешают лапшу на уши</a></h2>
         </div>
         <div class="post">
             <h2><a href="blog-post-13.html">Замена электропроводки в квартире: расчёты, нормы и ошибки монтажа</a></h2>
-            <p>Техническое руководство: расчёт сечения кабеля, компоновка щита, штробление по ПУЭ. Практика бригады
-                Дока‑Тим.</p>
         </div>
         <div class="post">
             <h2><a href="blog-post-14.html">Смета на ремонт квартиры: как проверить и не дать себя обмануть</a></h2>
-            <p>Как формируется смета, типовые ловушки, разбивка работ, двойные позиции. Чек-лист для проверки за 10
-                минут.</p>
         </div>
 
         <a href="index.html" class="back-link">← На главную</a>
