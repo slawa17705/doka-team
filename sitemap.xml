@@ -194,4 +194,8 @@
     <loc>https://doka-team.ru/blog-post-14.html</loc>
     <priority>0.7</priority>
 </url>
+    <url>
+    <loc>https://doka-team.ru/DOKA-QR.html</loc>
+    <priority>0.6</priority>
+</url>
 </urlset>
