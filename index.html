@@ -390,6 +390,9 @@
         .overlay {
             display: none;
         }
+        #qr {
+    display: block;
+}
 
         /* ========== ПЛАНШЕТ ========== */
         @media (max-width: 992px) {
@@ -412,6 +415,10 @@
                 background: url('image/bodyMob.webp') no-repeat center center fixed;
                 background-size: cover;
             }
+
+             #qr {
+        display: none !important;
+    }
 
 
 
@@ -865,9 +872,9 @@
                     <a href="privacy.html">Политика конфиденциальности</a>
                 </div>
             </div>
-    <div style="text-align:center; margin-top:10px;">
-                    <img src="image/QR.png" alt="QR-код на заявку Дока-Тим" style="width:120px; height:120px;">
-                </div>
+ <div id="qr" style="text-align:center; margin-top:10px;">
+    <img src="image/QR.png" alt="QR-код на заявку Дока-Тим" style="width:120px; height:120px;">
+</div>
                 <div class="footer-bottom">
                     © 2026 DOKA-TEAM/Дока-Тим. Все права защищены. Проектирование, строительство домов и ремонт квартир
                     премиум-класса.
