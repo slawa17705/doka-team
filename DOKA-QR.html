@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Заявка | Дока-Тим</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: #2c2c2c;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .form-container {
+            background: #fff;
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            max-width: 420px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .form-container h2 {
+            font-size: 24px;
+            color: #222;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+
+        .form-container input,
+        .form-container textarea {
+            width: 100%;
+            padding: 14px 16px;
+            margin-bottom: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+            color: #222;
+            font-family: inherit;
+            resize: vertical;
+            transition: border-color 0.3s;
+        }
+
+        .form-container input:focus,
+        .form-container textarea:focus {
+            border-color: #d4af37;
+        }
+
+        .form-container button {
+            width: 100%;
+            padding: 14px;
+            background: #d4af37;
+            color: #fff;
+            font-size: 16px;
+            font-weight: 700;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+
+        .form-container button:hover {
+            background: #c49b2c;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #2c7a2c;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+        <h2>Оставить заявку</h2>
+
+        <form id="form">
+            <input name="name" placeholder="Имя" required>
+            <input name="phone" placeholder="Телефон" required>
+            <textarea name="comment" placeholder="Комментарий" rows="3"></textarea>
+            <button type="submit">Отправить</button>
+        </form>
+
+        <p id="result"></p>
+    </div>
+</body>
+
+<script>
+    const scriptURL =
+        'https://script.google.com/macros/s/AKfycbxOFQRrO7G0z5o6swkfgq-tozzyS10FZKe8RViF5CuaT-jJSyneoQsMN1hRT08SeaJM/exec';
+
+    document.getElementById('form')
+        .addEventListener('submit', e => {
+            e.preventDefault();
+
+            fetch(scriptURL, {
+                method: 'POST',
+                body: new FormData(e.target)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('result').innerHTML =
+                        'Заявка принята. Номер: ' + data.id;
+                    e.target.reset();
+                });
+        });
+</script>
+
+</html>
