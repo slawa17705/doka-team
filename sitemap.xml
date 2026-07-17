@@ -198,4 +198,8 @@
     <loc>https://doka-team.ru/DOKA-QR.html</loc>
     <priority>0.6</priority>
 </url>
+    <url>
+    <loc>https://doka-team.ru/remont-novostroyki.html</loc>
+    <priority>0.8</priority>
+</url>
 </urlset>
