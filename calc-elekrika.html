@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор электрики | Дока-Тим</title>
+    <meta name="description"
+        content="Калькулятор расчёта электромонтажных работ по комнатам. Онлайн-расчёт от Дока-Тим.">
+    <link rel="canonical" href="https://doka-team.ru/price-electro.html">
+    <style>
+        :root {
+            --accent: #d4af37;
+            --glass: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.12);
+            --text: #fff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: url('image/ice-crystals-fon1.webp') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 40px 20px;
+            color: var(--text);
+        }
+
+        .calculator {
+            max-width: 600px;
+            width: 100%;
+            background: url('image/glass-bg1.webp') no-repeat center center;
+            background-size: cover;
+            border-radius: 14px;
+            padding: 40px 35px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 22px;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .gold-line {
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+            margin: 0 auto 20px;
+        }
+
+        .step-indicator {
+            text-align: center;
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: var(--accent);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .step {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .step.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .step-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .step-subtitle {
+            font-size: 13px;
+            opacity: 0.7;
+            margin-bottom: 18px;
+            text-align: center;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 14.5px;
+            user-select: none;
+        }
+
+        .option:hover {
+            border-color: var(--accent);
+        }
+
+        .option.selected {
+            border-color: var(--accent);
+            background: rgba(212, 175, 55, 0.12);
+        }
+
+        .option .check {
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            border-radius: 4px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .option.selected .check {
+            border-color: var(--accent);
+        }
+
+        .option.selected .check::after {
+            content: '✓';
+            color: var(--accent);
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .area-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .area-row input,
+        .qty-row input,
+        .name-row input {
+            flex: 1;
+            padding: 12px 14px;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 15px;
+            text-align: center;
+            outline: none;
+        }
+
+        .area-row input:focus,
+        .qty-row input:focus,
+        .name-row input:focus {
+            border-color: var(--accent);
+        }
+
+        .qty-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .qty-row label {
+            font-size: 13px;
+            font-weight: 600;
+            min-width: 120px;
+        }
+
+        .qty-row input {
+            width: 80px;
+            flex: none;
+        }
+
+        .name-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .name-row label {
+            font-size: 13px;
+            font-weight: 600;
+            min-width: 80px;
+        }
+
+        .name-row input {
+            text-align: left;
+        }
+
+        .photo-label {
+            font-size: 13px;
+            opacity: 0.7;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .photo-upload {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+
+        .photo-box {
+            width: 75px;
+            height: 75px;
+            border: 2px dashed var(--border);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 26px;
+            color: rgba(255, 255, 255, 0.4);
+            overflow: hidden;
+            position: relative;
+            background: var(--glass);
+        }
+
+        .photo-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .photo-box .remove-photo {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            background: rgba(0, 0, 0, 0.7);
+            color: #e74c3c;
+            border: none;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 14px;
+            cursor: pointer;
+            z-index: 2;
+            display: none;
+            line-height: 20px;
+            text-align: center;
+        }
+
+        .photo-box.has-photo .remove-photo {
+            display: block;
+        }
+
+        .photo-box.has-photo {
+            border-style: solid;
+        }
+
+        .comment-box {
+            width: 100%;
+            padding: 12px 14px;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 14px;
+            resize: vertical;
+            min-height: 50px;
+            margin-bottom: 15px;
+        }
+
+        .comment-box:focus {
+            border-color: var(--accent);
+        }
+
+        .room-card {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--accent);
+            border-radius: 10px;
+            padding: 12px 15px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+        }
+
+        .room-card:hover {
+            background: rgba(212, 175, 55, 0.2);
+        }
+
+        .room-card .edit-hint {
+            font-size: 11px;
+            opacity: 0.6;
+        }
+
+        .room-card .delete-hint {
+            font-size: 11px;
+            color: #e74c3c;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .add-room-btn {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            background: transparent;
+            border: 2px dashed var(--accent);
+            color: var(--accent);
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            font-size: 15px;
+            margin: 10px 0;
+            transition: all 0.3s;
+        }
+
+        .add-room-btn:hover {
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 14px 20px;
+            font-size: 14px;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            border: none;
+            text-transform: uppercase;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .btn-back {
+            background: var(--glass);
+            color: #fff;
+            border: 1px solid var(--border);
+        }
+
+        .btn-back:hover {
+            border-color: var(--accent);
+        }
+
+        .btn-next {
+            background: var(--accent);
+            color: #000;
+        }
+
+        .btn-next:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn:disabled {
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        .final-block {
+            text-align: center;
+        }
+
+        .final-block input {
+            width: 100%;
+            padding: 12px 16px;
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 15px;
+            outline: none;
+            margin-bottom: 12px;
+        }
+
+        .final-block input.error {
+            border-color: #e74c3c;
+        }
+
+        .success-msg {
+            text-align: center;
+            color: var(--accent);
+            font-weight: 700;
+            margin-top: 15px;
+            display: none;
+        }
+
+        .error-msg {
+            color: #e74c3c;
+            font-size: 13px;
+            margin-top: -8px;
+            margin-bottom: 8px;
+            display: none;
+            text-align: left;
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        @media (max-width:500px) {
+            .calculator {
+                padding: 25px 14px;
+            }
+
+            .btn {
+                padding: 12px 12px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="calculator">
+        <h1>Калькулятор электрики</h1>
+        <div class="gold-line"></div>
+        <div class="step-indicator" id="stepIndicator">Выберите комнаты</div>
+
+        <!-- Шаг 0: выбор комнат -->
+        <div class="step active" id="step0">
+            <div class="step-title">Какие комнаты считаем?</div>
+            <div class="step-subtitle">Выберите нужные — заполните по очереди</div>
+            <div class="options" id="roomSelect">
+                <div class="option" data-room="kitchen"><span class="check"></span>🍳 Кухня</div>
+                <div class="option" data-room="living"><span class="check"></span>🛋 Гостиная</div>
+                <div class="option" data-room="bedroom"><span class="check"></span>🛏 Спальня</div>
+                <div class="option" data-room="bath"><span class="check"></span>🛁 Ванная / Санузел</div>
+            </div>
+            <div class="nav-buttons">
+                <div></div><button class="btn btn-next" id="next0" disabled>Далее</button>
+            </div>
+        </div>
+
+        <!-- Шаблоны комнат -->
+        <div id="templates" style="display:none;">
+            <div id="tplKitchen">
+                <div class="step-title">🍳 Кухня</div>
+                <div class="options">
+                    <div class="option" data-val="Электроплита"><span class="check"></span>Электроплита / варочная
+                        панель</div>
+                    <div class="option" data-val="Духовой шкаф"><span class="check"></span>Духовой шкаф</div>
+                    <div class="option" data-val="Посудомоечная машина"><span class="check"></span>Посудомоечная машина
+                    </div>
+                    <div class="option" data-val="Холодильник"><span class="check"></span>Холодильник</div>
+                    <div class="option" data-val="Вытяжка"><span class="check"></span>Вытяжка</div>
+                    <div class="option" data-val="СВЧ"><span class="check"></span>Микроволновка (СВЧ)</div>
+                </div>
+                <div class="qty-row"><label>Доп. розетки:</label><input type="number" class="qty-input"
+                        data-key="extraSockets" value="0" min="0"></div>
+                <div class="area-row"><input type="number" class="len-input" placeholder="Длина (м)" min="0.5"
+                        step="0.1"><input type="number" class="wid-input" placeholder="Ширина (м)" min="0.5" step="0.1">
+                </div>
+                <span class="photo-label">📷 Фото (до 3 шт.)</span>
+                <div class="photo-upload"></div>
+                <textarea class="comment-box" placeholder="Комментарий"></textarea>
+                <div class="nav-buttons"><button class="btn btn-back">← Назад</button><button
+                        class="btn btn-next">Сохранить</button></div>
+            </div>
+            <div id="tplLiving">
+                <div class="step-title">🛋 Гостиная</div>
+                <div class="options">
+                    <div class="option" data-val="Люстра"><span class="check"></span>Люстра</div>
+                    <div class="option" data-val="Выключатель 1кл"><span class="check"></span>Выключатель 1-клавишный
+                    </div>
+                    <div class="option" data-val="Выключатель 2кл"><span class="check"></span>Выключатель 2-клавишный
+                    </div>
+                    <div class="option" data-val="Выключатель 3кл"><span class="check"></span>Выключатель 3-клавишный
+                    </div>
+                    <div class="option" data-val="Проходной выключатель"><span class="check"></span>Проходной
+                        выключатель</div>
+                </div>
+                <div class="qty-row"><label>Точечные:</label><input type="number" class="qty-input" data-key="spots"
+                        value="0" min="0"></div>
+                <div class="qty-row"><label>Бра:</label><input type="number" class="qty-input" data-key="bra" value="0"
+                        min="0"></div>
+                <div class="qty-row"><label>Розетки:</label><input type="number" class="qty-input" data-key="sockets"
+                        value="4" min="0"></div>
+                <div class="area-row"><input type="number" class="len-input" placeholder="Длина (м)" min="0.5"
+                        step="0.1"><input type="number" class="wid-input" placeholder="Ширина (м)" min="0.5" step="0.1">
+                </div>
+                <span class="photo-label">📷 Фото (до 3 шт.)</span>
+                <div class="photo-upload"></div>
+                <textarea class="comment-box" placeholder="Комментарий"></textarea>
+                <div class="nav-buttons"><button class="btn btn-back">← Назад</button><button
+                        class="btn btn-next">Сохранить</button></div>
+            </div>
+            <div id="tplBedroom">
+                <div class="step-title">🛏 Спальня</div>
+                <div class="options">
+                    <div class="option" data-val="Люстра"><span class="check"></span>Люстра</div>
+                    <div class="option" data-val="Выключатель 1кл"><span class="check"></span>Выключатель 1-клавишный
+                    </div>
+                    <div class="option" data-val="Выключатель 2кл"><span class="check"></span>Выключатель 2-клавишный
+                    </div>
+                    <div class="option" data-val="Проходной выключатель"><span class="check"></span>Проходной
+                        выключатель</div>
+                </div>
+                <div class="qty-row"><label>Точечные:</label><input type="number" class="qty-input" data-key="spots"
+                        value="0" min="0"></div>
+                <div class="qty-row"><label>Бра:</label><input type="number" class="qty-input" data-key="bra" value="0"
+                        min="0"></div>
+                <div class="qty-row"><label>Розетки:</label><input type="number" class="qty-input" data-key="sockets"
+                        value="4" min="0"></div>
+                <div class="area-row"><input type="number" class="len-input" placeholder="Длина (м)" min="0.5"
+                        step="0.1"><input type="number" class="wid-input" placeholder="Ширина (м)" min="0.5" step="0.1">
+                </div>
+                <span class="photo-label">📷 Фото (до 3 шт.)</span>
+                <div class="photo-upload"></div>
+                <textarea class="comment-box" placeholder="Комментарий"></textarea>
+                <div class="nav-buttons"><button class="btn btn-back">← Назад</button><button
+                        class="btn btn-next">Сохранить</button></div>
+            </div>
+            <div id="tplBath">
+                <div class="step-title">🛁 Ванная / Санузел</div>
+                <div class="options">
+                    <div class="option" data-val="Стиральная машина"><span class="check"></span>Стиральная машина</div>
+                    <div class="option" data-val="Сушильная машина"><span class="check"></span>Сушильная машина</div>
+                    <div class="option" data-val="Полотенцесушитель эл."><span class="check"></span>Полотенцесушитель
+                        (электрический)</div>
+                    <div class="option" data-val="Водонагреватель"><span class="check"></span>Водонагреватель (бойлер)
+                    </div>
+                    <div class="option" data-val="Тёплый пол"><span class="check"></span>Тёплый пол (электрический)
+                    </div>
+                    <div class="option" data-val="Вентилятор"><span class="check"></span>Вытяжной вентилятор</div>
+                </div>
+                <div class="qty-row"><label>Розетки (влагозащ.):</label><input type="number" class="qty-input"
+                        data-key="sockets" value="1" min="0"></div>
+                <div class="area-row"><input type="number" class="len-input" placeholder="Длина (м)" min="0.5"
+                        step="0.1"><input type="number" class="wid-input" placeholder="Ширина (м)" min="0.5" step="0.1">
+                </div>
+                <span class="photo-label">📷 Фото (до 3 шт.)</span>
+                <div class="photo-upload"></div>
+                <textarea class="comment-box" placeholder="Комментарий"></textarea>
+                <div class="nav-buttons"><button class="btn btn-back">← Назад</button><button
+                        class="btn btn-next">Сохранить</button></div>
+            </div>
+            <!-- Шаблон для доп. комнаты -->
+            <div id="tplExtra">
+                <div class="step-title">📦 Доп. комната</div>
+                <div class="name-row"><label>Название:</label><input type="text" class="extra-name"
+                        placeholder="Например: Коридор"></div>
+                <div class="options">
+                    <div class="option" data-val="Люстра"><span class="check"></span>Люстра / плафон</div>
+                    <div class="option" data-val="Выключатель 1кл"><span class="check"></span>Выключатель 1-клавишный
+                    </div>
+                    <div class="option" data-val="Выключатель 2кл"><span class="check"></span>Выключатель 2-клавишный
+                    </div>
+                    <div class="option" data-val="Проходной выключатель"><span class="check"></span>Проходной
+                        выключатель</div>
+                </div>
+                <div class="qty-row"><label>Точечные:</label><input type="number" class="qty-input" data-key="spots"
+                        value="0" min="0"></div>
+                <div class="qty-row"><label>Бра:</label><input type="number" class="qty-input" data-key="bra" value="0"
+                        min="0"></div>
+                <div class="qty-row"><label>Розетки:</label><input type="number" class="qty-input" data-key="sockets"
+                        value="2" min="0"></div>
+                <div class="area-row"><input type="number" class="len-input" placeholder="Длина (м)" min="0.5"
+                        step="0.1"><input type="number" class="wid-input" placeholder="Ширина (м)" min="0.5" step="0.1">
+                </div>
+                <span class="photo-label">📷 Фото (до 3 шт.)</span>
+                <div class="photo-upload"></div>
+                <textarea class="comment-box" placeholder="Комментарий"></textarea>
+                <div class="nav-buttons"><button class="btn btn-back">← Назад</button><button
+                        class="btn btn-next">Сохранить</button></div>
+            </div>
+        </div>
+
+        <!-- Рабочая область -->
+        <div id="workspace"></div>
+
+        <!-- Заявка -->
+        <div class="step" id="stepFinal">
+            <div class="step-title">📩 Отправка заявки</div>
+            <div class="final-block">
+                <p style="margin-bottom:15px;font-size:14px;">Все комнаты собраны. Введите имя и телефон.</p>
+                <input type="text" id="userName" placeholder="Введите ваше имя" required>
+                <input type="tel" id="userPhone" placeholder="+7 (___) ___-__-__" required>
+                <div class="error-msg" id="phoneError">Введите номер в формате +7 (999) 123-45-67</div>
+                <button class="btn btn-next" onclick="submitForm()" style="width:100%;">Отправить всё</button>
+                <div class="success-msg" id="successMsg">✅ Заявка отправлена! Мы скоро перезвоним.</div>
+            </div>
+            <div class="nav-buttons"><button class="btn btn-back" onclick="showRoomList()">← Назад</button></div>
+        </div>
+        <a href="index.html" class="back-link">← На главную</a>
+    </div>
+
+    <script>
+        const allPhotos = {};
+        const selectedRooms = []; // ['kitchen', 'living', ...]
+        const extraRooms = []; // ['extra_123', 'extra_456', ...]
+        const savedData = {}; // ключ: roomId
+
+        // Выбор комнат
+        document.querySelectorAll('#roomSelect .option').forEach(o => {
+            o.addEventListener('click', function () {
+                this.classList.toggle('selected');
+                const room = this.dataset.room;
+                if (this.classList.contains('selected')) {
+                    if (!selectedRooms.includes(room)) selectedRooms.push(room);
+                } else {
+                    const idx = selectedRooms.indexOf(room);
+                    if (idx > -1) selectedRooms.splice(idx, 1);
+                }
+                document.getElementById('next0').disabled = selectedRooms.length === 0;
+            });
+        });
+
+        document.getElementById('next0').addEventListener('click', () => {
+            if (selectedRooms.length === 0) return;
+            selectedRooms.forEach(r => { if (!savedData[r]) savedData[r] = { items: [], qty: {}, len: '', wid: '', comment: '', photoKeys: [], name: '' }; });
+            showRoomList();
+        });
+
+        function showRoomList() {
+            const ws = document.getElementById('workspace');
+            document.getElementById('step0').classList.remove('active');
+            document.getElementById('stepFinal').classList.remove('active');
+            document.getElementById('stepIndicator').textContent = 'Выберите комнату для заполнения';
+            ws.innerHTML = '';
+
+            // Карточки выбранных комнат
+            selectedRooms.forEach(room => {
+                addRoomCard(ws, room);
+            });
+            // Карточки доп. комнат
+            extraRooms.forEach(roomId => {
+                addRoomCard(ws, roomId);
+            });
+
+            // Кнопка "Добавить комнату"
+            const addBtn = document.createElement('button');
+            addBtn.className = 'add-room-btn';
+            addBtn.textContent = '+ Добавить комнату';
+            addBtn.addEventListener('click', addExtraRoom);
+            ws.appendChild(addBtn);
+
+            // Кнопки "Назад" и "Отправить всё"
+            const btnRow = document.createElement('div');
+            btnRow.className = 'nav-buttons';
+            btnRow.style.marginTop = '15px';
+            btnRow.innerHTML = '<button class="btn btn-back" onclick="goBackToSelect()">← Назад</button><button class="btn btn-next" onclick="goToFinal()">Отправить всё →</button>';
+            ws.appendChild(btnRow);
+        }
+
+        function addRoomCard(container, roomId) {
+            const data = savedData[roomId] || {};
+            const isExtra = roomId.startsWith('extra_');
+            const roomType = isExtra ? 'extra' : roomId;
+            const names = { kitchen: '🍳 Кухня', living: '🛋 Гостиная', bedroom: '🛏 Спальня', bath: '🛁 Ванная', extra: '📦 Доп. комната' };
+            let displayName = data.name || names[roomType] || 'Комната';
+            if (isExtra && data.name) displayName = '📦 ' + data.name;
+
+            let summary = displayName;
+            const parts = [];
+            if (data.len && data.wid) parts.push(data.len + '×' + data.wid + ' м');
+            if (data.items && data.items.length) parts.push(data.items.length + ' опций');
+            if (data.photoKeys && data.photoKeys.length) parts.push('📷' + data.photoKeys.length);
+            if (parts.length) summary += ' — ' + parts.join(', ');
+
+            const card = document.createElement('div');
+            card.className = 'room-card';
+            card.innerHTML = '<span>' + summary + '</span><span><span class="edit-hint">✎</span><span class="delete-hint" data-room="' + roomId + '">✕</span></span>';
+            card.querySelector('.edit-hint').addEventListener('click', (e) => { e.stopPropagation(); openRoom(roomId); });
+            card.querySelector('.delete-hint').addEventListener('click', (e) => {
+                e.stopPropagation();
+                deleteRoom(roomId);
+            });
+            card.addEventListener('click', () => openRoom(roomId));
+            container.appendChild(card);
+        }
+
+        function deleteRoom(roomId) {
+            if (roomId.startsWith('extra_')) {
+                const idx = extraRooms.indexOf(roomId);
+                if (idx > -1) extraRooms.splice(idx, 1);
+            } else {
+                const idx = selectedRooms.indexOf(roomId);
+                if (idx > -1) selectedRooms.splice(idx, 1);
+            }
+            delete savedData[roomId];
+            // Удалить фото
+            Object.keys(allPhotos).forEach(k => { if (k.startsWith(roomId + '_')) delete allPhotos[k]; });
+            showRoomList();
+        }
+
+        function addExtraRoom() {
+            const roomId = 'extra_' + Date.now();
+            extraRooms.push(roomId);
+            savedData[roomId] = { items: [], qty: {}, len: '', wid: '', comment: '', photoKeys: [], name: '' };
+            openRoom(roomId);
+        }
+
+        function goBackToSelect() {
+            document.getElementById('workspace').innerHTML = '';
+            document.getElementById('step0').classList.add('active');
+            document.getElementById('stepIndicator').textContent = 'Выберите комнаты';
+        }
+
+        function goToFinal() {
+            document.getElementById('workspace').innerHTML = '';
+            document.getElementById('stepFinal').classList.add('active');
+            document.getElementById('stepIndicator').textContent = 'Заявка';
+        }
+
+        function openRoom(roomId) {
+            const ws = document.getElementById('workspace');
+            ws.innerHTML = '';
+            const isExtra = roomId.startsWith('extra_');
+            const roomType = isExtra ? 'extra' : roomId;
+            const tplId = 'tpl' + roomType.charAt(0).toUpperCase() + roomType.slice(1);
+            const tpl = document.getElementById(tplId);
+            const clone = tpl.cloneNode(true);
+            clone.style.display = 'block';
+            clone.classList.add('active-room');
+            clone.dataset.roomId = roomId;
+            ws.appendChild(clone);
+
+            const data = savedData[roomId] || {};
+            // Название для доп. комнаты
+            if (isExtra && data.name) {
+                const nameInp = clone.querySelector('.extra-name');
+                if (nameInp) nameInp.value = data.name;
+            }
+            // Опции
+            if (data.items) {
+                clone.querySelectorAll('.option').forEach(o => {
+                    if (data.items.includes(o.dataset.val)) o.classList.add('selected');
+                });
+            }
+            // Количества
+            if (data.qty) {
+                clone.querySelectorAll('.qty-input').forEach(inp => {
+                    const key = inp.dataset.key;
+                    if (data.qty[key] !== undefined) inp.value = data.qty[key];
+                });
+            }
+            // Размеры
+            clone.querySelector('.len-input').value = data.len || '';
+            clone.querySelector('.wid-input').value = data.wid || '';
+            clone.querySelector('.comment-box').value = data.comment || '';
+
+            // Фото
+            const photoDiv = clone.querySelector('.photo-upload');
+            initPhotosForRoom(photoDiv, roomId);
+
+            // Клики
+            clone.querySelectorAll('.option').forEach(o => {
+                o.addEventListener('click', function () { this.classList.toggle('selected'); });
+            });
+
+            clone.querySelector('.btn-back').addEventListener('click', () => showRoomList());
+            clone.querySelector('.btn-next').addEventListener('click', () => {
+                saveRoomFromDOM(roomId, clone);
+                showRoomList();
+            });
+
+            const title = isExtra ? (data.name || 'Доп. комната') : roomNamesFull[roomType];
+            document.getElementById('stepIndicator').textContent = title;
+        }
+
+        const roomNamesFull = { kitchen: '🍳 Кухня', living: '🛋 Гостиная', bedroom: '🛏 Спальня', bath: '🛁 Ванная', extra: '📦 Доп. комната' };
+
+        function saveRoomFromDOM(roomId, el) {
+            const items = [...el.querySelectorAll('.option.selected')].map(o => o.dataset.val).filter(Boolean);
+            const qty = {};
+            el.querySelectorAll('.qty-input').forEach(inp => { qty[inp.dataset.key] = inp.value; });
+            const len = el.querySelector('.len-input').value;
+            const wid = el.querySelector('.wid-input').value;
+            const comment = el.querySelector('.comment-box').value;
+            const nameInp = el.querySelector('.extra-name');
+            const name = nameInp ? nameInp.value : '';
+            const photoKeys = [];
+            for (let i = 0; i < 3; i++) {
+                if (allPhotos[roomId + '_' + i]) photoKeys.push(roomId + '_' + i);
+            }
+            savedData[roomId] = { items, qty, len, wid, comment, photoKeys, name };
+        }
+
+        function initPhotosForRoom(container, roomId) {
+            container.innerHTML = '';
+            for (let i = 0; i < 3; i++) {
+                const box = document.createElement('div');
+                box.className = 'photo-box';
+                box.dataset.roomId = roomId;
+                box.dataset.idx = i;
+                if (allPhotos[roomId + '_' + i]) {
+                    box.classList.add('has-photo');
+                    const url = URL.createObjectURL(allPhotos[roomId + '_' + i]);
+                    box.innerHTML = '<img src="' + url + '" alt="фото"><button class="remove-photo">×</button>';
+                } else {
+                    box.innerHTML = '<span>+</span><button class="remove-photo">×</button>';
+                }
+                box.querySelector('.remove-photo').onclick = function (e) {
+                    e.stopPropagation();
+                    delete allPhotos[roomId + '_' + i];
+                    box.innerHTML = '<span>+</span><button class="remove-photo">×</button>';
+                    box.querySelector('.remove-photo').onclick = arguments.callee;
+                    box.classList.remove('has-photo');
+                };
+                box.addEventListener('click', function (e) {
+                    if (e.target.classList.contains('remove-photo')) return;
+                    const inp = document.createElement('input');
+                    inp.type = 'file'; inp.accept = 'image/*';
+                    inp.onchange = function (ev) {
+                        const file = ev.target.files[0];
+                        if (!file) return;
+                        allPhotos[roomId + '_' + i] = file;
+                        const url = URL.createObjectURL(file);
+                        box.innerHTML = '<img src="' + url + '" alt="фото"><button class="remove-photo">×</button>';
+                        box.querySelector('.remove-photo').onclick = function (e2) {
+                            e2.stopPropagation();
+                            delete allPhotos[roomId + '_' + i];
+                            box.innerHTML = '<span>+</span><button class="remove-photo">×</button>';
+                            box.querySelector('.remove-photo').onclick = arguments.callee;
+                            box.classList.remove('has-photo');
+                        };
+                        box.classList.add('has-photo');
+                    };
+                    inp.click();
+                });
+                container.appendChild(box);
+            }
+        }
+
+        // Телефон
+        const phoneInput = document.getElementById('userPhone');
+        phoneInput.addEventListener('input', function () {
+            let val = this.value.replace(/\D/g, '');
+            if (val.length === 11 && val.startsWith('8')) val = '7' + val.slice(1);
+            if (val.length > 11) val = val.slice(0, 11);
+            let f = '+7';
+            if (val.length > 1) f += ' (' + val.slice(1, 4);
+            if (val.length >= 4) f += ') ' + val.slice(4, 7);
+            if (val.length >= 7) f += '-' + val.slice(7, 9);
+            if (val.length >= 9) f += '-' + val.slice(9, 11);
+            this.value = f;
+            document.getElementById('phoneError').style.display = 'none';
+            this.classList.remove('error');
+        });
+        function validatePhone(p) { const c = p.replace(/\D/g, ''); return c.length === 11 && (c.startsWith('7') || c.startsWith('8')); }
+
+        window.submitForm = function () {
+            const name = document.getElementById('userName').value.trim();
+            const phone = document.getElementById('userPhone').value.trim();
+            if (!name) return alert('Введите имя');
+            if (!validatePhone(phone)) {
+                document.getElementById('phoneError').style.display = 'block';
+                document.getElementById('userPhone').classList.add('error');
+                return;
+            }
+            document.getElementById('phoneError').style.display = 'none';
+            document.getElementById('userPhone').classList.remove('error');
+
+            let message = '⚡ Заявка с калькулятора электрики!\nИмя: ' + name + '\nТелефон: ' + phone + '\n\n';
+            const allRoomIds = [...selectedRooms, ...extraRooms];
+            allRoomIds.forEach(roomId => {
+                const data = savedData[roomId] || {};
+                const isExtra = roomId.startsWith('extra_');
+                const roomType = isExtra ? 'extra' : roomId;
+                let displayName = data.name || roomNamesFull[roomType] || 'Комната';
+                if (isExtra && data.name) displayName = '📦 ' + data.name;
+
+                const hasData = (data.items && data.items.length) || data.len || data.wid || data.comment || (data.photoKeys && data.photoKeys.length);
+                if (!hasData) return;
+
+                message += '📍 ' + displayName + '\n';
+                if (data.len && data.wid) message += '   Размер: ' + data.len + ' × ' + data.wid + ' м\n';
+                if (data.items) data.items.forEach(i => message += '   — ' + i + '\n');
+                if (data.qty) {
+                    Object.keys(data.qty).forEach(k => {
+                        const v = data.qty[k];
+                        if (v && v !== '0') {
+                            const labels = { extraSockets: 'Доп. розетки', spots: 'Точечные', bra: 'Бра', sockets: 'Розетки' };
+                            message += '   — ' + (labels[k] || k) + ': ' + v + ' шт.\n';
+                        }
+                    });
+                }
+                if (data.comment) message += '   💬 ' + data.comment + '\n';
+                if (data.photoKeys && data.photoKeys.length) message += '   📷 Фото: ' + data.photoKeys.length + ' шт.\n';
+                message += '\n';
+            });
+
+            const formData = new FormData();
+            formData.append('name', name);
+            formData.append('phone', phone);
+            formData.append('review', message);
+            Object.keys(allPhotos).forEach(k => { if (allPhotos[k]) formData.append('photo_' + k, allPhotos[k]); });
+
+            document.getElementById('successMsg').style.display = 'block';
+            document.querySelector('#stepFinal .btn-next').style.display = 'none';
+            fetch('https://formspree.io/f/xlgyyjnj', { method: 'POST', headers: { 'Accept': 'application/json' }, body: formData }).catch(() => { });
+        };
+    </script>
+</body>
+
+</html>
