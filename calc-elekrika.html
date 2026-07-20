@@ -448,6 +448,7 @@
             }
         }
     </style>
+    <script src="config.js"></script>
 </head>
 
 <body>
@@ -920,8 +921,7 @@
                 message += '\n';
             });
 
-            const BOT_TOKEN = '8220158201:AAEzBqC-6g5_Fq6Gk-uOZdioatU657CEjuU';
-            const CHAT_ID = '1969038379';
+   
 
             fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendMessage', {
                 method: 'POST',
