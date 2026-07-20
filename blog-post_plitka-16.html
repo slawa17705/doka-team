@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <link rel="icon" type="image/png" sizes="120x120" href="favicon-120x120.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Плиточные работы: полный гайд по выбору и укладке | Блог Дока-Тим</title>
+    <meta name="description"
+        content="Плиточные работы в Москве: как выбрать плитку, клей и затирку. Этапы укладки от подготовки до затирки швов. Советы бригады Дока-Тим.">
+    <link rel="canonical" href="https://doka-team.ru/blog-plitka.html">
+
+    <style>
+        :root {
+            --accent-color: #d4af37;
+            --text-color: #fff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: var(--text-color);
+            background: url('image/photo8.webp') no-repeat center center fixed;
+            background-size: cover;
+            line-height: 1.7;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Шапка */
+        .header {
+            padding: 20px 0 10px;
+            text-align: center;
+        }
+
+        .header .container {
+            background: transparent;
+            padding: 15px 0;
+        }
+
+        .header-logo {
+            height: 80px;
+            width: auto;
+            margin-bottom: 5px;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            font-weight: 800;
+            margin: 10px 0 5px;
+            color: #fff;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+        }
+
+        .header p {
+            font-size: 14px;
+            color: #ddd;
+            margin-bottom: 10px;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 15px;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: #fff;
+        }
+
+        /* Основной блок */
+        .main-content {
+            padding: 10px 0 40px;
+        }
+
+        .glass-block {
+            position: relative;
+            background-image: url('image/glass-bg.webp');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            box-shadow: 0 15px 40px rgba(0, 20, 40, 0.5);
+            padding: 40px 45px;
+            border-radius: 0;
+        }
+
+        /* Интро */
+        .intro {
+            font-size: 17px;
+            margin-bottom: 35px;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 20px;
+            text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Аккордеон */
+        .accordion-item {
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .accordion-btn {
+            width: 100%;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #fff;
+            padding: 18px 25px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+            letter-spacing: 0.3px;
+        }
+
+        .accordion-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--accent-color);
+        }
+
+        .accordion-btn .arrow {
+            font-size: 22px;
+            transition: transform 0.3s;
+            color: var(--accent-color);
+        }
+
+        .accordion-btn.active .arrow {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.3s ease;
+            background: rgba(0, 0, 0, 0.25);
+            padding: 0 25px;
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid transparent;
+        }
+
+        .accordion-content.open {
+            max-height: 8000px;
+            padding: 25px 25px;
+            border-bottom-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .accordion-content h3 {
+            font-size: 19px;
+            font-weight: 700;
+            margin: 20px 0 10px;
+            color: var(--accent-color);
+        }
+
+        .accordion-content h3:first-child {
+            margin-top: 0;
+        }
+
+        .accordion-content p {
+            margin-bottom: 15px;
+            font-size: 15.5px;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+        }
+
+        .accordion-content ul,
+        .accordion-content ol {
+            margin: 10px 0 20px 25px;
+        }
+
+        .accordion-content li {
+            margin-bottom: 8px;
+            font-size: 15.5px;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+        }
+
+        .accordion-content table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 14px;
+        }
+
+        .accordion-content th {
+            background: rgba(212, 175, 55, 0.25);
+            padding: 10px;
+            text-align: left;
+            font-weight: 700;
+        }
+
+        .accordion-content td {
+            padding: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .highlight-box {
+            background: rgba(212, 175, 55, 0.15);
+            border-left: 4px solid var(--accent-color);
+            padding: 15px 20px;
+            margin: 20px 0;
+            font-weight: 600;
+        }
+
+        /* Футер */
+        .footer {
+            padding: 10px 0 30px;
+            text-align: center;
+        }
+
+        .footer .glass-block {
+            padding: 25px 35px;
+            font-size: 14px;
+        }
+
+        .footer a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer a:hover {
+            color: #fff;
+        }
+
+        /* Мобилки */
+        @media (max-width: 768px) {
+            body {
+                background: url('image/bodyMob.webp') no-repeat center center fixed;
+                background-size: cover;
+            }
+
+            .glass-block {
+                padding: 20px 18px;
+            }
+
+            .header h1 {
+                font-size: 22px;
+            }
+
+            .accordion-btn {
+                font-size: 16px;
+                padding: 14px 16px;
+            }
+
+            .accordion-content {
+                padding: 0 16px;
+            }
+
+            .accordion-content.open {
+                padding: 18px 16px;
+            }
+
+            .accordion-content table {
+                font-size: 12px;
+            }
+
+            .accordion-content td,
+            .accordion-content th {
+                padding: 6px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 19px;
+            }
+
+            .accordion-btn {
+                font-size: 15px;
+            }
+        }
+    </style>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="preload" as="image" href="image/glass-bg.webp" fetchpriority="high">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="container">
+            <a href="blog.html" class="back-link">← Назад в блог</a>
+            <h1>Плиточные работы: полный гайд</h1>
+            <p>Выбор материала, подготовка основания, укладка — без воды и честно</p>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="glass-block">
+                <p class="intro">
+                    Плитка живёт в квартире 20–30 лет. Это не обои, которые можно переклеить за выходные.
+                    Ошибка на старте — кривые швы, трещины, плесень — аукнется дорогим демонтажём.
+                    Разбираем всё по шагам: что купить, как подготовить, и что должен делать грамотный мастер.
+                </p>
+
+                <!-- Аккордеон 1: Выбор плитки -->
+                <div class="accordion-item">
+                    <button class="accordion-btn" aria-expanded="false">
+                        🧱 Как выбрать плитку <span class="arrow">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <h3>Керамогранит или кафель — в чём разница</h3>
+                        <table>
+                            <tr>
+                                <th>Характеристика</th>
+                                <th>Керамогранит</th>
+                                <th>Кафель</th>
+                            </tr>
+                            <tr>
+                                <td>Прочность</td>
+                                <td>Высокая</td>
+                                <td>Средняя</td>
+                            </tr>
+                            <tr>
+                                <td>Влагопоглощение</td>
+                                <td>Менее 0,5%</td>
+                                <td>До 10%</td>
+                            </tr>
+                            <tr>
+                                <td>Где класть</td>
+                                <td>Пол, стены, улица</td>
+                                <td>Только стены</td>
+                            </tr>
+                            <tr>
+                                <td>Цена за м²</td>
+                                <td>от 1200 ₽</td>
+                                <td>от 600 ₽</td>
+                            </tr>
+                        </table>
+                        <p><strong>Вывод:</strong> на пол — только керамогранит. На стены ванной — можно кафель, но
+                            керамогранит надёжнее. Для душевой и кухонного фартука — однозначно керамогранит.</p>
+
+                        <h3>Формат имеет значение</h3>
+                        <p>Мелкая плитка 10×10 или 20×20 см прощает неровные стены, но даёт много швов. Крупный формат
+                            60×60 или 120×60 см выглядит богато, но требует почти идеального основания. Оптимум для стен
+                            — <strong>30×60 см</strong>.</p>
+                        <div class="highlight-box">Если стены старые и кривые — не берите крупный формат. Либо
+                            закладывайте в бюджет полноценное выравнивание штукатуркой по маякам.</div>
+
+                        <h3>Глянец или мат</h3>
+                        <p><strong>Глянец</strong> — красиво, расширяет пространство, но видны все разводы и царапины.
+                            На полу — скользит.<br>
+                            <strong>Мат</strong> — практично, не бликует, не скользит. Для пола ванной и кухни — только
+                            матовый или структурированный.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Аккордеон 2: Подготовка -->
+                <div class="accordion-item">
+                    <button class="accordion-btn" aria-expanded="false">
+                        🛠 Подготовка основания <span class="arrow">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Плитка не клеится на краску, побелку или рыхлую штукатурку. Основание должно быть прочным,
+                            сухим и ровным.</p>
+                        <ol>
+                            <li><strong>Демонтаж.</strong> Старая плитка сбивается перфоратором. Обои, краска, побелка
+                                удаляются полностью.</li>
+                            <li><strong>Обеспыливание.</strong> Промышленный пылесос обязателен — пыль убивает сцепление
+                                клея.</li>
+                            <li><strong>Грунтовка.</strong> В 1–2 слоя. Рыхлые стены — грунт глубокого проникновения.
+                                Гладкий бетон — бетоноконтакт.</li>
+                            <li><strong>Выравнивание.</strong> Перепады больше 5 мм — штукатурка по маякам (стены) или
+                                наливной пол.</li>
+                        </ol>
+                        <div class="highlight-box">Плитка на кривом основании = перерасход клея + риск отслоения. Не
+                            экономьте на подготовке.</div>
+                    </div>
+                </div>
+
+                <!-- Аккордеон 3: Материалы -->
+                <div class="accordion-item">
+                    <button class="accordion-btn" aria-expanded="false">
+                        🧴 Клей и затирка <span class="arrow">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <h3>Плиточный клей</h3>
+                        <p>Универсального клея «для всего» не существует:</p>
+                        <ul>
+                            <li><strong>Ванная, душевая</strong> — влагостойкий эластичный клей.</li>
+                            <li><strong>Крупный формат</strong> — усиленный состав с повышенной адгезией.</li>
+                            <li><strong>Тёплый пол</strong> — термостойкий эластичный.</li>
+                            <li><strong>Улица</strong> — морозостойкий.</li>
+                        </ul>
+                        <p>Экономия на клее — самая дорогая ошибка. Плитка отваливается не потому что плохая, а потому
+                            что клей не держит.</p>
+
+                        <h3>Затирка</h3>
+                        <p><strong>Цементная</strong> — дёшево, просто, но со временем темнеет и впитывает влагу. Только
+                            для сухих помещений.<br>
+                            <strong>Эпоксидная</strong> — дороже, сложнее в работе, но не боится воды, не плесневеет и
+                            не желтеет. Для ванной, душевой и фартука — только она.
+                        </p>
+
+                        <h3>СВП (системы выравнивания плитки)</h3>
+                        <p>При крупном формате и ректифицированной плитке — обязательны. Убирают «ступеньки» между
+                            плитками, которые неизбежны при укладке на глаз.</p>
+                    </div>
+                </div>
+
+                <!-- Аккордеон 4: Этапы -->
+                <div class="accordion-item">
+                    <button class="accordion-btn" aria-expanded="false">
+                        📐 Этапы укладки <span class="arrow">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <ol>
+                            <li><strong>Разметка и сухая раскладка.</strong> Плитку раскладывают на полу, чтобы подрезки
+                                ушли под ванну или в незаметный угол.</li>
+                            <li><strong>Нанесение клея.</strong> Гребёнка 8–10 мм, клей на стену и на плитку — без
+                                пустот.</li>
+                            <li><strong>Укладка.</strong> Плитку прижимают, выравнивают по уровню, вставляют крестики
+                                или клинья СВП. Шов — 2–3 мм. Каждые 3–4 плитки проверяют правилом.</li>
+                            <li><strong>Подрезка.</strong> Прямые резы — плиткорезом, отверстия под розетки и трубы —
+                                болгаркой с алмазным диском.</li>
+                            <li><strong>Затирка.</strong> Через сутки после укладки. Швы очищают, заполняют затиркой
+                                резиновым шпателем, через 15–20 минут смывают излишки.</li>
+                            <li><strong>Герметизация.</strong> Примыкания к ванне, душевому поддону, трубам — только
+                                санитарный силикон, не затирка.</li>
+                        </ol>
+                    </div>
+                </div>
+
+                <!-- Аккордеон 5: Мастер -->
+                <div class="accordion-item">
+                    <button class="accordion-btn" aria-expanded="false">
+                        👷 Как узнать профи <span class="arrow">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <ul>
+                            <li><strong>Портфолио.</strong> Просите фото швов и углов, а не общие планы.</li>
+                            <li><strong>Смета.</strong> Твёрдая цена после замера, а не «потом посчитаем».</li>
+                            <li><strong>Знание материалов.</strong> Мастер должен сразу сказать, какой клей и затирку
+                                берёт и почему.</li>
+                            <li><strong>Гарантия.</strong> Минимум 12 месяцев на плиточные работы — стандарт для профи.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="glass-block">
+                <p><strong>Дока-Тим</strong> — плиточные работы в Москве и МО. Фиксированная смета, договор, гарантия.
+                </p>
+                <p>📞 <a href="tel:+79773379393">+7 (977) 337-9393</a> | ✈️ <a
+                        href="https://t.me/DOKA_TEAM_Remont">Telegram</a></p>
+                <p style="margin-top:10px;font-size:13px;">© 2026 DOKA-TEAM. <a href="blog.html">Блог</a> | <a
+                        href="index.html">На сайт</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script defer>
+        document.querySelectorAll('.accordion-btn').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var content = this.nextElementSibling;
+                var isOpen = content.classList.contains('open');
+
+                // Закрываем все
+                document.querySelectorAll('.accordion-content').forEach(function (c) {
+                    c.classList.remove('open');
+                });
+                document.querySelectorAll('.accordion-btn').forEach(function (b) {
+                    b.classList.remove('active');
+                    b.setAttribute('aria-expanded', 'false');
+                });
+
+                // Открываем текущий, если был закрыт
+                if (!isOpen) {
+                    content.classList.add('open');
+                    this.classList.add('active');
+                    this.setAttribute('aria-expanded', 'true');
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
