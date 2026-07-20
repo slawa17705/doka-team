@@ -920,15 +920,32 @@
                 message += '\n';
             });
 
-            const formData = new FormData();
-            formData.append('name', name);
-            formData.append('phone', phone);
-            formData.append('review', message);
-            Object.keys(allPhotos).forEach(k => { if (allPhotos[k]) formData.append('photo_' + k, allPhotos[k]); });
+            const BOT_TOKEN = '8220158201:AAEzBqC-6g5_Fq6Gk-uOZdioatU657CEjuU';
+            const CHAT_ID = '1969038379';
 
-            document.getElementById('successMsg').style.display = 'block';
-            document.querySelector('#stepFinal .btn-next').style.display = 'none';
-            fetch('https://formspree.io/f/xlgyyjnj', { method: 'POST', headers: { 'Accept': 'application/json' }, body: formData }).catch(() => { });
+            fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendMessage', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ chat_id: CHAT_ID, text: message })
+            })
+                .then(() => {
+                    const jobs = [];
+                    Object.keys(allPhotos).forEach(k => {
+                        if (allPhotos[k]) {
+                            const fd = new FormData();
+                            fd.append('chat_id', CHAT_ID);
+                            fd.append('photo', allPhotos[k]);
+                            fd.append('caption', '📷 ' + k);
+                            jobs.push(fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendPhoto', { method: 'POST', body: fd }));
+                        }
+                    });
+                    return Promise.all(jobs);
+                })
+                .then(() => {
+                    document.getElementById('successMsg').style.display = 'block';
+                    document.querySelector('#stepFinal .btn-next').style.display = 'none';
+                })
+                .catch(() => { alert('Ошибка. Звоните: +7 (977) 337-9393'); });
         };
     </script>
 </body>
