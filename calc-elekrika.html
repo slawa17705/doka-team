@@ -448,10 +448,6 @@
             }
         }
     </style>
-   <script>
-    const BOT_TOKEN = '8220158201:AAHbmhoZLXDZ3T6V2Vbm5qyVS_QAlSRp5yE';
-    const CHAT_ID = '1969038379';
-</script>
 </head>
 
 <body>
@@ -895,6 +891,26 @@
             document.getElementById('phoneError').style.display = 'none';
             document.getElementById('userPhone').classList.remove('error');
 
+            // === ПРОВЕРКА VPN И ПРЕДУПРЕЖДЕНИЕ ===
+            const needVPN = !window.location.hostname.includes('localhost') && !window.location.hostname.includes('127.0.0.1');
+            if (needVPN) {
+                const ok = confirm(
+                    '⚠️ Внимание!\n\n' +
+                    'Telegram (куда уходит заявка) заблокирован на территории РФ.\n' +
+                    'Для отправки заявки с телефона или компьютера нужен VPN.\n\n' +
+                    'Если VPN включён — нажмите «ОК».\n' +
+                    'Если нет — нажмите «Отмена» и позвоните нам:\n' +
+                    '+7 (977) 337-9393\n\n' +
+                    'Приносим извинения за неудобства!'
+                );
+                if (!ok) return;
+            }
+
+            // === БЛОКИРУЕМ ПОВТОРНУЮ ОТПРАВКУ ===
+            const btn = document.querySelector('#stepFinal .btn-next');
+            btn.disabled = true;
+            btn.textContent = '⏳ Отправляю...';
+
             let message = '⚡ Заявка с калькулятора электрики!\nИмя: ' + name + '\nТелефон: ' + phone + '\n\n';
             const allRoomIds = [...selectedRooms, ...extraRooms];
             allRoomIds.forEach(roomId => {
@@ -924,31 +940,50 @@
                 message += '\n';
             });
 
-   
+            const BOT_TOKEN = '8220158201:AAHbmhoZLXDZ3T6V2Vbm5qyVS_QAlSRp5yE';
+            const CHAT_ID = '1969038379';
 
             fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendMessage', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ chat_id: CHAT_ID, text: message })
             })
-                .then(() => {
+                .then(response => {
+                    if (!response.ok) throw new Error('sendMessage failed');
                     const jobs = [];
-                    Object.keys(allPhotos).forEach(k => {
-                        if (allPhotos[k]) {
-                            const fd = new FormData();
-                            fd.append('chat_id', CHAT_ID);
-                            fd.append('photo', allPhotos[k]);
-                            fd.append('caption', '📷 ' + k);
-                            jobs.push(fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendPhoto', { method: 'POST', body: fd }));
-                        }
-                    });
+                    if (typeof allPhotos !== 'undefined' && allPhotos) {
+                        Object.keys(allPhotos).forEach(k => {
+                            if (allPhotos[k]) {
+                                const fd = new FormData();
+                                fd.append('chat_id', CHAT_ID);
+                                fd.append('photo', allPhotos[k]);
+                                fd.append('caption', '📷 ' + k);
+                                jobs.push(fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendPhoto', { method: 'POST', body: fd }));
+                            }
+                        });
+                    }
                     return Promise.all(jobs);
                 })
                 .then(() => {
                     document.getElementById('successMsg').style.display = 'block';
-                    document.querySelector('#stepFinal .btn-next').style.display = 'none';
+                    document.getElementById('successMsg').textContent = '✅ Заявка отправлена! Мы скоро перезвоним.';
+                    btn.style.display = 'none';
                 })
-                .catch(() => { alert('Ошибка. Звоните: +7 (977) 337-9393'); });
+                .catch(() => {
+                    // === ОШИБКА — СКОРЕЕ ВСЕГО НЕТ VPN ===
+                    document.getElementById('successMsg').style.display = 'block';
+                    document.getElementById('successMsg').style.color = '#e74c3c';
+                    document.getElementById('successMsg').textContent =
+                        '😔 Не удалось отправить заявку.\n\n' +
+                        'Скорее всего, у вас не включён VPN, а Telegram в России заблокирован.\n' +
+                        'Пожалуйста, включите VPN и попробуйте снова.\n\n' +
+                        'Или просто позвоните нам:\n' +
+                        '📞 +7 (977) 337-9393\n' +
+                        '📞 +7 (929) 594-7060\n\n' +
+                        'Приносим извинения за доставленные неудобства! 🙏';
+                    btn.disabled = false;
+                    btn.textContent = 'Попробовать ещё раз';
+                });
         };
     </script>
 </body>
