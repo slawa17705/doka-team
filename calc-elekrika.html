@@ -878,113 +878,92 @@
             this.classList.remove('error');
         });
         function validatePhone(p) { const c = p.replace(/\D/g, ''); return c.length === 11 && (c.startsWith('7') || c.startsWith('8')); }
+window.submitForm = function () {
+    const name = document.getElementById('userName').value.trim();
+    const phone = document.getElementById('userPhone').value.trim();
+    if (!name) return alert('Введите имя');
+    if (!validatePhone(phone)) {
+        document.getElementById('phoneError').style.display = 'block';
+        document.getElementById('userPhone').classList.add('error');
+        return;
+    }
+    document.getElementById('phoneError').style.display = 'none';
+    document.getElementById('userPhone').classList.remove('error');
 
-        window.submitForm = function () {
-            const name = document.getElementById('userName').value.trim();
-            const phone = document.getElementById('userPhone').value.trim();
-            if (!name) return alert('Введите имя');
-            if (!validatePhone(phone)) {
-                document.getElementById('phoneError').style.display = 'block';
-                document.getElementById('userPhone').classList.add('error');
-                return;
-            }
-            document.getElementById('phoneError').style.display = 'none';
-            document.getElementById('userPhone').classList.remove('error');
+    const btn = document.querySelector('#stepFinal .btn-next');
+    btn.disabled = true;
+    btn.textContent = '⏳ Отправляю...';
 
-            // === ПРОВЕРКА VPN И ПРЕДУПРЕЖДЕНИЕ ===
-            const needVPN = !window.location.hostname.includes('localhost') && !window.location.hostname.includes('127.0.0.1');
-            if (needVPN) {
-                const ok = confirm(
-                    '⚠️ Внимание!\n\n' +
-                    'Telegram (куда уходит заявка) заблокирован на территории РФ.\n' +
-                    'Для отправки заявки с телефона или компьютера нужен VPN.\n\n' +
-                    'Если VPN включён — нажмите «ОК».\n' +
-                    'Если нет — нажмите «Отмена» и позвоните нам:\n' +
-                    '+7 (977) 337-9393\n\n' +
-                    'Приносим извинения за неудобства!'
-                );
-                if (!ok) return;
-            }
+    // Собираем сообщение
+    let message = '⚡ Заявка с калькулятора электрики!\nИмя: ' + name + '\nТелефон: ' + phone + '\n\n';
+    const allRoomIds = [...selectedRooms, ...extraRooms];
+    allRoomIds.forEach(roomId => {
+        const data = savedData[roomId] || {};
+        const isExtra = roomId.startsWith('extra_');
+        const roomType = isExtra ? 'extra' : roomId;
+        let displayName = data.name || roomNamesFull[roomType] || 'Комната';
+        if (isExtra && data.name) displayName = '📦 ' + data.name;
 
-            // === БЛОКИРУЕМ ПОВТОРНУЮ ОТПРАВКУ ===
-            const btn = document.querySelector('#stepFinal .btn-next');
-            btn.disabled = true;
-            btn.textContent = '⏳ Отправляю...';
+        const hasData = (data.items && data.items.length) || data.len || data.wid || data.comment || (data.photoKeys && data.photoKeys.length);
+        if (!hasData) return;
 
-            let message = '⚡ Заявка с калькулятора электрики!\nИмя: ' + name + '\nТелефон: ' + phone + '\n\n';
-            const allRoomIds = [...selectedRooms, ...extraRooms];
-            allRoomIds.forEach(roomId => {
-                const data = savedData[roomId] || {};
-                const isExtra = roomId.startsWith('extra_');
-                const roomType = isExtra ? 'extra' : roomId;
-                let displayName = data.name || roomNamesFull[roomType] || 'Комната';
-                if (isExtra && data.name) displayName = '📦 ' + data.name;
-
-                const hasData = (data.items && data.items.length) || data.len || data.wid || data.comment || (data.photoKeys && data.photoKeys.length);
-                if (!hasData) return;
-
-                message += '📍 ' + displayName + '\n';
-                if (data.len && data.wid) message += '   Размер: ' + data.len + ' × ' + data.wid + ' м\n';
-                if (data.items) data.items.forEach(i => message += '   — ' + i + '\n');
-                if (data.qty) {
-                    Object.keys(data.qty).forEach(k => {
-                        const v = data.qty[k];
-                        if (v && v !== '0') {
-                            const labels = { extraSockets: 'Доп. розетки', spots: 'Точечные', bra: 'Бра', sockets: 'Розетки' };
-                            message += '   — ' + (labels[k] || k) + ': ' + v + ' шт.\n';
-                        }
-                    });
+        message += '📍 ' + displayName + '\n';
+        if (data.len && data.wid) message += '   Размер: ' + data.len + ' × ' + data.wid + ' м\n';
+        if (data.items) data.items.forEach(i => message += '   — ' + i + '\n');
+        if (data.qty) {
+            Object.keys(data.qty).forEach(k => {
+                const v = data.qty[k];
+                if (v && v !== '0') {
+                    const labels = { extraSockets: 'Доп. розетки', spots: 'Точечные', bra: 'Бра', sockets: 'Розетки' };
+                    message += '   — ' + (labels[k] || k) + ': ' + v + ' шт.\n';
                 }
-                if (data.comment) message += '   💬 ' + data.comment + '\n';
-                if (data.photoKeys && data.photoKeys.length) message += '   📷 Фото: ' + data.photoKeys.length + ' шт.\n';
-                message += '\n';
             });
+        }
+        if (data.comment) message += '   💬 ' + data.comment + '\n';
+        if (data.photoKeys && data.photoKeys.length) message += '   📷 Фото: ' + data.photoKeys.length + ' шт. (будут отправлены отдельно)\n';
+        message += '\n';
+    });
 
-            const BOT_TOKEN = '8220158201:AAHbmhoZLXDZ3T6V2Vbm5qyVS_QAlSRp5yE';
-            const CHAT_ID = '1969038379';
+    // Отправка через Formspree (замени ID на свой!)
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('phone', phone);
+    formData.append('message', message);
 
-            fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendMessage', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ chat_id: CHAT_ID, text: message })
-            })
-                .then(response => {
-                    if (!response.ok) throw new Error('sendMessage failed');
-                    const jobs = [];
-                    if (typeof allPhotos !== 'undefined' && allPhotos) {
-                        Object.keys(allPhotos).forEach(k => {
-                            if (allPhotos[k]) {
-                                const fd = new FormData();
-                                fd.append('chat_id', CHAT_ID);
-                                fd.append('photo', allPhotos[k]);
-                                fd.append('caption', '📷 ' + k);
-                                jobs.push(fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendPhoto', { method: 'POST', body: fd }));
-                            }
-                        });
-                    }
-                    return Promise.all(jobs);
-                })
-                .then(() => {
-                    document.getElementById('successMsg').style.display = 'block';
-                    document.getElementById('successMsg').textContent = '✅ Заявка отправлена! Мы скоро перезвоним.';
-                    btn.style.display = 'none';
-                })
-                .catch(() => {
-                    // === ОШИБКА — СКОРЕЕ ВСЕГО НЕТ VPN ===
-                    document.getElementById('successMsg').style.display = 'block';
-                    document.getElementById('successMsg').style.color = '#e74c3c';
-                    document.getElementById('successMsg').textContent =
-                        '😔 Не удалось отправить заявку.\n\n' +
-                        'Скорее всего, у вас не включён VPN, а Telegram в России заблокирован.\n' +
-                        'Пожалуйста, включите VPN и попробуйте снова.\n\n' +
-                        'Или просто позвоните нам:\n' +
-                        '📞 +7 (977) 337-9393\n' +
-                        '📞 +7 (929) 594-7060\n\n' +
-                        'Приносим извинения за доставленные неудобства! 🙏';
-                    btn.disabled = false;
-                    btn.textContent = 'Попробовать ещё раз';
-                });
-        };
+    // Если есть фото — добавляем
+    if (typeof allPhotos !== 'undefined' && allPhotos) {
+        Object.keys(allPhotos).forEach(k => {
+            if (allPhotos[k]) {
+                formData.append('photos', allPhotos[k], k + '.jpg');
+            }
+        });
+    }
+
+    fetch('https://formspree.io/f/xlgyyjnj', {
+        method: 'POST',
+        body: formData
+    })
+        .then(response => {
+            if (response.ok) {
+                document.getElementById('successMsg').style.display = 'block';
+                document.getElementById('successMsg').style.color = '#d4af37';
+                document.getElementById('successMsg').textContent = '✅ Заявка отправлена! Мы скоро перезвоним.';
+                btn.style.display = 'none';
+            } else {
+                throw new Error('Formspree error');
+            }
+        })
+        .catch(() => {
+            document.getElementById('successMsg').style.display = 'block';
+            document.getElementById('successMsg').style.color = '#e74c3c';
+            document.getElementById('successMsg').textContent = 
+                '😔 Не удалось отправить заявку.\n\nПозвоните нам:\n📞 +7 (977) 337-9393';
+            btn.disabled = false;
+            btn.textContent = 'Попробовать ещё раз';
+        });
+};
+        
+        
     </script>
 </body>
 
