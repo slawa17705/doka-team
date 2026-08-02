@@ -214,8 +214,8 @@
         <loc>https://doka-team.ru/calc-elekrika.html</loc>
         <priority>0.8</priority>
     </url>
-        <url>
-        <loc>https://doka-team.ru/remont-mosfilm.html</loc>
+      <url>
+        <loc>https://doka-team.ru/blog-post-mosfilm.html</loc>
         <priority>0.7</priority>
     </url>
 </urlset>
