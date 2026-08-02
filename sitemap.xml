@@ -218,4 +218,8 @@
         <loc>https://doka-team.ru/blog-post-mosfilm.html</loc>
         <priority>0.7</priority>
     </url>
+        <url>
+        <loc>https://doka-team.ru/Смета на ремонт квартиры.pdf</loc>
+        <priority>0.5</priority>
+    </url>
 </urlset>
