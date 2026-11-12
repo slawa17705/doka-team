@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <link rel="canonical" href="https://doka-team.ru/price.html">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Калькулятор ремонта квартир под ключ в Зеленограде и Москве — узнать стоимость онлайн | Дока-Тим</title>
-<meta name="description" content="Рассчитайте точную стоимость ремонта квартиры, ванной или электрики в Зеленограде и Москве за 4 шага. Получите 2 варианта сметы (Эконом и Стандарт) со скидкой 3% от Дока-Тим.">
+    <title>Калькулятор стоимости ремонта | Дока-Тим</title>
+    <meta name="description"
+        content="Калькулятор стоимости ремонта квартир, ванных комнат и электрики в Москве и МО. Онлайн-расчёт сметы от Дока-Тим.">
     <style>
         :root {
             --accent: #d4af37;
@@ -392,9 +393,8 @@
 
 <body>
     <div class="calculator">
-       <h1>Калькулятор стоимости ремонта в Зеленограде и Москве</h1>
+        <h1>Калькулятор</h1>
         <div class="gold-line"></div>
-        <p style="text-align:center; font-size:14px; opacity:0.8; margin-bottom:15px;">Узнайте точную стоимость отделки квартиры в новостройках и вторичном фонде Зеленограда и Москвы всего за 4 шага.</p>
         <div class="step-indicator" id="stepIndicator">Шаг 1 из 4</div>
 
         <div class="step active" id="step0">
@@ -516,7 +516,6 @@
                 <input type="tel" id="userPhone" placeholder="+7 (___) ___-__-__" required>
                 <div class="error-msg" id="phoneError">Введите номер в формате +7 (999) 123-45-67</div>
                 <button class="btn btn-next" onclick="submitForm()" style="width:100%;">Получить расчёт</button>
-                <p style="font-size:11px; opacity:0.5; margin-top:8px;">Нажимая кнопку, вы соглашаетесь с <a href="privacy.html" style="color:#d4af37;">Политикой конфиденциальности</a></p>
                 <div class="success-msg" id="successMsg">✅ Заявка отправлена! Мы скоро перезвоним.</div>
             </div>
             <div class="nav-buttons" style="margin-top:15px;">
@@ -524,38 +523,60 @@
             </div>
         </div>
         <a href="index.html" class="back-link">← На главную</a>
-    <div style="max-width:600px; margin:30px auto 0; color:#fff; font-size:14px; text-align:left;">
-        <h3 style="color:#d4af37; text-align:center; margin-bottom:15px;">Ориентировочные цены на ремонт в Зеленограде и Москве</h3>
-        <table style="width:100%; border-collapse:collapse; margin-bottom:20px;">
-            <tr style="border-bottom:1px solid rgba(255,255,255,0.2);">
-                <td style="padding:10px;">Косметический ремонт</td>
-                <td style="padding:10px; text-align:right; color:#d4af37;">от 15 000 ₽/м²</td>
-            </tr>
-            <tr style="border-bottom:1px solid rgba(255,255,255,0.2);">
-                <td style="padding:10px;">Капитальный ремонт</td>
-                <td style="padding:10px; text-align:right; color:#d4af37;">от 35 000 ₽/м²</td>
-            </tr>
-            <tr style="border-bottom:1px solid rgba(255,255,255,0.2);">
-                <td style="padding:10px;">Дизайнерский ремонт</td>
-                <td style="padding:10px; text-align:right; color:#d4af37;">от 45 000 ₽/м²</td>
-            </tr>
-            <tr style="border-bottom:1px solid rgba(255,255,255,0.2);">
-                <td style="padding:10px;">Ремонт ванной под ключ</td>
-                <td style="padding:10px; text-align:right; color:#d4af37;">от 45 000 ₽</td>
-            </tr>
-            <tr>
-                <td style="padding:10px;">Электромонтажные работы</td>
-                <td style="padding:10px; text-align:right; color:#d4af37;">от 800 ₽/точка</td>
-            </tr>
-        </table>
-        <p style="opacity:0.7; margin-bottom:15px;">Точную смету составляем после замера. А пока посмотрите:</p>
-        <p>
-            <a href="service-repair.html" style="color:#d4af37;">Ремонт и отделка</a> |
-            <a href="service-design.html" style="color:#d4af37;">Проектирование</a> |
-            <a href="service-engineering.html" style="color:#d4af37;">Инженерные системы</a> |
-            <a href="calc-elekrika.html" style="color:#d4af37;">Калькулятор электрики</a>
-        </p>
-    </div>
+        <!-- Блок с ценами и ссылками -->
+        <div style="margin-top: 30px; padding: 20px; background: rgba(255,255,255,0.05); border-radius: 10px;">
+            <h3 style="color: #d4af37; font-size: 20px; margin-bottom: 20px; text-align: center;">Ориентировочные цены
+                на ремонт в Зеленограде и Москве</h3>
+
+            <div style="font-size: 16px; color: #fff;">
+                <!-- Косметический -->
+                <a href="kosmeticheskij-remont.html"
+                    style="text-decoration: none; display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.2); transition: 0.3s;"
+                    onmouseover="this.style.background='rgba(255,255,255,0.05)'"
+                    onmouseout="this.style.background='transparent'">
+                    <span style="color: #fff;">Косметический ремонт</span>
+                    <span style="color: #d4af37; font-weight: 700;">от 15 000 ₽/м² →</span>
+                </a>
+
+                <!-- Капитальный -->
+                <a href="kapitalnyj-remont.html"
+                    style="text-decoration: none; display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.2); transition: 0.3s;"
+                    onmouseover="this.style.background='rgba(255,255,255,0.05)'"
+                    onmouseout="this.style.background='transparent'">
+                    <span style="color: #fff;">Капитальный ремонт</span>
+                    <span style="color: #d4af37; font-weight: 700;">от 35 000 ₽/м² →</span>
+                </a>
+
+                <!-- Дизайнерский -->
+                <a href="dizajnerskij-remont.html"
+                    style="text-decoration: none; display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.2); transition: 0.3s;"
+                    onmouseover="this.style.background='rgba(255,255,255,0.05)'"
+                    onmouseout="this.style.background='transparent'">
+                    <span style="color: #fff;">Дизайнерский ремонт</span>
+                    <span style="color: #d4af37; font-weight: 700;">от 45 000 ₽/м² →</span>
+                </a>
+
+                <!-- Электромонтаж (ведет на страницу с калькулятором электрики) -->
+                <a href="calc-elekrika.html"
+                    style="text-decoration: none; display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.2); transition: 0.3s;"
+                    onmouseover="this.style.background='rgba(255,255,255,0.05)'"
+                    onmouseout="this.style.background='transparent'">
+                    <span style="color: #fff;">Электромонтажные работы</span>
+                    <span style="color: #d4af37; font-weight: 700;">от 800 ₽/точка →</span>
+                </a>
+            </div>
+
+            <p style="text-align: center; margin-top: 20px; font-size: 14px; color: rgba(255,255,255,0.8);">
+                Точную смету составляем после замера. А пока посмотрите:
+            </p>
+
+            <div style="text-align: center; margin-bottom: 20px; font-size: 15px; line-height: 2;">
+                <a href="service-repair.html" style="color: #fff; text-decoration: underline;">Ремонт и отделка</a> |
+                <a href="service-design.html" style="color: #fff; text-decoration: underline;">Проектирование</a> |
+                <a href="service-engineering.html" style="color: #fff; text-decoration: underline;">Инженерные
+                    системы</a>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -611,7 +632,7 @@
             const type = document.getElementById('flatType').value;
             const area = parseInt(document.getElementById('flatArea').value);
             if (!area || area < 1) return alert('Введите площадь');
-            const prices = { 'Косметический': 20000, 'Капитальный': 35000, 'Дизайнерский': 45000 };
+            const prices = { 'Косметический': 15000, 'Капитальный': 35000, 'Дизайнерский': 45000 };
             const price = area * (prices[type] || 20000);
             document.getElementById('flatPrice').textContent = price.toLocaleString('ru-RU') + ' ₽';
             document.getElementById('flatResult').style.display = 'block';

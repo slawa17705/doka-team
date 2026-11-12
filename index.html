@@ -596,6 +596,15 @@
             border: none !important;
             outline: none !important;
         }
+
+        /* Кликабельные цены на главной */
+        .price-item {
+            transition: color 0.3s ease;
+        }
+
+        .price-item:hover span:first-child {
+            color: #d4af37 !important;
+        }
     </style>
 
     <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -828,28 +837,22 @@
                 <div style="max-width: 800px; margin: 0 auto; font-size: 16px; color: #fff;">
 
                     <!-- Ссылка на косметику -->
-                    <a href="kosmeticheskij-remont.html"
-                        style="text-decoration: none; display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2); transition: 0.3s;"
-                        onmouseover="this.style.background='rgba(255,255,255,0.05)'"
-                        onmouseout="this.style.background='transparent'">
+                    <a href="kosmeticheskij-remont.html" class="price-item"
+                        style="text-decoration: none; display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
                         <span style="color: #fff;">Косметический ремонт</span>
                         <span style="color: #d4af37; font-weight: 700;">от 15 000 ₽/м² →</span>
                     </a>
 
                     <!-- Ссылка на капиталку -->
-                    <a href="kapitalnyj-remont.html"
-                        style="text-decoration: none; display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2); transition: 0.3s;"
-                        onmouseover="this.style.background='rgba(255,255,255,0.05)'"
-                        onmouseout="this.style.background='transparent'">
+                    <a href="kapitalnyj-remont.html" class="price-item"
+                        style="text-decoration: none; display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
                         <span style="color: #fff;">Капитальный ремонт</span>
                         <span style="color: #d4af37; font-weight: 700;">от 35 000 ₽/м² →</span>
                     </a>
 
                     <!-- Ссылка на дизайн -->
-                    <a href="dizajnerskij-remont.html"
-                        style="text-decoration: none; display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2); transition: 0.3s;"
-                        onmouseover="this.style.background='rgba(255,255,255,0.05)'"
-                        onmouseout="this.style.background='transparent'">
+                    <a href="dizajnerskij-remont.html" class="price-item"
+                        style="text-decoration: none; display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.2);">
                         <span style="color: #fff;">Дизайнерский ремонт</span>
                         <span style="color: #d4af37; font-weight: 700;">от 45 000 ₽/м² →</span>
                     </a>
