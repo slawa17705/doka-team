@@ -243,5 +243,9 @@
         <loc>https://doka-team.ru/blog-post-nadezhdino.html</loc>
         <priority>0.7</priority>
     </url>
+        <url>
+        <loc>https://doka-team.ru/blog-post-stekloholst.html</loc>
+        <priority>0.7</priority>
+    </url>
     
 </urlset>
