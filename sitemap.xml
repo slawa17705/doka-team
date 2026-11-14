@@ -251,5 +251,9 @@
         <loc>https://doka-team.ru/blog-post-shpatlevka.html</loc>
         <priority>0.7</priority>
     </url>
+        <url>
+        <loc>https://doka-team.ru/blog-post-pokraska.html</loc>
+        <priority>0.7</priority>
+    </url>
     
 </urlset>
