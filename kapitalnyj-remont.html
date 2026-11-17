@@ -41,7 +41,13 @@
     }
     </script>
 
-    <style>
+       <style>
+        :root {
+            --accent: #d4af37;
+            --glass: rgba(255, 255, 255, 0.05);
+            --text: #fff;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -50,77 +56,95 @@
         }
 
         body {
-            background-color: #9b9b92;
+            background: url('image/ice-crystals-fon1.webp') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             padding: 40px 20px;
-            line-height: 1.8;
-            color: #333;
+            line-height: 1.7;
+            color: var(--text);
         }
 
         .container {
-            max-width: 900px;
+            max-width: 850px;
+            width: 100%;
             margin: 0 auto;
-            background: #fff;
-            padding: 50px;
-            border-radius: 8px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            background: url('image/glass-bg1.webp') no-repeat center center;
+            background-size: cover;
+            padding: 45px 40px;
+            border-radius: 14px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
         }
 
         h1 {
-            font-size: 28px;
-            color: #222;
-            margin-bottom: 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: var(--text);
+            margin-bottom: 10px;
             line-height: 1.3;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
 
         .gold-line {
-            width: 60px;
+            width: 50px;
             height: 3px;
-            background: #d4af37;
-            margin-bottom: 30px;
+            background: var(--accent);
+            margin: 0 auto 30px;
         }
 
         h2 {
-            font-size: 22px;
-            color: #222;
-            margin: 35px 0 15px;
-            padding-bottom: 5px;
-            border-bottom: 1px solid #eee;
+            font-size: 19px;
+            color: var(--accent);
+            margin: 30px 0 12px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
         }
 
         p {
-            font-size: 17px;
-            color: #444;
-            margin-bottom: 20px;
+            font-size: 15.5px;
+            color: var(--text);
+            opacity: 0.9;
+            margin-bottom: 16px;
         }
 
-        /* Стили для аккордеона */
+        p a {
+            color: var(--accent) !important;
+            text-decoration: none;
+        }
+
+        p a:hover {
+            text-decoration: underline;
+        }
+
+        /* Стили для аккордеона и таблицы цен под тёмный стиль */
         .estimate-accordion {
-            background: #f9f9f9;
-            border: 1px solid #e8d5b0;
+            background: rgba(0, 0, 0, 0.35);
+            border: 1px solid rgba(212, 175, 55, 0.35);
             border-radius: 8px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             overflow: hidden;
         }
 
         .estimate-accordion summary {
             cursor: pointer;
             padding: 15px;
-            background: #fdfaf0;
-            border-radius: 8px;
-            border: 1px solid #e8d5b0;
+            background: rgba(212, 175, 55, 0.14);
             text-align: center;
             font-size: 16px;
             font-weight: 700;
-            color: #b8942e;
+            color: var(--accent);
             display: block;
             width: 100%;
-            box-sizing: border-box;
             list-style: none;
+            transition: 0.3s;
         }
 
-        .estimate-accordion[open] summary {
-            border-bottom-left-radius: 0;
-            border-bottom-right-radius: 0;
+        .estimate-accordion summary:hover {
+            background: rgba(212, 175, 55, 0.22);
         }
 
         .table-responsive {
@@ -133,51 +157,73 @@
             width: 100%;
             border-collapse: collapse;
             min-width: 600px;
-            background: #fff;
+            background: transparent;
         }
 
         th,
         td {
-            padding: 15px;
+            padding: 14px 15px;
             text-align: left;
-            border-bottom: 1px solid #eee;
-            font-size: 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14.5px;
+            color: var(--text);
         }
 
         th {
-            background: #fff;
-            color: #222;
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        /* Переопределяем светло-серый фон строк-разделителей внутри таблицы */
+        td[colspan] {
+            background: rgba(212, 175, 55, 0.12) !important;
+            color: var(--accent) !important;
             font-weight: 700;
         }
 
         td:last-child {
-            color: #666;
-            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 13.5px;
         }
 
         .price-highlight {
-            color: #b8942e;
+            color: var(--accent);
             font-weight: 700;
             white-space: nowrap;
         }
 
         .highlight {
-            background: #fdfaf0;
-            padding: 25px;
-            border-left: 4px solid #d4af37;
-            margin: 30px 0;
+            background: rgba(212, 175, 55, 0.12);
+            padding: 20px 25px;
+            border-left: 4px solid var(--accent);
+            margin: 25px 0;
             border-radius: 0 8px 8px 0;
         }
 
         .highlight p {
-            margin-bottom: 10px;
-            font-size: 16px;
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+
+        .highlight p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight a {
+            color: var(--accent) !important;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .highlight a:hover {
+            text-decoration: underline;
         }
 
         .btn-link {
             display: inline-block;
-            background: #d4af37;
-            color: #fff;
+            background: var(--accent);
+            color: #111;
             padding: 14px 28px;
             text-decoration: none;
             font-weight: 700;
@@ -187,13 +233,25 @@
         }
 
         .btn-link:hover {
-            background: #b8942e;
+            background: #e5c158;
+            transform: translateY(-1px);
+        }
+
+        /* Перекрашиваем нижний блок «Другие услуги» поверх инлайн-стилей */
+        .container div[style*="border-top"] {
+            border-top: 1px dashed rgba(255, 255, 255, 0.2) !important;
+            color: rgba(255, 255, 255, 0.75) !important;
+        }
+
+        .container div[style*="border-top"] a {
+            color: var(--accent) !important;
         }
 
         .back-link {
-            display: inline-block;
-            margin-top: 20px;
-            color: #d4af37;
+            display: block;
+            text-align: center;
+            margin-top: 25px;
+            color: var(--accent);
             text-decoration: none;
             font-weight: 700;
             font-size: 14px;
@@ -205,18 +263,15 @@
 
         @media (max-width: 600px) {
             .container {
-                padding: 25px 15px;
+                padding: 30px 20px;
             }
 
             h1 {
-                font-size: 22px;
-            }
-
-            p {
-                font-size: 16px;
+                font-size: 20px;
             }
         }
     </style>
+
 </head>
 
 <body>
