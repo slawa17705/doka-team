@@ -32,6 +32,12 @@
     </script>
 
     <style>
+        :root {
+            --accent: #d4af37;
+            --glass: rgba(255, 255, 255, 0.05);
+            --text: #fff;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -40,47 +46,59 @@
         }
 
         body {
-            background-color: #9b9b92;
+            background: url('image/ice-crystals-fon1.webp') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             padding: 40px 20px;
-            line-height: 1.8;
-            color: #333;
+            line-height: 1.7;
+            color: var(--text);
         }
 
         .container {
-            max-width: 900px;
+            max-width: 800px;
+            width: 100%;
             margin: 0 auto;
-            background: #fff;
-            padding: 50px;
-            border-radius: 8px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            background: url('image/glass-bg1.webp') no-repeat center center;
+            background-size: cover;
+            padding: 45px 40px;
+            border-radius: 14px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
         }
 
         h1 {
-            font-size: 28px;
-            color: #222;
-            margin-bottom: 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: var(--text);
+            margin-bottom: 10px;
             line-height: 1.3;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
 
         .gold-line {
-            width: 60px;
+            width: 50px;
             height: 3px;
-            background: #d4af37;
-            margin-bottom: 30px;
+            background: var(--accent);
+            margin: 0 auto 30px;
         }
 
         h2 {
-            font-size: 22px;
-            color: #222;
-            margin: 35px 0 15px;
-            padding-bottom: 5px;
-            border-bottom: 1px solid #eee;
+            font-size: 19px;
+            color: var(--accent);
+            margin: 30px 0 12px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.12);
         }
 
         p {
-            font-size: 17px;
-            color: #444;
-            margin-bottom: 20px;
+            font-size: 15px;
+            color: var(--text);
+            opacity: 0.9;
+            margin-bottom: 16px;
         }
 
         .video-link {
@@ -91,8 +109,8 @@
             border-radius: 6px;
             text-decoration: none;
             font-weight: 700;
-            font-size: 16px;
-            margin: 20px 0;
+            font-size: 15px;
+            margin: 15px 0 25px;
             transition: 0.3s;
         }
 
@@ -103,26 +121,40 @@
 
         .video-icon {
             margin-right: 8px;
-            font-size: 18px;
+            font-size: 17px;
         }
 
         .highlight {
-            background: #fdfaf0;
-            padding: 25px;
-            border-left: 4px solid #d4af37;
-            margin: 30px 0;
+            background: rgba(212, 175, 55, 0.12);
+            padding: 20px 25px;
+            border-left: 4px solid var(--accent);
+            margin: 25px 0;
             border-radius: 0 8px 8px 0;
         }
 
         .highlight p {
-            margin-bottom: 10px;
-            font-size: 16px;
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+
+        .highlight p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight a {
+            color: var(--accent) !important;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .highlight a:hover {
+            text-decoration: underline;
         }
 
         .btn-link {
             display: inline-block;
-            background: #d4af37;
-            color: #fff;
+            background: var(--accent);
+            color: #111;
             padding: 14px 28px;
             text-decoration: none;
             font-weight: 700;
@@ -132,13 +164,15 @@
         }
 
         .btn-link:hover {
-            background: #b8942e;
+            background: #e5c158;
+            transform: translateY(-1px);
         }
 
         .back-link {
-            display: inline-block;
+            display: block;
+            text-align: center;
             margin-top: 20px;
-            color: #d4af37;
+            color: var(--accent);
             text-decoration: none;
             font-weight: 700;
             font-size: 14px;
@@ -150,15 +184,11 @@
 
         @media (max-width: 600px) {
             .container {
-                padding: 25px 15px;
+                padding: 30px 20px;
             }
 
             h1 {
-                font-size: 22px;
-            }
-
-            p {
-                font-size: 16px;
+                font-size: 20px;
             }
         }
     </style>
@@ -177,7 +207,7 @@
             стоит.</p>
 
         <h2>Подготовка и нанесение клея</h2>
-        <p>После полного высыхания грунтовки мы наносим жирным слоем клей для стеклохолста. У нас это клей **Оскар**.
+        <p>После полного высыхания грунтовки мы наносим жирным слоем клей для стеклохолста. У нас это клей <strong>Оскар</strong>.
             Наносим его на тот участок стены, куда будем клеить лист. Важно, чтобы клей покрывал поверхность равномерно,
             без пропусков.</p>
 
@@ -218,8 +248,8 @@
         <div class="highlight">
             <p><strong>Свяжитесь с нами:</strong></p>
             <p>📞 +7 (977) 337-9393</p>
-            <p>✈️ <a href="https://t.me/DOKA_TEAM_Remont" style="color:#b8942e;">Telegram</a></p>
-            <p>🌐 <a href="index.html" style="color:#b8942e;">doka-team.ru</a></p>
+            <p>✈️ <a href="https://t.me/DOKA_TEAM_Remont">Telegram</a></p>
+            <p>🌐 <a href="index.html">doka-team.ru</a></p>
         </div>
 
         <a href="blog.html" class="btn-link">← Вернуться в блог</a>
