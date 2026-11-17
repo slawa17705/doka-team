@@ -267,5 +267,16 @@
         <loc>https://doka-team.ru/service-flooring.html</loc>
         <priority>0.7</priority>
     </url>
-    
+        <url>
+        <loc>https://doka-team.ru/remont-zhk-zelenograd-siti.html</loc>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://doka-team.ru/remont-zhk-melodiya-lesa.html</loc>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://doka-team.ru/remont-zhk-zhemchuzhina.html</loc>
+        <priority>0.8</priority>
+    </url>
 </urlset>
