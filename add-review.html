@@ -199,11 +199,8 @@
         <form class="review-form" id="review-form">
             <input type="text" name="name" placeholder="Ваше имя (например: Иван)" required>
 
-            <div class="address-box">
-                <input type="text" id="addressInput" name="address"
-                    placeholder="Начните вводить адрес объекта (город, улица, дом, кв.)" autocomplete="off" required>
-                <div class="suggestions-list" id="suggestionsList"></div>
-            </div>
+            <input type="text" id="addressInput" name="address"
+                placeholder="Укажите адрес объекта (город, улица, дом, кв.)" required>
 
             <input type="text" name="_gotcha" style="display:none !important;" tabindex="-1" autocomplete="off">
 
@@ -222,14 +219,13 @@
         <a href="reviews.html" class="back-link">← Вернуться к отзывам</a>
     </div>
 
-        <script>
+    <script>
         const addressInput = document.getElementById('addressInput');
         const form = document.getElementById('review-form');
 
         form.addEventListener('submit', async function (e) {
             e.preventDefault();
 
-            // Защита от спам-ботов (скрытая ловушка)
             if (form.querySelector('input[name="_gotcha"]').value) return;
 
             const name = form.querySelector('input[name="name"]').value.trim();
@@ -237,7 +233,6 @@
             const rating = form.querySelector('select[name="rating"]').value;
             const reviewText = form.querySelector('textarea[name="review"]').value.trim();
 
-            // Проверяем, что в адресе есть название улицы/города (минимум 3 буквы) и номер дома (цифра)
             const hasLetters = /[а-яА-ЯёЁa-zA-Z]{3,}/.test(address);
             const hasNumbers = /\d+/.test(address);
 
@@ -279,7 +274,7 @@
             }
         });
     </script>
-
 </body>
+
 
 </html>
