@@ -200,7 +200,7 @@
             <input type="text" name="name" placeholder="Ваше имя (например: Иван)" required>
 
             <input type="text" id="addressInput" name="address"
-                placeholder="Укажите адрес объекта (город, улица, дом, кв.)" required>
+                placeholder="Укажите адрес объекта (город, улица, дом, кв.)" autocomplete="street-address" required>
 
             <input type="text" name="_gotcha" style="display:none !important;" tabindex="-1" autocomplete="off">
 
@@ -219,7 +219,7 @@
         <a href="reviews.html" class="back-link">← Вернуться к отзывам</a>
     </div>
 
-    <script>
+       <script>
         const addressInput = document.getElementById('addressInput');
         const form = document.getElementById('review-form');
 
@@ -233,11 +233,18 @@
             const rating = form.querySelector('select[name="rating"]').value;
             const reviewText = form.querySelector('textarea[name="review"]').value.trim();
 
-            const hasLetters = /[а-яА-ЯёЁa-zA-Z]{3,}/.test(address);
-            const hasNumbers = /\d+/.test(address);
+            // 1. Проверяем наличие названия города/улицы (минимум 4 буквы)
+            const hasLetters = /[а-яА-ЯёЁa-zA-Z]{4,}/.test(address);
 
-            if (!hasLetters || !hasNumbers || address.length < 8) {
-                alert('Пожалуйста, укажите реальный адрес объекта (населённый пункт, улицу и номер дома), чтобы мы могли подтвердить выполнение работ.');
+            // 2. Ищем все отдельные числа в адресе (например: дом 12 и квартира 45 -> 2 числа)
+            const numbersFound = address.match(/\d+/g) || [];
+            const hasHouseAndFlat = numbersFound.length >= 2;
+
+            // 3. Проверяем, не является ли объект частным домом/СНТ/КП (где квартиры нет)
+            const isPrivateHouse = /(частн|коттедж|снт|днп|кп|пос[её]лок|деревн|дер\.|участ|уч\.|владен|вл\.|стр\.|корп\.)/i.test(address) && numbersFound.length >= 1;
+
+            if (!hasLetters || (!hasHouseAndFlat && !isPrivateHouse) || address.length < 12) {
+                alert('Пожалуйста, укажите полный адрес объекта: город, улицу, номер дома И номер квартиры (или укажите СНТ/КП/деревню для частного дома).');
                 addressInput.focus();
                 return;
             }
@@ -253,15 +260,13 @@
             formData.append('rating', rating + ' из 5');
             formData.append('review', `📝 Новый отзыв с сайта Дока-Тим!\nАвтор: ${name}\nАдрес объекта: ${address}\nОценка: ${rating} из 5\n\nОтзыв:\n${reviewText}`);
 
-                    try {
+            try {
                 const endpoint = 'https://formspree.io' + '/f/xlgyyjnj';
                 const response = await fetch(endpoint, {
                     method: 'POST',
                     headers: { 'Accept': 'application/json' },
                     body: formData
                 });
-
-
 
                 if (response.ok) {
                     form.reset();
@@ -277,6 +282,7 @@
             }
         });
     </script>
+
 </body>
 
 
