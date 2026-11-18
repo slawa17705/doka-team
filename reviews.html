@@ -382,7 +382,15 @@
             </div>
         </div>
 
-        <h2 class="leave-review-title">Оставить отзыв</h2>
+               <h2 class="leave-review-title">Оставить отзыв</h2>
+        <form class="review-form" id="review-form" action="https://formspree.io" method="POST">
+            <input type="text" name="name" placeholder="Ваше имя и город (например: Иван, г. Москва)" required>
+            <textarea name="review" placeholder="Напишите ваш отзыв о работе Дока-Тим..." rows="4" required></textarea>
+            <div style="text-align: center;">
+                <button type="submit" class="btn-submit">Отправить отзыв</button>
+            </div>
+        </form>
+
         <a href="index.html" class="back-link">← На главную</a>
     </div>
 
