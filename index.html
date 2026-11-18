@@ -379,29 +379,7 @@
             color: #fff;
         }
 
-        /* Адаптация футера специально для планшетов (768px — 1024px) */
-        @media (min-width: 768px) and (max-width: 1024px) {
-            .footer-grid {
-                gap: 15px; /* Уменьшаем отступы между колонками, чтобы 3 столбца легко встали в ряд */
-            }
-
-            .footer-col h4 {
-                font-size: 14px;
-            }
-
-            .footer-col p,
-            .footer-col a {
-                font-size: 13px;
-                line-height: 1.6;
-            }
-
-            .footer-phone {
-                font-size: 14px;
-            }
-        }
-
-
-        /* ========== ДЕСКТОП: без изменений ========== */
+              /* ========== ДЕСКТОП: без изменений ========== */
         .mobile-logo {
             display: none;
         }
@@ -417,29 +395,36 @@
             display: block;
         }
 
-        /* ========== ПЛАНШЕТ ========== */
-        @media (max-width: 992px) {
-            .grid {
-                grid-template-columns: 1fr 1fr;
+        /* ========== ПЛАНШЕТ (768px — 1024px) ========== */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .grid,
+            .footer-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 15px;
             }
 
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
+            .footer-col {
+                min-width: 0;
+            }
+
+            .footer-col h4 {
+                font-size: 14px;
+            }
+
+            .footer-col p,
+            .footer-col a {
+                font-size: 13px;
+                line-height: 1.6;
+            }
+
+            .footer-phone {
+                font-size: 14px;
             }
 
             .hero h1 {
                 font-size: 28px;
             }
         }
-
-        /* Для планшетов от 768px до 1024px жестко держим 3 колонки в ряд */
-@media (min-width: 768px) and (max-width: 1024px) {
-    .grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 15px;
-    }
-}
-
 
         /* ========== МОБИЛКИ ========== */
         @media (max-width: 767px) {
