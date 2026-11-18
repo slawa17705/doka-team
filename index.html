@@ -617,6 +617,19 @@
                 font-size: 19px;
                 text-align: center;
             }
+                  .mobile-review-btn {
+    display: inline-block;
+    background: rgba(212, 175, 55, 0.15);
+    color: #d4af37;
+    border: 1.5px solid #d4af37;
+    padding: 10px 24px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+}
         }
 
         button {
@@ -639,19 +652,7 @@
             color: #d4af37 !important;
         }
 
-        .mobile-review-btn {
-    display: inline-block;
-    background: rgba(212, 175, 55, 0.15);
-    color: #d4af37;
-    border: 1.5px solid #d4af37;
-    padding: 10px 24px;
-    margin-bottom: 15px;
-    border-radius: 6px;
-    font-size: 15px;
-    font-weight: 700;
-    text-transform: uppercase;
-    text-decoration: none;
-}
+  
 
     </style>
 
@@ -760,26 +761,29 @@
 }
 </script>
 
-    <!-- Yandex.Metrika counter -->
+       <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
-        (function (m, e, t, r, i, k, a) {
-            m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
-            m[i].l = 1 * new Date();
-            for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) return; }
-            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
-        })
-            (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+        if (window.location.search.includes('im_admin=1')) {
+            localStorage.setItem('doka_admin', 'true');
+        }
+        if (window.location.hostname === 'doka-team.ru' && localStorage.getItem('doka_admin') !== 'true') {
+            (function (m, e, t, r, i, k, a) {
+                m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+                m[i].l = 1 * new Date();
+                for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) return; }
+                k = e.createElement(t), a = e.getElementsByTagName(t), k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+            })
+                (window, document, "script", "https://yandex.ru", "ym");
 
-        ym(109769602, "init", {
-            clickmap: true,
-            trackLinks: true,
-            accurateTrackBounce: true
-        });
+            ym(109769602, "init", {
+                clickmap: true,
+                trackLinks: true,
+                accurateTrackBounce: true
+            });
+        }
     </script>
-    <noscript>
-        <div><img src="https://mc.yandex.ru/watch/109769602" style="position:absolute; left:-9999px;" alt="" /></div>
-    </noscript>
     <!-- /Yandex.Metrika counter -->
+
 </head>
 
 <body>
@@ -1021,9 +1025,6 @@
     <a href="add-review.html" class="mobile-review-btn">✍️ Оставить отзыв</a>
     <p>© 2026 DOKA-TEAM/Дока-Тим. Все права защищены. Проектирование, строительство домов и ремонт квартир премиум-класса.</p>
 </div>
-
-                    © 2026 DOKA-TEAM/Дока-Тим. Все права защищены. Проектирование, строительство домов и ремонт квартир
-                    премиум-класса.
                 </div>
                 <div id="qr" style="text-align:center; margin-top:10px;">
                     <img src="image/QR.png" alt="QR-код на заявку Дока-Тим" style="width:120px; height:120px;">
