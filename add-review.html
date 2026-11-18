@@ -253,12 +253,13 @@
             formData.append('rating', rating + ' из 5');
             formData.append('review', `📝 Новый отзыв с сайта Дока-Тим!\nАвтор: ${name}\nАдрес объекта: ${address}\nОценка: ${rating} из 5\n\nОтзыв:\n${reviewText}`);
 
-            try {
+        try {
                 const response = await fetch('https://formspree.io', {
                     method: 'POST',
                     headers: { 'Accept': 'application/json' },
                     body: formData
                 });
+
 
                 if (response.ok) {
                     form.reset();
