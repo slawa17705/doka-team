@@ -222,88 +222,30 @@
         <a href="reviews.html" class="back-link">← Вернуться к отзывам</a>
     </div>
 
-    <script>
-        const DADATA_TOKEN = "1b689d9bd155dcd78bda8e259f1efadaaa8b172e";
+        <script>
         const addressInput = document.getElementById('addressInput');
-        const suggestionsList = document.getElementById('suggestionsList');
-        let isRealAddressSelected = false;
-        let debounceTimer;
-
-        addressInput.addEventListener('input', function () {
-            isRealAddressSelected = false;
-            const query = this.value.trim();
-            clearTimeout(debounceTimer);
-
-            if (query.length < 3) {
-                suggestionsList.style.display = 'none';
-                return;
-            }
-
-            debounceTimer = setTimeout(async () => {
-                try {
-                    const res = await fetch("https://dadata.ru", {
-                        method: "POST",
-                        mode: "cors",
-                        headers: {
-                            "Content-Type": "application/json",
-                            "Accept": "application/json",
-                            "Authorization": "Token " + DADATA_TOKEN
-                        },
-                        body: JSON.stringify({ query: query, count: 6 })
-                    });
-
-                    const data = await res.json();
-                    suggestionsList.innerHTML = '';
-
-                    if (data.suggestions && data.suggestions.length > 0) {
-                        data.suggestions.forEach(item => {
-                            const div = document.createElement('div');
-                            div.className = 'suggestions-item';
-                            div.textContent = item.value;
-                            div.addEventListener('click', () => {
-                                addressInput.value = item.value;
-                                suggestionsList.style.display = 'none';
-                                if (item.data && item.data.house) {
-                                    isRealAddressSelected = true;
-                                } else {
-                                    isRealAddressSelected = false;
-                                    alert("Пожалуйста, уточните адрес до номера дома (и квартиры, если это многоквартирный дом).");
-                                }
-                            });
-                            suggestionsList.appendChild(div);
-                        });
-                        suggestionsList.style.display = 'block';
-                    } else {
-                        suggestionsList.style.display = 'none';
-                    }
-                } catch (err) {
-                    console.error('Ошибка подсказок DaData:', err);
-                }
-            }, 300);
-        });
-
-        document.addEventListener('click', function (e) {
-            if (!e.target.closest('.address-box')) {
-                suggestionsList.style.display = 'none';
-            }
-        });
-
         const form = document.getElementById('review-form');
+
         form.addEventListener('submit', async function (e) {
             e.preventDefault();
 
+            // Защита от спам-ботов (скрытая ловушка)
             if (form.querySelector('input[name="_gotcha"]').value) return;
-
-            if (!isRealAddressSelected) {
-                alert('Пожалуйста, выберите существующий адрес объекта (до дома или квартиры) из выпадающего списка подсказок.');
-                addressInput.focus();
-                return;
-            }
 
             const name = form.querySelector('input[name="name"]').value.trim();
             const address = addressInput.value.trim();
             const rating = form.querySelector('select[name="rating"]').value;
             const reviewText = form.querySelector('textarea[name="review"]').value.trim();
+
+            // Проверяем, что в адресе есть название улицы/города (минимум 3 буквы) и номер дома (цифра)
+            const hasLetters = /[а-яА-ЯёЁa-zA-Z]{3,}/.test(address);
+            const hasNumbers = /\d+/.test(address);
+
+            if (!hasLetters || !hasNumbers || address.length < 8) {
+                alert('Пожалуйста, укажите реальный адрес объекта (населённый пункт, улицу и номер дома), чтобы мы могли подтвердить выполнение работ.');
+                addressInput.focus();
+                return;
+            }
 
             const btn = form.querySelector('.btn-submit');
             const originalText = btn.textContent;
@@ -325,8 +267,7 @@
 
                 if (response.ok) {
                     form.reset();
-                    isRealAddressSelected = false;
-                    alert('Спасибо! Ваш отзыв отправлен на проверку.');
+                    alert('Спасибо! Ваш отзыв успешно отправлен на проверку.');
                 } else {
                     alert('Не удалось отправить отзыв. Попробуйте ещё раз.');
                 }
@@ -338,6 +279,7 @@
             }
         });
     </script>
+
 </body>
 
 </html>
