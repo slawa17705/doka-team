@@ -223,9 +223,142 @@
 
     </div>
 
-          <script>
+             <script>
         const addressInput = document.getElementById('addressInput');
+        const cityDropdown = document.getElementById('cityDropdown');
         const form = document.getElementById('review-form');
+
+        const popularLocations = [
+            "г. Москва, ул. ",
+            "г. Москва, Зеленоград, корп. ",
+            "Московская обл., г. Химки, ул. ",
+            "Московская обл., г. Солнечногорск, ул. ",
+            "Московская обл., г. Клин, ул. ",
+            "Московская обл., д. Большое Щапово, д. ",
+            "Московская обл., г. Красногорск, ул. ",
+            "Московская обл., г. Одинцово, ул. ",
+            "Московская обл., г. Мытищи, ул. ",
+            "Московская обл., г. Долгопрудный, ул. ",
+            "Московская обл., г. Лобня, ул. ",
+            "Московская обл., г. Истра, ул. ",
+            "Московская обл., г. Балашиха, ул. ",
+            "Московская обл., г. Подольск, ул. ",
+            "Московская обл., г. Люберцы, ул. ",
+            "Московская обл., г. Королёв, ул. ",
+            "Московская обл., г. Пушкино, ул. ",
+            "Московская обл., г. Щёлково, ул. ",
+            "Московская обл., г. Раменское, ул. ",
+            "Московская обл., г. Домодедово, ул. ",
+            "г. Санкт-Петербург, ул. ",
+            "г. Дербент, ул. ",
+            "г. Махачкала, ул. ",
+            "г. Каспийск, ул. ",
+            "г. Хасавюрт, ул. ",
+            "г. Новосибирск, ул. ",
+            "г. Екатеринбург, ул. ",
+            "г. Казань, ул. ",
+            "г. Нижний Новгород, ул. ",
+            "г. Челябинск, ул. ",
+            "г. Красноярск, ул. ",
+            "г. Самара, ул. ",
+            "г. Уфа, ул. ",
+            "г. Ростов-на-Дону, ул. ",
+            "г. Омск, ул. ",
+            "г. Краснодар, ул. ",
+            "г. Воронеж, ул. ",
+            "г. Пермь, ул. ",
+            "г. Волгоград, ул. ",
+            "г. Саратов, ул. ",
+            "г. Тюмень, ул. ",
+            "г. Тольятти, ул. ",
+            "г. Ижевск, ул. ",
+            "г. Барнаул, ул. ",
+            "г. Ульяновск, ул. ",
+            "г. Иркутск, ул. ",
+            "г. Хабаровск, ул. ",
+            "г. Ярославль, ул. ",
+            "г. Владивосток, ул. ",
+            "г. Томск, ул. ",
+            "г. Оренбург, ул. ",
+            "г. Кемерово, ул. ",
+            "г. Новокузнецк, ул. ",
+            "г. Рязань, ул. ",
+            "г. Набережные Челны, ул. ",
+            "г. Астрахань, ул. ",
+            "г. Пенза, ул. ",
+            "г. Киров, ул. ",
+            "г. Липецк, ул. ",
+            "г. Чебоксары, ул. ",
+            "г. Калининград, ул. ",
+            "г. Тула, ул. ",
+            "г. Курск, ул. ",
+            "г. Ставрополь, ул. ",
+            "г. Сочи, ул. ",
+            "г. Тверь, ул. ",
+            "г. Иваново, ул. ",
+            "г. Брянск, ул. ",
+            "г. Белгород, ул. ",
+            "г. Сургут, ул. ",
+            "г. Владимир, ул. ",
+            "г. Архангельск, ул. ",
+            "г. Калуга, ул. ",
+            "г. Смоленск, ул. ",
+            "г. Саранск, ул. ",
+            "г. Череповец, ул. ",
+            "г. Вологда, ул. ",
+            "г. Орёл, ул. ",
+            "г. Владикавказ, ул. ",
+            "г. Грозный, ул. ",
+            "г. Нальчик, ул. ",
+            "г. Мурманск, ул. ",
+            "г. Тамбов, ул. ",
+            "г. Петрозаводск, ул. ",
+            "г. Кострома, ул. ",
+            "г. Новороссийск, ул. ",
+            "г. Севастополь, ул. ",
+            "г. Симферополь, ул. "
+        ];
+
+        addressInput.addEventListener('input', function () {
+            const val = this.value.trim().toLowerCase();
+            cityDropdown.innerHTML = '';
+
+            if (val.length < 2) {
+                cityDropdown.style.display = 'none';
+                return;
+            }
+
+            const matches = popularLocations.filter(loc => loc.toLowerCase().includes(val));
+
+            if (matches.length > 0) {
+                matches.forEach(match => {
+                    const item = document.createElement('div');
+                    item.textContent = match;
+                    item.style.padding = '10px 14px';
+                    item.style.fontSize = '14px';
+                    item.style.color = '#fff';
+                    item.style.cursor = 'pointer';
+                    item.style.borderBottom = '1px solid rgba(255,255,255,0.08)';
+                    item.onmouseenter = () => item.style.background = 'rgba(212, 175, 55, 0.25)';
+                    item.onmouseleave = () => item.style.background = 'transparent';
+                    item.onclick = () => {
+                        addressInput.value = match;
+                        cityDropdown.style.display = 'none';
+                        addressInput.focus();
+                    };
+                    cityDropdown.appendChild(item);
+                });
+                cityDropdown.style.display = 'block';
+            } else {
+                cityDropdown.style.display = 'none';
+            }
+        });
+
+        document.addEventListener('click', function (e) {
+            if (e.target !== addressInput && !cityDropdown.contains(e.target)) {
+                cityDropdown.style.display = 'none';
+            }
+        });
 
         form.addEventListener('submit', async function (e) {
             e.preventDefault();
@@ -279,6 +412,7 @@
             }
         });
     </script>
+
 
 </body>
 
