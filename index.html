@@ -330,17 +330,20 @@
             min-width: 0; /* Защита от переполнения длинными ссылками и email */
         }
 
-        .footer-col h4 {
+                .footer-col h4,
+        .footer-col a[href="about.html"] {
             font-size: 15px;
             font-weight: 700;
             color: #fff;
             text-transform: uppercase;
+            line-height: 1.5;
             margin-bottom: 15px;
             padding-bottom: 10px;
             position: relative;
         }
 
-        .footer-col h4::after {
+        .footer-col h4::after,
+        .footer-col a[href="about.html"]::after {
             content: '';
             position: absolute;
             bottom: 0;
@@ -364,6 +367,7 @@
         .footer-col a:hover {
             color: var(--accent-color);
         }
+
 
         .footer-phone {
             font-size: 16px;
