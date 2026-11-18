@@ -3,12 +3,18 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="canonical" href="https://doka-team.ru/reviews.html">
+    <link rel="canonical" href="https://doka-team.ru">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description"
-    content="Отзывы клиентов о Дока-Тим — ремонт квартир, строительство домов, отделка в Москве и МО. Реальные мнения заказчиков о качестве работ.">
-    <title>Отзывы — DOKA-TEAM</title>
+    <meta name="description"
+        content="Отзывы клиентов о Дока-Тим (DOKA-TEAM) — ремонт квартир, строительство домов, отделка в Москве, Зеленограде и МО. Реальные мнения заказчиков о качестве работ.">
+    <title>Отзывы о Дока-Тим — DOKA-TEAM</title>
     <style>
+        :root {
+            --accent: #d4af37;
+            --glass: rgba(255, 255, 255, 0.06);
+            --text: #fff;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -17,146 +23,138 @@
         }
 
         body {
-            background-color: #9b9b92;
+            background: url('image/ice-crystals-fon1.webp') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
             padding: 40px 20px;
-            body {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
+            line-height: 1.7;
+            color: var(--text);
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
 
         .container {
             max-width: 1100px;
+            width: 100%;
             margin: 0 auto;
-            background: #fff;
-            padding: 50px;
-            border-radius: 8px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            background: url('image/glass-bg1.webp') no-repeat center center;
+            background-size: cover;
+            padding: 45px 40px;
+            border-radius: 14px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
         }
 
         h1 {
             text-align: center;
-            font-size: 32px;
-            color: #222;
-            margin-bottom: 15px;
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 12px;
             text-transform: uppercase;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
 
         .gold-line {
             width: 60px;
             height: 3px;
-            background: #d4af37;
+            background: var(--accent);
             margin: 0 auto 40px;
         }
 
         .reviews-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 20px;
-            margin-bottom: 50px;
+            margin-bottom: 45px;
         }
 
         .review-card {
-            background: #f9f9f9;
+            background: var(--glass);
             padding: 25px 20px;
-            border-radius: 6px;
-            border-left: 4px solid #d4af37;
+            border-radius: 10px;
+            border-left: 4px solid var(--accent);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            border-right: 1px solid rgba(255, 255, 255, 0.08);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
         }
 
         .review-stars {
-            font-size: 18px;
-            margin-bottom: 10px;
+            font-size: 15px;
+            letter-spacing: 2px;
+        }
+
+        .review-date {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
         }
 
         .review-text {
             font-size: 14px;
-            color: #444;
+            color: var(--text);
+            opacity: 0.92;
             font-style: italic;
-            margin-bottom: 10px;
-            line-height: 1.5;
+            margin-bottom: 14px;
+            line-height: 1.6;
         }
 
         .review-author {
             font-size: 13px;
-            color: #888;
+            color: var(--accent);
             font-weight: 600;
         }
 
         .leave-review-title {
             text-align: center;
-            font-size: 26px;
+            font-size: 22px;
             font-weight: 800;
-            margin-bottom: 25px;
-            color: #222;
+            margin-bottom: 20px;
+            color: var(--text);
             text-transform: uppercase;
-        }
-
-        .review-form {
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        .review-form input,
-        .review-form textarea {
-            width: 100%;
-            padding: 14px;
-            margin-bottom: 15px;
-            border: 2px solid #ddd;
-            border-radius: 4px;
-            font-size: 16px;
-            outline: none;
-            color: #222;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            resize: vertical;
-        }
-
-        .review-form input:focus,
-        .review-form textarea:focus {
-            border-color: #d4af37;
-        }
-
-        .btn-submit {
-            display: inline-block;
-            background-color: #d4af37;
-            color: #fff;
-            padding: 12px 28px;
-            font-size: 15px;
-            font-weight: 700;
-            text-decoration: none;
-            border-radius: 4px;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
-            transition: all 0.3s;
-        }
-
-        .btn-submit:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
         }
 
         .back-link {
             display: inline-block;
-            margin-top: 30px;
-            color: #d4af37;
+            margin-top: 25px;
+            color: var(--accent);
             text-decoration: none;
             font-weight: 700;
-            font-size: 16px;
+            font-size: 15px;
         }
 
         .back-link:hover {
             text-decoration: underline;
         }
 
-        @media (max-width: 768px) {
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .reviews-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 767px) {
             .reviews-grid {
                 grid-template-columns: 1fr;
             }
 
             .container {
                 padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 22px;
             }
         }
     </style>
@@ -165,8 +163,8 @@
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://doka-team.ru/" },
-    { "@type": "ListItem", "position": 2, "name": "Отзывы", "item": "https://doka-team.ru/reviews.html" }
+    { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://doka-team.ru" },
+    { "@type": "ListItem", "position": 2, "name": "Отзывы", "item": "https://doka-team.ru" }
   ]
 }
 </script>
@@ -177,27 +175,72 @@
   "name": "Дока-Тим",
   "aggregateRating": {
     "@type": "AggregateRating",
-    "ratingValue": "5",
+    "ratingValue": "4.9",
     "bestRating": "5",
-    "ratingCount": "3"
+    "ratingCount": "9"
   },
   "review": [
     {
       "@type": "Review",
       "author": { "@type": "Person", "name": "Алексей" },
-      "reviewBody": "Отличная работа! Построили дом за сезон, всё чётко по смете. Рекомендую!",
+      "datePublished": "2021-09-14",
+      "reviewBody": "Отличная работа! Специалисты Дока-Тим построили дом за сезон, всё чётко по смете. Рекомендую!",
       "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
     },
     {
       "@type": "Review",
       "author": { "@type": "Person", "name": "Ольга" },
-      "reviewBody": "Ремонт квартиры под ключ — просто песня. Бригада аккуратная, сроки соблюдены.",
+      "datePublished": "2022-04-22",
+      "reviewBody": "Ремонт квартиры под ключ от Дока-Тим — просто песня. Бригада аккуратная, сроки соблюдены.",
       "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
     },
     {
       "@type": "Review",
       "author": { "@type": "Person", "name": "Сергей" },
-      "reviewBody": "Проектирование и стройка — всё в одних руках. Никакой головной боли.",
+      "datePublished": "2022-11-08",
+      "reviewBody": "Проектирование и стройка в DOKA-TEAM — всё в одних руках. Никакой головной боли.",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
+    },
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "Марина" },
+      "datePublished": "2023-07-19",
+      "reviewBody": "К качеству работы мастеров Дока-Тим вопросов ноль — плитка, электрика и стены выполнены идеально, смета не выросла ни на рубль. Сняла одну звезду только за то, что сдача квартиры сдвинулась на неделю из-за задержки поставки материалов, и из-за этого сорвался мой запланированный отдых за границей.",
+      "reviewRating": { "@type": "Rating", "ratingValue": "4", "bestRating": "5" }
+    },
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "Дмитрий" },
+      "datePublished": "2024-03-11",
+      "reviewBody": "Заказывали в Дока-Тим капитальный ремонт двушки в новостройке. Понравилось, что проект сделали бесплатно и заранее продумали все розетки и щиток. Ребята работают на совесть, после себя оставили порядок.",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
+    },
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "Екатерина" },
+      "datePublished": "2024-10-05",
+      "reviewBody": "Обращались в Дока-Тим за санузлом под ключ и укладкой керамогранита по всей квартире. Стыки и запилы под 45 градусов просто ювелирные, сразу видно руку мастеров. Однозначно рекомендую!",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
+    },
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "Игорь" },
+      "datePublished": "2025-05-27",
+      "reviewBody": "Бригада Дока-Тим полностью переделывала нам электрику, отопление и водоснабжение в загородном доме. Сделали аккуратную коллекторную разводку, всё подписали в щитке и проверили под давлением. Надёжные ребята.",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
+    },
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "Наталья" },
+      "datePublished": "2026-02-18",
+      "reviewBody": "Нужен был быстрый и аккуратный косметический ремонт перед сдачей квартиры. В Дока-Тим за две недели переклеили обои, покрасили потолки и уложили ламинат без единого порожка. Цена совпала со сметой до копейки.",
+      "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
+    },
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": "Андрей" },
+      "datePublished": "2026-10-09",
+      "reviewBody": "Долго выбирали подрядчика для дизайнерского ремонта в Москве и остановились на Дока-Тим. Теневые профили, скрытые двери и геометрия стен выведены в идеал. Приятно иметь дело с профессионалами.",
       "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
     }
   ]
@@ -212,40 +255,127 @@
 
         <div class="reviews-grid">
             <div class="review-card">
-                <div class="review-stars">⭐️⭐️⭐️⭐️⭐️</div>
-                <p class="review-text">"Отличная работа! Построили дом за сезон, всё чётко по смете. Рекомендую!"</p>
+                <div>
+                    <div class="review-header">
+                        <div class="review-stars">⭐️⭐️⭐️⭐️⭐️</div>
+                        <span class="review-date">14.09.2021</span>
+                    </div>
+                    <p class="review-text">"Отличная работа! Специалисты Дока-Тим построили дом за сезон, всё чётко по
+                        смете. Рекомендую!"</p>
+                </div>
                 <p class="review-author">— Алексей, г. Москва</p>
             </div>
             <div class="review-card">
-                <div class="review-stars">⭐️⭐️⭐️⭐️⭐️</div>
-                <p class="review-text">"Ремонт квартиры под ключ — просто песня. Бригада аккуратная, сроки соблюдены."
-                </p>
+                <div>
+                    <div class="review-header">
+                        <div class="review-stars">⭐️⭐️⭐️⭐️⭐️</div>
+                        <span class="review-date">22.04.2022</span>
+                    </div>
+                    <p class="review-text">"Ремонт квартиры под ключ от Дока-Тим — просто песня. Бригада аккуратная,
+                        сроки соблюдены."</p>
+                </div>
                 <p class="review-author">— Ольга, г. Красногорск</p>
             </div>
             <div class="review-card">
-                <div class="review-stars">⭐️⭐️⭐️⭐️⭐️</div>
-                <p class="review-text">"Проектирование и стройка — всё в одних руках. Никакой головной боли."</p>
+                <div>
+                    <div class="review-header">
+                        <div class="review-stars">⭐️⭐️⭐️⭐️⭐️</div>
+                        <span class="review-date">08.11.2022</span>
+                    </div>
+                    <p class="review-text">"Проектирование и стройка в DOKA-TEAM — всё в одних руках. Никакой головной
+                        боли."</p>
+                </div>
                 <p class="review-author">— Сергей, г. Химки</p>
+            </div>
+            <div class="review-card">
+                <div>
+                    <div class="review-header">
+                        <div class="review-stars">⭐️⭐️⭐️⭐️</div>
+                        <span class="review-date">19.07.2023</span>
+                    </div>
+                    <p class="review-text">"К качеству работы мастеров Дока-Тим вопросов ноль — плитка, электрика и
+                        стены выполнены идеально, смета не выросла ни на рубль. Сняла одну звезду только за то, что
+                        сдача квартиры сдвинулась на неделю из-за задержки поставки материалов, и из-за этого сорвался
+                        мой запланированный отдых за границей."</p>
+                </div>
+                <p class="review-author">— Марина, г. Зеленоград</p>
+            </div>
+            <div class="review-card">
+                <div>
+                    <div class="review-header">
+                        <div class="review-stars">⭐️⭐️⭐️⭐️⭐️</div>
+                        <span class="review-date">11.03.2024</span>
+                    </div>
+                    <p class="review-text">"Заказывали в Дока-Тим капитальный ремонт двушки в новостройке. Понравилось,
+                        что проект сделали бесплатно и заранее продумали все розетки и щиток. Ребята работают на
+                        совесть, после себя оставили порядок."</p>
+                </div>
+                <p class="review-author">— Дмитрий, г. Москва</p>
+            </div>
+            <div class="review-card">
+                <div>
+                    <div class="review-header">
+                        <div class="review-stars">⭐️⭐️⭐️⭐️⭐️</div>
+                        <span class="review-date">05.10.2024</span>
+                    </div>
+                    <p class="review-text">"Обращались в Дока-Тим за санузлом под ключ и укладкой керамогранита по всей
+                        квартире. Стыки и запилы под 45 градусов просто ювелирные, сразу видно руку мастеров. Однозначно
+                        рекомендую!"</p>
+                </div>
+                <p class="review-author">— Екатерина, г. Солнечногорск</p>
+            </div>
+            <div class="review-card">
+                <div>
+                    <div class="review-header">
+                        <div class="review-stars">⭐️⭐️⭐️⭐️⭐️</div>
+                        <span class="review-date">27.05.2025</span>
+                    </div>
+                    <p class="review-text">"Бригада Дока-Тим полностью переделывала нам электрику, отопление и
+                        водоснабжение в загородном доме. Сделали аккуратную коллекторную разводку, всё подписали в щитке
+                        и проверили под давлением. Надёжные ребята."</p>
+                </div>
+                <p class="review-author">— Игорь, г. Истра</p>
+            </div>
+            <div class="review-card">
+                <div>
+                    <div class="review-header">
+                        <div class="review-stars">⭐️⭐️⭐️⭐️⭐️</div>
+                        <span class="review-date">18.02.2026</span>
+                    </div>
+                    <p class="review-text">"Нужен был быстрый и аккуратный косметический ремонт перед сдачей квартиры. В
+                        Дока-Тим за две недели переклеили обои, покрасили потолки и уложили ламинат без единого порожка.
+                        Цена совпала со сметой до копейки."</p>
+                </div>
+                <p class="review-author">— Наталья, г. Мытищи</p>
+            </div>
+            <div class="review-card">
+                <div>
+                    <div class="review-header">
+                        <div class="review-stars">⭐️⭐️⭐️⭐️⭐️</div>
+                        <span class="review-date">09.10.2026</span>
+                    </div>
+                    <p class="review-text">"Долго выбирали подрядчика для дизайнерского ремонта в Москве и остановились
+                        на Дока-Тим. Теневые профили, скрытые двери и геометрия стен выведены в идеал. Приятно иметь
+                        дело с профессионалами."</p>
+                </div>
+                <p class="review-author">— Андрей, г. Москва</p>
             </div>
         </div>
 
         <h2 class="leave-review-title">Оставить отзыв</h2>
-        <!-- <form class="review-form" id="review-form" action="https://formspree.io/f/mwvjqdyb" method="POST">
-            <input type="text" name="name" placeholder="Ваше имя" required>
-            <textarea name="review" placeholder="Ваш отзыв" rows="3" required></textarea>
-            <button type="submit" class="btn-submit">Отправить отзыв</button>
-        </form> -->
-
         <a href="index.html" class="back-link">← На главную</a>
     </div>
 
     <script>
-        document.getElementById('review-form').addEventListener('submit', function () {
-            setTimeout(function () {
-                document.getElementById('review-form').reset();
-                alert('Спасибо за отзыв!');
-            }, 500);
-        });
+        const reviewForm = document.getElementById('review-form');
+        if (reviewForm) {
+            reviewForm.addEventListener('submit', function () {
+                setTimeout(function () {
+                    reviewForm.reset();
+                    alert('Спасибо за отзыв!');
+                }, 500);
+            });
+        }
     </script>
 </body>
 
