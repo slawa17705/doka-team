@@ -405,8 +405,17 @@
             }
         }
 
+        /* Для планшетов от 768px до 1024px жестко держим 3 колонки в ряд */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+    }
+}
+
+
         /* ========== МОБИЛКИ ========== */
-        @media (max-width: 768px) {
+        @media (max-width: 767px) {
             body {
                 background: url('image/bodyMob.webp') no-repeat center center fixed;
                 background-size: cover;
