@@ -7,10 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, follow">
     <title>Оставить отзыв о Дока-Тим — DOKA-TEAM</title>
+    <link href="https://jsdelivr.net" rel="stylesheet" />
     <style>
         :root {
             --accent: #d4af37;
-            --glass: rgba(255, 255, 255, 0.06);
             --text: #fff;
         }
 
@@ -101,46 +101,41 @@
             border-color: var(--accent);
         }
 
-        .address-box {
-            position: relative;
+        .suggestions-wrapper {
             margin-bottom: 15px;
         }
 
-        .address-box input {
+        .suggestions-wrapper input {
             margin-bottom: 0;
         }
 
-        .suggestions-list {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background: #1a1e24;
-            border: 1px solid var(--accent);
-            border-top: none;
-            border-radius: 0 0 6px 6px;
-            max-height: 220px;
-            overflow-y: auto;
-            z-index: 1000;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8);
+        .suggestions-suggestions {
+            background: #1a1e24 !important;
+            border: 1px solid var(--accent) !important;
+            color: #fff !important;
+            border-radius: 0 0 6px 6px !important;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8) !important;
         }
 
-        .suggestions-item {
-            padding: 10px 14px;
-            font-size: 14px;
-            color: #fff;
-            cursor: pointer;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            line-height: 1.4;
+        .suggestions-suggestion {
+            color: #fff !important;
+            padding: 10px 14px !important;
+            font-size: 14px !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
         }
 
-        .suggestions-item:last-child {
-            border-bottom: none;
+        .suggestions-suggestion:hover,
+        .suggestions-selected {
+            background: rgba(212, 175, 55, 0.25) !important;
         }
 
-        .suggestions-item:hover {
-            background: rgba(212, 175, 55, 0.25);
+        .suggestions-value strong {
+            color: var(--accent) !important;
+            font-weight: 700 !important;
+        }
+
+        .suggestions-promo {
+            display: none !important;
         }
 
         .btn-submit {
@@ -163,10 +158,15 @@
             transform: translateY(-2px);
         }
 
-        .back-link {
-            display: block;
-            text-align: center;
+        .links-row {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
             margin-top: 25px;
+            flex-wrap: wrap;
+        }
+
+        .back-link {
             color: var(--accent);
             text-decoration: none;
             font-weight: 700;
@@ -188,19 +188,16 @@
         }
     </style>
 </head>
-
 <body>
     <div class="container">
         <h1>Оставить отзыв</h1>
         <div class="gold-line"></div>
-        <p class="subtitle">Укажите реальный адрес объекта (для проверки выполнения работ) — на сайте он публиковаться
-            не будет.</p>
+        <p class="subtitle">Укажите реальный адрес объекта (для проверки выполнения работ) — на сайте он публиковаться не будет.</p>
 
         <form class="review-form" id="review-form">
             <input type="text" name="name" placeholder="Ваше имя (например: Иван)" required>
 
-            <input type="text" id="addressInput" name="address"
-                placeholder="Укажите адрес объекта (город, улица, дом, кв.)" autocomplete="street-address" required>
+            <input type="text" id="addressInput" name="address" placeholder="Начните вводить город, улицу, дом..." required>
 
             <input type="text" name="_gotcha" style="display:none !important;" tabindex="-1" autocomplete="off">
 
@@ -211,172 +208,67 @@
                 <option value="2">⭐️⭐️ — Плохо (2 из 5)</option>
                 <option value="1">⭐️ — Ужасно (1 из 5)</option>
             </select>
-            <textarea name="review" placeholder="Расскажите, какие работы мы выполняли и всё ли понравилось..." rows="4"
-                minlength="15" required></textarea>
+            <textarea name="review" placeholder="Расскажите, какие работы мы выполняли и всё ли понравилось..." rows="4" minlength="15" required></textarea>
             <button type="submit" class="btn-submit">Отправить отзыв</button>
         </form>
 
-                <div style="display: flex; justify-content: center; gap: 25px; margin-top: 25px; flex-wrap: wrap;">
-            <a href="reviews.html" class="back-link" style="margin-top: 0;">← К отзывам</a>
-            <a href="index.html" class="back-link" style="margin-top: 0;">🏠 На главную</a>
+        <div class="links-row">
+            <a href="reviews.html" class="back-link">← К отзывам</a>
+            <a href="index.html" class="back-link">🏠 На главную</a>
         </div>
-
     </div>
 
-             <script>
-        const addressInput = document.getElementById('addressInput');
-        const cityDropdown = document.getElementById('cityDropdown');
+    <script src="https://cloudflare.com"></script>
+    <script src="https://jsdelivr.net"></script>
+    <script>
+        let isDaDataSelected = false;
+        let isDaDataLoaded = false;
+
+        if (window.jQuery && $.fn.suggestions) {
+            isDaDataLoaded = true;
+            $("#addressInput").suggestions({
+                token: "1b689d9bd155dcd78bda8e259f1efadaaa8b172e",
+                type: "ADDRESS",
+                onSelect: function (suggestion) {
+                    if (suggestion.data && suggestion.data.house) {
+                        isDaDataSelected = true;
+                    } else {
+                        isDaDataSelected = false;
+                        alert("Пожалуйста, выберите адрес до номера дома (и квартиры, если это многоквартирный дом).");
+                    }
+                }
+            });
+
+            $("#addressInput").on("input", function () {
+                isDaDataSelected = false;
+            });
+        }
+
         const form = document.getElementById('review-form');
-
-        const popularLocations = [
-            "г. Москва, ул. ",
-            "г. Москва, Зеленоград, корп. ",
-            "Московская обл., г. Химки, ул. ",
-            "Московская обл., г. Солнечногорск, ул. ",
-            "Московская обл., г. Клин, ул. ",
-            "Московская обл., д. Большое Щапово, д. ",
-            "Московская обл., г. Красногорск, ул. ",
-            "Московская обл., г. Одинцово, ул. ",
-            "Московская обл., г. Мытищи, ул. ",
-            "Московская обл., г. Долгопрудный, ул. ",
-            "Московская обл., г. Лобня, ул. ",
-            "Московская обл., г. Истра, ул. ",
-            "Московская обл., г. Балашиха, ул. ",
-            "Московская обл., г. Подольск, ул. ",
-            "Московская обл., г. Люберцы, ул. ",
-            "Московская обл., г. Королёв, ул. ",
-            "Московская обл., г. Пушкино, ул. ",
-            "Московская обл., г. Щёлково, ул. ",
-            "Московская обл., г. Раменское, ул. ",
-            "Московская обл., г. Домодедово, ул. ",
-            "г. Санкт-Петербург, ул. ",
-            "г. Дербент, ул. ",
-            "г. Махачкала, ул. ",
-            "г. Каспийск, ул. ",
-            "г. Хасавюрт, ул. ",
-            "г. Новосибирск, ул. ",
-            "г. Екатеринбург, ул. ",
-            "г. Казань, ул. ",
-            "г. Нижний Новгород, ул. ",
-            "г. Челябинск, ул. ",
-            "г. Красноярск, ул. ",
-            "г. Самара, ул. ",
-            "г. Уфа, ул. ",
-            "г. Ростов-на-Дону, ул. ",
-            "г. Омск, ул. ",
-            "г. Краснодар, ул. ",
-            "г. Воронеж, ул. ",
-            "г. Пермь, ул. ",
-            "г. Волгоград, ул. ",
-            "г. Саратов, ул. ",
-            "г. Тюмень, ул. ",
-            "г. Тольятти, ул. ",
-            "г. Ижевск, ул. ",
-            "г. Барнаул, ул. ",
-            "г. Ульяновск, ул. ",
-            "г. Иркутск, ул. ",
-            "г. Хабаровск, ул. ",
-            "г. Ярославль, ул. ",
-            "г. Владивосток, ул. ",
-            "г. Томск, ул. ",
-            "г. Оренбург, ул. ",
-            "г. Кемерово, ул. ",
-            "г. Новокузнецк, ул. ",
-            "г. Рязань, ул. ",
-            "г. Набережные Челны, ул. ",
-            "г. Астрахань, ул. ",
-            "г. Пенза, ул. ",
-            "г. Киров, ул. ",
-            "г. Липецк, ул. ",
-            "г. Чебоксары, ул. ",
-            "г. Калининград, ул. ",
-            "г. Тула, ул. ",
-            "г. Курск, ул. ",
-            "г. Ставрополь, ул. ",
-            "г. Сочи, ул. ",
-            "г. Тверь, ул. ",
-            "г. Иваново, ул. ",
-            "г. Брянск, ул. ",
-            "г. Белгород, ул. ",
-            "г. Сургут, ул. ",
-            "г. Владимир, ул. ",
-            "г. Архангельск, ул. ",
-            "г. Калуга, ул. ",
-            "г. Смоленск, ул. ",
-            "г. Саранск, ул. ",
-            "г. Череповец, ул. ",
-            "г. Вологда, ул. ",
-            "г. Орёл, ул. ",
-            "г. Владикавказ, ул. ",
-            "г. Грозный, ул. ",
-            "г. Нальчик, ул. ",
-            "г. Мурманск, ул. ",
-            "г. Тамбов, ул. ",
-            "г. Петрозаводск, ул. ",
-            "г. Кострома, ул. ",
-            "г. Новороссийск, ул. ",
-            "г. Севастополь, ул. ",
-            "г. Симферополь, ул. "
-        ];
-
-        addressInput.addEventListener('input', function () {
-            const val = this.value.trim().toLowerCase();
-            cityDropdown.innerHTML = '';
-
-            if (val.length < 2) {
-                cityDropdown.style.display = 'none';
-                return;
-            }
-
-            const matches = popularLocations.filter(loc => loc.toLowerCase().includes(val));
-
-            if (matches.length > 0) {
-                matches.forEach(match => {
-                    const item = document.createElement('div');
-                    item.textContent = match;
-                    item.style.padding = '10px 14px';
-                    item.style.fontSize = '14px';
-                    item.style.color = '#fff';
-                    item.style.cursor = 'pointer';
-                    item.style.borderBottom = '1px solid rgba(255,255,255,0.08)';
-                    item.onmouseenter = () => item.style.background = 'rgba(212, 175, 55, 0.25)';
-                    item.onmouseleave = () => item.style.background = 'transparent';
-                    item.onclick = () => {
-                        addressInput.value = match;
-                        cityDropdown.style.display = 'none';
-                        addressInput.focus();
-                    };
-                    cityDropdown.appendChild(item);
-                });
-                cityDropdown.style.display = 'block';
-            } else {
-                cityDropdown.style.display = 'none';
-            }
-        });
-
-        document.addEventListener('click', function (e) {
-            if (e.target !== addressInput && !cityDropdown.contains(e.target)) {
-                cityDropdown.style.display = 'none';
-            }
-        });
-
         form.addEventListener('submit', async function (e) {
             e.preventDefault();
 
             if (form.querySelector('input[name="_gotcha"]').value) return;
 
             const name = form.querySelector('input[name="name"]').value.trim();
-            const address = addressInput.value.trim();
+            const address = document.getElementById('addressInput').value.trim();
             const rating = form.querySelector('select[name="rating"]').value;
             const reviewText = form.querySelector('textarea[name="review"]').value.trim();
 
-            const hasLetters = /[а-яА-ЯёЁa-zA-Z]{3,}/.test(address);
-            const hasNumbers = /\d+/.test(address);
-
-            if (!hasLetters || !hasNumbers || address.length < 8) {
-                alert('Пожалуйста, укажите адрес объекта (населённый пункт, улицу и номер дома), чтобы мы могли подтвердить выполнение работ.');
-                addressInput.focus();
-                return;
+            if (isDaDataLoaded) {
+                if (!isDaDataSelected) {
+                    alert('Пожалуйста, выберите существующий адрес объекта (до дома или квартиры) из выпадающего списка подсказок.');
+                    document.getElementById('addressInput').focus();
+                    return;
+                }
+            } else {
+                const hasLetters = /[а-яА-ЯёЁa-zA-Z]{3,}/.test(address);
+                const hasNumbers = /\d+/.test(address);
+                if (!hasLetters || !hasNumbers || address.length < 8) {
+                    alert('Пожалуйста, укажите адрес объекта (населённый пункт, улицу и номер дома).');
+                    document.getElementById('addressInput').focus();
+                    return;
+                }
             }
 
             const btn = form.querySelector('.btn-submit');
@@ -400,6 +292,7 @@
 
                 if (response.ok) {
                     form.reset();
+                    isDaDataSelected = false;
                     alert('Спасибо! Ваш отзыв успешно отправлен на проверку.');
                 } else {
                     alert('Не удалось отправить отзыв. Попробуйте ещё раз.');
@@ -412,9 +305,7 @@
             }
         });
     </script>
-
-
 </body>
 
-
 </html>
+
