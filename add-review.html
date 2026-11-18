@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="canonical" href="https://doka-team.ru">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, follow">
+    <title>Оставить отзыв о Дока-Тим — DOKA-TEAM</title>
+    <style>
+        :root {
+            --accent: #d4af37;
+            --glass: rgba(255, 255, 255, 0.06);
+            --text: #fff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: url('image/ice-crystals-fon1.webp') no-repeat center center fixed;
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+            line-height: 1.7;
+            color: var(--text);
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+            margin: 0 auto;
+            background: url('image/glass-bg1.webp') no-repeat center center;
+            background-size: cover;
+            padding: 45px 40px;
+            border-radius: 14px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+        }
+
+
+
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .gold-line {
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+            margin: 0 auto 25px;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 14px;
+            color: var(--text);
+            opacity: 0.85;
+            margin-bottom: 25px;
+        }
+
+        .review-form input,
+        .review-form select,
+        .review-form textarea {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 6px;
+            font-size: 15px;
+            outline: none;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            resize: vertical;
+        }
+
+        .review-form select option {
+            background: #222;
+            color: #fff;
+        }
+
+        .review-form input::placeholder,
+        .review-form textarea::placeholder {
+            color: rgba(255, 255, 255, 0.65);
+        }
+
+        .review-form input:focus,
+        .review-form select:focus,
+        .review-form textarea:focus {
+            border-color: var(--accent);
+        }
+
+        .btn-submit {
+            display: block;
+            width: 100%;
+            background-color: var(--accent);
+            color: #111;
+            padding: 14px 28px;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            transition: all 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: #e5c158;
+            transform: translateY(-2px);
+        }
+
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 25px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Оставить отзыв</h1>
+        <div class="gold-line"></div>
+        <p class="subtitle">Поделитесь впечатлениями о работе команды «Дока-Тим» — ваш отзыв появится на сайте после
+            проверки.</p>
+
+        <form class="review-form" id="review-form" action="https://formspree.io" method="POST">
+            <input type="text" name="name" placeholder="Ваше имя и город (например: Иван, г. Москва)" required>
+            <select name="rating" required>
+                <option value="5">⭐️⭐️⭐️⭐️⭐️ — Отлично (5 из 5)</option>
+                <option value="4">⭐️⭐️⭐️⭐️ — Хорошо (4 из 5)</option>
+                <option value="3">⭐️⭐️⭐️ — Нормально (3 из 5)</option>
+                <option value="2">⭐️⭐️ — Плохо (2 из 5)</option>
+                <option value="1">⭐️ — Ужасно (1 из 5)</option>
+            </select>
+            <textarea name="review" placeholder="Расскажите, какие работы мы выполняли и всё ли понравилось..." rows="4"
+                required></textarea>
+            <button type="submit" class="btn-submit">Отправить отзыв</button>
+        </form>
+
+        <a href="reviews.html" class="back-link">← Вернуться к отзывам</a>
+    </div>
+
+    <script>
+        document.getElementById('review-form').addEventListener('submit', function () {
+            setTimeout(function () {
+                alert('Спасибо! Ваш отзыв отправлен на модерацию.');
+            }, 400);
+        });
+    </script>
+</body>
+
+</html>
