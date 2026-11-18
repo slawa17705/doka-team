@@ -1,15 +1,15 @@
+
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
     <meta charset="UTF-8">
-    <link rel="canonical" href="https://doka-team.ru">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, follow">
+
     <title>Оставить отзыв о Дока-Тим — DOKA-TEAM</title>
-    <link href="https://jsdelivr.net" rel="stylesheet" />
-<link rel="stylesheet"
-href="https://cdn.jsdelivr.net/npm/suggestions-jquery@22.6.0/dist/css/suggestions.min.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/suggestions-jquery@22.6.0/dist/css/suggestions.min.css">
+
     <style>
         :root {
             --accent: #d4af37;
@@ -43,7 +43,7 @@ href="https://cdn.jsdelivr.net/npm/suggestions-jquery@22.6.0/dist/css/suggestion
             background-size: cover;
             padding: 45px 40px;
             border-radius: 14px;
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 25px 60px rgba(0,0,0,.5);
         }
 
         h1 {
@@ -53,7 +53,7 @@ href="https://cdn.jsdelivr.net/npm/suggestions-jquery@22.6.0/dist/css/suggestion
             color: var(--text);
             margin-bottom: 12px;
             text-transform: uppercase;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            text-shadow: 0 2px 10px rgba(0,0,0,.5);
         }
 
         .gold-line {
@@ -66,35 +66,49 @@ href="https://cdn.jsdelivr.net/npm/suggestions-jquery@22.6.0/dist/css/suggestion
         .subtitle {
             text-align: center;
             font-size: 14px;
-            color: var(--text);
-            opacity: 0.85;
+            opacity: .85;
             margin-bottom: 25px;
+        }
+
+        .field {
+            margin-bottom: 17px;
+        }
+
+        .field-label {
+            display: block;
+            font-size: 13px;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 6px;
         }
 
         .review-form input,
         .review-form select,
         .review-form textarea {
+            display: block;
             width: 100%;
             padding: 14px;
-            margin-bottom: 15px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.25);
+            background: rgba(255,255,255,.1);
+            border: 1px solid rgba(255,255,255,.25);
             border-radius: 6px;
             font-size: 15px;
             outline: none;
             color: #fff;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            resize: vertical;
         }
 
-        .review-form select option {
-            background: #222;
-            color: #fff;
+        .review-form input,
+        .review-form select {
+            height: 49px;
+        }
+
+        .review-form textarea {
+            min-height: 120px;
+            resize: vertical;
         }
 
         .review-form input::placeholder,
         .review-form textarea::placeholder {
-            color: rgba(255, 255, 255, 0.65);
+            color: rgba(255,255,255,.65);
         }
 
         .review-form input:focus,
@@ -103,47 +117,78 @@ href="https://cdn.jsdelivr.net/npm/suggestions-jquery@22.6.0/dist/css/suggestion
             border-color: var(--accent);
         }
 
-        .suggestions-wrapper {
-            margin-bottom: 15px;
+        .review-form input:disabled {
+            opacity: .45;
+            cursor: not-allowed;
         }
 
-        .suggestions-wrapper input {
-            margin-bottom: 0;
+        .review-form select option {
+            background: #222;
+            color: #fff;
         }
+
+        .help {
+            font-size: 11px;
+            opacity: .7;
+            margin-top: 5px;
+        }
+
+        /* Подсказки DaData */
 
         .suggestions-suggestions {
             background: #1a1e24 !important;
             border: 1px solid var(--accent) !important;
             color: #fff !important;
             border-radius: 0 0 6px 6px !important;
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8) !important;
+            box-shadow: 0 12px 30px rgba(0,0,0,.8) !important;
+            z-index: 99999 !important;
         }
 
         .suggestions-suggestion {
             color: #fff !important;
             padding: 10px 14px !important;
             font-size: 14px !important;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+            border-bottom: 1px solid rgba(255,255,255,.08) !important;
         }
 
         .suggestions-suggestion:hover,
         .suggestions-selected {
-            background: rgba(212, 175, 55, 0.25) !important;
+            background: rgba(212,175,55,.25) !important;
         }
 
         .suggestions-value strong {
             color: var(--accent) !important;
-            font-weight: 700 !important;
         }
 
         .suggestions-promo {
             display: none !important;
         }
 
+        /* Квартира */
+
+        .apartment-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 12px 0 18px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .apartment-option input {
+            width: 18px;
+            height: 18px;
+            margin: 0;
+            accent-color: var(--accent);
+            cursor: pointer;
+        }
+
+        /* Кнопка */
+
         .btn-submit {
             display: block;
             width: 100%;
-            background-color: var(--accent);
+            background: var(--accent);
             color: #111;
             padding: 14px 28px;
             font-size: 16px;
@@ -151,14 +196,45 @@ href="https://cdn.jsdelivr.net/npm/suggestions-jquery@22.6.0/dist/css/suggestion
             border-radius: 6px;
             border: none;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
-            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(212,175,55,.3);
+            transition: all .3s;
         }
 
         .btn-submit:hover {
-            background-color: #e5c158;
+            background: #e5c158;
             transform: translateY(-2px);
         }
+
+        .btn-submit:disabled {
+            opacity: .6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Сообщения */
+
+        .status {
+            display: none;
+            padding: 12px;
+            margin-top: 15px;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 14px;
+        }
+
+        .status.success {
+            display: block;
+            background: rgba(30,150,70,.25);
+            border: 1px solid #4caf50;
+        }
+
+        .status.error {
+            display: block;
+            background: rgba(200,40,40,.2);
+            border: 1px solid #e55;
+        }
+
+        /* Ссылки */
 
         .links-row {
             display: flex;
@@ -179,7 +255,18 @@ href="https://cdn.jsdelivr.net/npm/suggestions-jquery@22.6.0/dist/css/suggestion
             text-decoration: underline;
         }
 
-        @media (max-width: 600px) {
+        /* Скрытое поле защиты от ботов */
+
+        .honeypot {
+            position: absolute !important;
+            left: -10000px !important;
+            top: auto !important;
+            width: 1px !important;
+            height: 1px !important;
+            overflow: hidden !important;
+        }
+
+        @media(max-width:600px) {
             .container {
                 padding: 30px 20px;
             }
@@ -190,124 +277,887 @@ href="https://cdn.jsdelivr.net/npm/suggestions-jquery@22.6.0/dist/css/suggestion
         }
     </style>
 </head>
+
 <body>
-    <div class="container">
-        <h1>Оставить отзыв</h1>
-        <div class="gold-line"></div>
-        <p class="subtitle">Укажите реальный адрес объекта (для проверки выполнения работ) — на сайте он публиковаться не будет.</p>
 
-        <form class="review-form" id="review-form">
-            <input type="text" name="name" placeholder="Ваше имя (например: Иван)" required>
+<div class="container">
 
-            <input type="text" id="addressInput" name="address" placeholder="Начните вводить город, улицу, дом..." required>
+    <h1>Оставить отзыв</h1>
 
-            <input type="text" name="_gotcha" style="display:none !important;" tabindex="-1" autocomplete="off">
+    <div class="gold-line"></div>
 
-            <select name="rating" required>
-                <option value="5">⭐️⭐️⭐️⭐️⭐️ — Отлично (5 из 5)</option>
-                <option value="4">⭐️⭐️⭐️⭐️ — Хорошо (4 из 5)</option>
-                <option value="3">⭐️⭐️⭐️ — Нормально (3 из 5)</option>
-                <option value="2">⭐️⭐️ — Плохо (2 из 5)</option>
-                <option value="1">⭐️ — Ужасно (1 из 5)</option>
-            </select>
-            <textarea name="review" placeholder="Расскажите, какие работы мы выполняли и всё ли понравилось..." rows="4" minlength="15" required></textarea>
-            <button type="submit" class="btn-submit">Отправить отзыв</button>
-        </form>
+    <p class="subtitle">
+        Укажите реальный адрес объекта.
+        Адрес необходим для проверки выполнения работ
+        и не будет опубликован на сайте.
+    </p>
 
-        <div class="links-row">
-            <a href="reviews.html" class="back-link">← К отзывам</a>
-            <a href="index.html" class="back-link">🏠 На главную</a>
+    <form class="review-form" id="review-form">
+
+        <!-- Имя -->
+
+        <div class="field">
+            <label class="field-label" for="nameInput">
+                Ваше имя
+            </label>
+
+            <input
+                type="text"
+                id="nameInput"
+                name="name"
+                placeholder="Например: Иван"
+                maxlength="60"
+                autocomplete="name"
+                required
+            >
         </div>
+
+        <!-- Город -->
+
+        <div class="field">
+            <label class="field-label" for="cityInput">
+                1. Город или населённый пункт
+            </label>
+
+            <input
+                type="text"
+                id="cityInput"
+                placeholder="Начните вводить город..."
+                autocomplete="off"
+                required
+            >
+
+            <div class="help">
+                Например: Дербент, Москва, Казань
+            </div>
+        </div>
+
+        <!-- Улица -->
+
+        <div class="field">
+            <label class="field-label" for="streetInput">
+                2. Улица
+            </label>
+
+            <input
+                type="text"
+                id="streetInput"
+                placeholder="Сначала выберите город"
+                autocomplete="off"
+                disabled
+                required
+            >
+        </div>
+
+        <!-- Дом -->
+
+        <div class="field">
+            <label class="field-label" for="houseInput">
+                3. Номер дома
+            </label>
+
+            <input
+                type="text"
+                id="houseInput"
+                placeholder="Сначала выберите улицу"
+                autocomplete="off"
+                disabled
+                required
+            >
+        </div>
+
+        <!-- Квартира -->
+
+        <label class="apartment-option">
+            <input
+                type="checkbox"
+                id="isApartment"
+            >
+
+            Отзыв о квартире
+        </label>
+
+        <div class="field" id="flatWrap" hidden>
+
+            <label class="field-label" for="flatInput">
+                4. Номер квартиры
+            </label>
+
+            <input
+                type="text"
+                id="flatInput"
+                placeholder="Например: 25"
+                maxlength="15"
+                disabled
+            >
+
+        </div>
+
+        <!-- Honeypot -->
+
+        <div class="honeypot" aria-hidden="true">
+            <label for="website">Не заполняйте это поле</label>
+
+            <input
+                type="text"
+                id="website"
+                name="_gotcha"
+                tabindex="-1"
+                autocomplete="off"
+            >
+        </div>
+
+        <!-- Оценка -->
+
+        <div class="field">
+            <label class="field-label" for="ratingInput">
+                Ваша оценка
+            </label>
+
+            <select
+                id="ratingInput"
+                name="rating"
+                required
+            >
+                <option value="5">⭐⭐⭐⭐⭐ — Отлично (5 из 5)</option>
+                <option value="4">⭐⭐⭐⭐ — Хорошо (4 из 5)</option>
+                <option value="3">⭐⭐⭐ — Нормально (3 из 5)</option>
+                <option value="2">⭐⭐ — Плохо (2 из 5)</option>
+                <option value="1">⭐ — Ужасно (1 из 5)</option>
+            </select>
+        </div>
+
+        <!-- Текст отзыва -->
+
+        <div class="field">
+            <label class="field-label" for="reviewInput">
+                Текст отзыва
+            </label>
+
+            <textarea
+                id="reviewInput"
+                name="review"
+                placeholder="Расскажите, какие работы мы выполняли и всё ли понравилось..."
+                rows="5"
+                minlength="15"
+                maxlength="3000"
+                required
+            ></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">
+            Отправить отзыв
+        </button>
+
+        <div
+            id="status"
+            class="status"
+            role="status"
+            aria-live="polite"
+        ></div>
+
+    </form>
+
+    <div class="links-row">
+
+        <a href="reviews.html" class="back-link">
+            ← К отзывам
+        </a>
+
+        <a href="index.html" class="back-link">
+            🏠 На главную
+        </a>
+
     </div>
+
+</div>
+
+<!-- Сначала jQuery -->
+
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
+<!-- Затем плагин DaData -->
+
 <script src="https://cdn.jsdelivr.net/npm/suggestions-jquery@22.6.0/dist/js/jquery.suggestions.min.js"></script>
-   <script>
-        let isDaDataSelected = false;
-        let isDaDataLoaded = false;
 
-        if (window.jQuery && $.fn.suggestions) {
-            isDaDataLoaded = true;
-            $("#addressInput").suggestions({
-                token: "1b689d9bd155dcd78bda8e259f1efadaaa8b172e",
-                type: "ADDRESS",
-                onSelect: function (suggestion) {
-                    if (suggestion.data && suggestion.data.house) {
-                        isDaDataSelected = true;
-                    } else {
-                        isDaDataSelected = false;
-                        alert("Пожалуйста, выберите адрес до номера дома (и квартиры, если это многоквартирный дом).");
-                    }
-                }
-            });
+<script>
+(function () {
 
-            $("#addressInput").on("input", function () {
-                isDaDataSelected = false;
-            });
+    "use strict";
+
+    // =========================================
+    // НАСТРОЙКИ
+    // =========================================
+
+    // ТВОЙ СУЩЕСТВУЮЩИЙ КЛЮЧ DADATA ИЗ GITHUB
+
+    const DADATA_TOKEN =
+        "1b689d9bd155dcd78bda8e259f1efadaaa8b172e";
+
+    // ТВОЯ СУЩЕСТВУЮЩАЯ ФОРМА FORMSPREE
+
+    const FORMSPREE_URL =
+        "https://formspree.io/f/xlgyyjnj";
+
+
+    // =========================================
+    // ЭЛЕМЕНТЫ
+    // =========================================
+
+    const form = document.getElementById("review-form");
+
+    const city = $("#cityInput");
+    const street = $("#streetInput");
+    const house = $("#houseInput");
+
+    const apartmentCheckbox =
+        document.getElementById("isApartment");
+
+    const flatInput =
+        document.getElementById("flatInput");
+
+    const flatWrap =
+        document.getElementById("flatWrap");
+
+    const status =
+        document.getElementById("status");
+
+    const submitButton =
+        form.querySelector(".btn-submit");
+
+
+    // =========================================
+    // СОСТОЯНИЕ ВЫБОРА АДРЕСА
+    // =========================================
+
+    let citySelected = false;
+    let streetSelected = false;
+    let houseSelected = false;
+
+    let cityData = null;
+    let streetData = null;
+    let houseData = null;
+
+    let sending = false;
+
+
+    // =========================================
+    // СООБЩЕНИЯ
+    // =========================================
+
+    function showStatus(message, type) {
+
+        status.textContent = message;
+
+        status.className = "status " + type;
+
+    }
+
+
+    function clearStatus() {
+
+        status.textContent = "";
+
+        status.className = "status";
+
+    }
+
+
+    // =========================================
+    // СБРОС ЗАВИСИМЫХ ПОЛЕЙ
+    // =========================================
+
+    function resetHouse() {
+
+        houseSelected = false;
+        houseData = null;
+
+        house.val("");
+        house.prop("disabled", true);
+
+    }
+
+
+    function resetStreet() {
+
+        streetSelected = false;
+        streetData = null;
+
+        street.val("");
+        street.prop("disabled", true);
+
+        resetHouse();
+
+    }
+
+
+    // =========================================
+    // ПРОВЕРКА ЗАГРУЗКИ БИБЛИОТЕК
+    // =========================================
+
+    if (
+        !window.jQuery ||
+        !$.fn.suggestions
+    ) {
+
+        showStatus(
+            "Не удалось загрузить DaData. Проверьте интернет-соединение и обновите страницу.",
+            "error"
+        );
+
+        submitButton.disabled = true;
+
+        return;
+
+    }
+
+
+    // =========================================
+    // 1. ВЫБОР ГОРОДА
+    // =========================================
+
+    city.suggestions({
+
+        token: DADATA_TOKEN,
+
+        type: "ADDRESS",
+
+        bounds: "city-settlement",
+
+        hint: false,
+
+        count: 10,
+
+        minChars: 2,
+
+        constraints: {
+
+            locations: {
+
+                country_iso_code: "RU"
+
+            }
+
+        },
+
+        onSelect: function (suggestion) {
+
+            const data = suggestion.data || {};
+
+            // Проверяем, что выбран населённый пункт
+
+            if (
+                !data.city &&
+                !data.settlement
+            ) {
+
+                citySelected = false;
+                cityData = null;
+
+                resetStreet();
+
+                showStatus(
+                    "Выберите именно город или населённый пункт.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+            citySelected = true;
+
+            cityData = data;
+
+            resetStreet();
+
+            street.prop("disabled", false);
+
+            street.attr(
+                "placeholder",
+                "Начните вводить улицу..."
+            );
+
+            clearStatus();
+
         }
 
-        const form = document.getElementById('review-form');
-        form.addEventListener('submit', async function (e) {
-            e.preventDefault();
+    });
 
-            if (form.querySelector('input[name="_gotcha"]').value) return;
 
-            const name = form.querySelector('input[name="name"]').value.trim();
-            const address = document.getElementById('addressInput').value.trim();
-            const rating = form.querySelector('select[name="rating"]').value;
-            const reviewText = form.querySelector('textarea[name="review"]').value.trim();
+    city.on("input", function () {
 
-            if (isDaDataLoaded) {
-                if (!isDaDataSelected) {
-                    alert('Пожалуйста, выберите существующий адрес объекта (до дома или квартиры) из выпадающего списка подсказок.');
-                    document.getElementById('addressInput').focus();
-                    return;
-                }
-            } else {
-                const hasLetters = /[а-яА-ЯёЁa-zA-Z]{3,}/.test(address);
-                const hasNumbers = /\d+/.test(address);
-                if (!hasLetters || !hasNumbers || address.length < 8) {
-                    alert('Пожалуйста, укажите адрес объекта (населённый пункт, улицу и номер дома).');
-                    document.getElementById('addressInput').focus();
-                    return;
-                }
+        citySelected = false;
+
+        cityData = null;
+
+        resetStreet();
+
+        clearStatus();
+
+    });
+
+
+    // =========================================
+    // 2. ВЫБОР УЛИЦЫ
+    // =========================================
+
+    street.suggestions({
+
+        token: DADATA_TOKEN,
+
+        type: "ADDRESS",
+
+        bounds: "street",
+
+        hint: false,
+
+        count: 10,
+
+        minChars: 2,
+
+        constraints: city,
+
+        onSelect: function (suggestion) {
+
+            const data = suggestion.data || {};
+
+            if (!data.street) {
+
+                streetSelected = false;
+
+                streetData = null;
+
+                resetHouse();
+
+                showStatus(
+                    "Выберите улицу из списка подсказок.",
+                    "error"
+                );
+
+                return;
+
             }
 
-            const btn = form.querySelector('.btn-submit');
-            const originalText = btn.textContent;
-            btn.disabled = true;
-            btn.textContent = '⏳ Отправляю...';
+            streetSelected = true;
+
+            streetData = data;
+
+            resetHouse();
+
+            house.prop("disabled", false);
+
+            house.attr(
+                "placeholder",
+                "Введите номер дома..."
+            );
+
+            clearStatus();
+
+        }
+
+    });
+
+
+    street.on("input", function () {
+
+        streetSelected = false;
+
+        streetData = null;
+
+        resetHouse();
+
+        clearStatus();
+
+    });
+
+
+    // =========================================
+    // 3. ВЫБОР НОМЕРА ДОМА
+    // =========================================
+
+    house.suggestions({
+
+        token: DADATA_TOKEN,
+
+        type: "ADDRESS",
+
+        bounds: "house",
+
+        hint: false,
+
+        count: 10,
+
+        minChars: 1,
+
+        constraints: street,
+
+        onSelect: function (suggestion) {
+
+            const data = suggestion.data || {};
+
+            if (!data.house) {
+
+                houseSelected = false;
+
+                houseData = null;
+
+                showStatus(
+                    "Выберите существующий номер дома из подсказок.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+            houseSelected = true;
+
+            houseData = data;
+
+            clearStatus();
+
+        }
+
+    });
+
+
+    house.on("input", function () {
+
+        houseSelected = false;
+
+        houseData = null;
+
+        clearStatus();
+
+    });
+
+
+    // =========================================
+    // 4. КВАРТИРА
+    // =========================================
+
+    apartmentCheckbox.addEventListener(
+        "change",
+        function () {
+
+            const enabled = this.checked;
+
+            flatWrap.hidden = !enabled;
+
+            flatInput.disabled = !enabled;
+
+            flatInput.required = enabled;
+
+            if (!enabled) {
+
+                flatInput.value = "";
+
+            }
+
+            clearStatus();
+
+        }
+    );
+
+
+    // =========================================
+    // 5. ПРОВЕРКА АДРЕСА
+    // =========================================
+
+    function validateAddress() {
+
+        if (!citySelected || !cityData) {
+
+            city.trigger("focus");
+
+            showStatus(
+                "Сначала выберите город из подсказок.",
+                "error"
+            );
+
+            return false;
+
+        }
+
+
+        if (!streetSelected || !streetData) {
+
+            street.trigger("focus");
+
+            showStatus(
+                "Выберите улицу из подсказок.",
+                "error"
+            );
+
+            return false;
+
+        }
+
+
+        if (!houseSelected || !houseData) {
+
+            house.trigger("focus");
+
+            showStatus(
+                "Выберите номер дома из подсказок.",
+                "error"
+            );
+
+            return false;
+
+        }
+
+
+        if (
+            apartmentCheckbox.checked &&
+            !flatInput.value.trim()
+        ) {
+
+            flatInput.focus();
+
+            showStatus(
+                "Укажите номер квартиры.",
+                "error"
+            );
+
+            return false;
+
+        }
+
+
+        return true;
+
+    }
+
+
+    // =========================================
+    // 6. ОТПРАВКА ОТЗЫВА
+    // =========================================
+
+    form.addEventListener(
+        "submit",
+        async function (event) {
+
+            event.preventDefault();
+
+            if (sending) {
+                return;
+            }
+
+            clearStatus();
+
+
+            // Honeypot
+
+            const honeypot =
+                form.querySelector('[name="_gotcha"]');
+
+            if (honeypot.value.trim()) {
+
+                return;
+
+            }
+
+
+            // Проверка имени
+
+            const name =
+                document.getElementById("nameInput")
+                    .value.trim();
+
+            if (
+                name.length < 2 ||
+                name.length > 60
+            ) {
+
+                showStatus(
+                    "Проверьте правильность имени.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            // Проверка адреса
+
+            if (!validateAddress()) {
+
+                return;
+
+            }
+
+
+            // Проверка отзыва
+
+            const reviewText =
+                document.getElementById("reviewInput")
+                    .value.trim();
+
+            if (
+                reviewText.length < 15 ||
+                reviewText.length > 3000
+            ) {
+
+                showStatus(
+                    "Отзыв должен содержать от 15 до 3000 символов.",
+                    "error"
+                );
+
+                return;
+
+            }
+
+
+            // Собираем полный адрес
+
+            const cityName = city.val().trim();
+
+            const streetName = street.val().trim();
+
+            const houseName = house.val().trim();
+
+            const flatNumber = apartmentCheckbox.checked
+                ? flatInput.value.trim()
+                : "";
+
+
+            const fullAddress = [
+
+                cityName,
+
+                streetName,
+
+                houseName,
+
+                flatNumber
+                    ? "кв. " + flatNumber
+                    : ""
+
+            ].filter(Boolean).join(", ");
+
+
+            // Блокируем повторную отправку
+
+            sending = true;
+
+            submitButton.disabled = true;
+
+            submitButton.textContent =
+                "⏳ Отправляю...";
+
+
+            // Формируем данные Formspree
 
             const formData = new FormData();
-            formData.append('name', name);
-            formData.append('address', address);
-            formData.append('rating', rating + ' из 5');
-            formData.append('review', `📝 Новый отзыв с сайта Дока-Тим!\nАвтор: ${name}\nАдрес объекта: ${address}\nОценка: ${rating} из 5\n\nОтзыв:\n${reviewText}`);
+
+            formData.append("name", name);
+
+            formData.append("address", fullAddress);
+
+            formData.append(
+                "rating",
+                document.getElementById("ratingInput").value +
+                " из 5"
+            );
+
+            formData.append(
+                "review",
+                "📝 Новый отзыв с сайта Дока-Тим!\n\n" +
+                "Автор: " + name + "\n" +
+                "Адрес объекта: " + fullAddress + "\n" +
+                "Оценка: " +
+                document.getElementById("ratingInput").value +
+                " из 5\n\n" +
+                "Отзыв:\n" + reviewText
+            );
+
+            formData.append("_gotcha", "");
+
+
+            // Отправляем
 
             try {
-                const endpoint = 'https://formspree.io' + '/f/xlgyyjnj';
-                const response = await fetch(endpoint, {
-                    method: 'POST',
-                    headers: { 'Accept': 'application/json' },
-                    body: formData
-                });
 
-                if (response.ok) {
-                    form.reset();
-                    isDaDataSelected = false;
-                    alert('Спасибо! Ваш отзыв успешно отправлен на проверку.');
-                } else {
-                    alert('Не удалось отправить отзыв. Попробуйте ещё раз.');
+                const response = await fetch(
+                    FORMSPREE_URL,
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Accept": "application/json"
+                        },
+
+                        body: formData
+                    }
+                );
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "Ошибка Formspree: " + response.status
+                    );
+
                 }
+
+
+                // Успешная отправка
+
+                form.reset();
+
+                citySelected = false;
+                streetSelected = false;
+                houseSelected = false;
+
+                cityData = null;
+                streetData = null;
+                houseData = null;
+
+                resetStreet();
+
+                flatWrap.hidden = true;
+
+                flatInput.disabled = true;
+
+                flatInput.required = false;
+
+
+                showStatus(
+                    "Спасибо! Ваш отзыв успешно отправлен на проверку.",
+                    "success"
+                );
+
+
             } catch (error) {
-                alert('Ошибка сети. Проверьте подключение к интернету.');
+
+                console.error(error);
+
+                showStatus(
+                    "Не удалось отправить отзыв. Проверьте интернет-соединение и попробуйте ещё раз.",
+                    "error"
+                );
+
+
             } finally {
-                btn.disabled = false;
-                btn.textContent = originalText;
+
+                sending = false;
+
+                submitButton.disabled = false;
+
+                submitButton.textContent =
+                    "Отправить отзыв";
+
             }
-        });
-    </script>
+
+        }
+    );
+
+
+})();
+</script>
+
 </body>
-
 </html>
-
