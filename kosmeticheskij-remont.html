@@ -34,7 +34,7 @@
       ],
       "offers": {
         "@type": "Offer",
-        "price": "20000",
+        "price": "15000",
         "priceCurrency": "RUB",
         "description": "Стоимость косметического ремонта за квадратный метр по полу"
       }
@@ -260,6 +260,13 @@
         .back-link:hover {
             text-decoration: underline;
         }
+                    @media (max-width: 767px) {
+            body {
+                background: url('image/bodyMob.webp') no-repeat center center fixed;
+                background-size: cover;
+            }
+        }
+
 
         @media (max-width: 600px) {
             .container {
@@ -308,7 +315,7 @@
             (Ротбанд, Унифлот или Фюген). Базовая шпатлевка наносится только на подготовленное основание и не
             предназначена для заполнения больших пустот.</div>
 
-        <h3 style="margin-top: 25px; color: #222;">Вариант А. Под покраску (полный цикл)</h3>
+        <h3 style="margin-top: 25px; color:#d4af37;">Вариант А. Под покраску (полный цикл)</h3>
         <div class="tech-step"><strong>5. Базовый полимерный слой:</strong> Нанесение 2 слоев эластичной полимерной
             шпатлевки вручную широкими шпателями для нивелирования пор и шероховатостей. Промежуточная ручная шлифовка.
         </div>
@@ -323,7 +330,7 @@
         <div class="tech-step"><strong>10. Окрашивание:</strong> Ручное нанесение матовой интерьерной краски в 2 слоя
             премиум-валиками с индивидуально подобранным ворсом.</div>
 
-        <h3 style="margin-top: 25px; color: #222;">Вариант Б. Под обои (упрощенный цикл)</h3>
+        <h3 style="margin-top: 25px; color: #d4af37;">Вариант Б. Под обои (упрощенный цикл)</h3>
         <div class="tech-step"><strong>5. Базовое шпатлевание:</strong> Нанесение 3 слоев базовой полимерной шпатлевки
             для создания идеально ровной поверхности. Промежуточная шлифовка каждого слоя.</div>
         <div class="tech-step"><strong>6. Финальная шлифовка:</strong> Ошкуривание плоскости абразивом P240-P320 под
@@ -338,10 +345,8 @@
             однокомнатная квартира).</p>
 
         <details class="estimate-accordion">
-            <summary
-                style="cursor: pointer; padding: 15px; background: #fdfaf0; border-radius: 8px; border: 1px solid #e8d5b0; text-align: center; font-size: 16px; font-weight: 700; color: #b8942e; display: block; width: 100%; box-sizing: border-box; list-style: none;">
-                Подробно о ценах на стены ▾
-            </summary>
+          <summary>Подробно о ценах на стены ▾</summary>
+
             <div class="table-responsive">
                 <table>
                     <thead>
@@ -452,9 +457,10 @@
                     </tbody>
                 </table>
             </div>
-            <div
-                style="font-size: 14px; color: #777; padding: 10px 20px 15px; background: #fff; border-top: 1px dashed #eee;">
-                Стоимость расчитана стены высотой до 300 см. </div>
+                  <div
+              style="font-size: 13.5px; color: rgba(255, 255, 255, 0.7); padding: 12px 20px; background: rgba(255, 255, 255, 0.04); border-top: 1px solid rgba(255, 255, 255, 0.1);">
+              Стоимость рассчитана для стен высотой до 300 см.</div>
+
         </details>
 
         <div class="highlight">
