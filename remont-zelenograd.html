@@ -147,6 +147,14 @@
             text-decoration: underline;
         }
 
+                @media (max-width: 767px) {
+            body {
+                background: url('image/bodyMob.webp') no-repeat center center fixed;
+                background-size: cover;
+            }
+        }
+
+
         @media (max-width: 600px) {
             .container {
                 padding: 30px 20px;
@@ -167,6 +175,45 @@
       ]
     }
     </script>
+        <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Ремонт квартир в Зеленограде под ключ",
+      "provider": {
+        "@type": "HomeAndConstructionBusiness",
+        "name": "Дока-Тим / DOKA-TEAM",
+        "telephone": "+7 (977) 337-9393",
+        "url": "https://doka-team.ru"
+      },
+      "areaServed": {
+        "@type": "City",
+        "name": "Зеленоград"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Цены на ремонт квартир в Зеленограде",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Косметический ремонт" },
+            "priceSpecification": { "@type": "PriceSpecification", "minPrice": "15000", "priceCurrency": "RUB", "unitText": "м²" }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Капитальный ремонт" },
+            "priceSpecification": { "@type": "PriceSpecification", "minPrice": "35000", "priceCurrency": "RUB", "unitText": "м²" }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Дизайнерский ремонт" },
+            "priceSpecification": { "@type": "PriceSpecification", "minPrice": "45000", "priceCurrency": "RUB", "unitText": "м²" }
+          }
+        ]
+      }
+    }
+    </script>
+
 </head>
 
 <body>
