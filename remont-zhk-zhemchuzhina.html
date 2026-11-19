@@ -157,6 +157,12 @@
         .back-link:hover {
             text-decoration: underline;
         }
+        @media (max-width: 767px) {
+            body {
+                background: url('image/bodyMob.webp') no-repeat center center fixed;
+                background-size: cover;
+            }
+        }
 
         @media (max-width: 600px) {
             .container {
@@ -168,6 +174,17 @@
             }
         }
     </style>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://doka-team.ru" },
+        { "@type": "ListItem", "position": 2, "name": "Ремонт в Зеленограде", "item": "https://doka-team.ruremont-zelenograd.html" },
+        { "@type": "ListItem", "position": 3, "name": "ЖК «Жемчужина Зеленограда»", "item": "https://doka-team.ruremont-zhk-zhemchuzhina.html" }
+      ]
+    }
+    </script>
 
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
@@ -241,18 +258,21 @@
 
         <a href="price.html" class="btn-link">Рассчитать стоимость для вашей площади →</a>
 
-        <div
+            <div
             style="margin-top: 30px; padding-top: 20px; border-top: 1px dashed #eee; font-size: 14px; color: #777; line-height: 2;">
-            <strong>Другие ЖК и услуги:</strong><br>
+            <strong>Другие услуги и ЖК в Зеленограде:</strong><br>
+            <a href="remont-zelenograd.html"
+                style="color: #b8942e; text-decoration: none; font-weight: 600;">Ремонт в Зеленограде</a> ·
             <a href="remont-zhk-zelenograd-siti.html"
-                style="color: #b8942e; text-decoration: none; font-weight: 600;">Ремонт в ЖК «Зеленоград Сити»</a> ·
+                style="color: #b8942e; text-decoration: none; font-weight: 600;">ЖК «Зеленоград Сити»</a> ·
             <a href="remont-zhk-melodiya-lesa.html"
-                style="color: #b8942e; text-decoration: none; font-weight: 600;">Ремонт в ЖК «Мелодия леса»</a> ·
+                style="color: #b8942e; text-decoration: none; font-weight: 600;">ЖК «Мелодия леса»</a> ·
             <a href="kosmeticheskij-remont.html"
                 style="color: #b8942e; text-decoration: none; font-weight: 600;">Косметический ремонт</a> ·
             <a href="kapitalnyj-remont.html"
                 style="color: #b8942e; text-decoration: none; font-weight: 600;">Капитальный ремонт</a>
         </div>
+
 
         <a href="index.html" class="back-link">← На главную</a>
     </div>
