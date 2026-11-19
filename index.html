@@ -316,21 +316,23 @@
             text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
         }
 
-          .footer {
+        .footer {
             padding: 15px 0 40px 0;
         }
 
         .footer-grid {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr)); /* minmax(0, 1fr) не дает колонкам разъезжаться */
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            /* minmax(0, 1fr) не дает колонкам разъезжаться */
             gap: 35px;
         }
 
         .footer-col {
-            min-width: 0; /* Защита от переполнения длинными ссылками и email */
+            min-width: 0;
+            /* Защита от переполнения длинными ссылками и email */
         }
 
-                .footer-col h4,
+        .footer-col h4,
         .footer-col a[href="about.html"] {
             font-size: 15px;
             font-weight: 700;
@@ -361,7 +363,8 @@
             text-decoration: none;
             display: block;
             text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
-            word-wrap: break-word; /* Перенос длинных слов при нехватке места */
+            word-wrap: break-word;
+            /* Перенос длинных слов при нехватке места */
         }
 
         .footer-col a:hover {
@@ -383,13 +386,30 @@
             color: #fff;
         }
 
-              /* ========== ДЕСКТОП: без изменений ========== */
+        /* ========== ДЕСКТОП: без изменений ========== */
         .mobile-logo {
             display: none;
         }
+
         .mobile-review-btn {
-    display: none;
-}
+            display: inline-block;
+            background: rgba(212, 175, 55, 0.15);
+            color: #d4af37;
+            border: 1.5px solid #d4af37;
+            padding: 10px 24px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .mobile-review-btn:hover {
+            background: rgba(212, 175, 55, 0.3);
+        }
+
 
 
         /* Бургер-меню скрыт на десктопе */
@@ -405,6 +425,7 @@
 
         /* ========== ПЛАНШЕТ (768px — 1024px) ========== */
         @media (min-width: 768px) and (max-width: 1024px) {
+
             .grid,
             .footer-grid {
                 grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -441,12 +462,12 @@
                 background-size: cover;
             }
 
-      #qr {
-    display: block !important;
-    margin: 15px auto 0 auto;
-    max-width: 140px;
-    height: auto;
-}
+            #qr {
+                display: block !important;
+                margin: 15px auto 0 auto;
+                max-width: 140px;
+                height: auto;
+            }
 
 
             .header .container {
@@ -617,20 +638,22 @@
                 font-size: 19px;
                 text-align: center;
             }
-                  .mobile-review-btn {
-    display: inline-block;
-    background: rgba(212, 175, 55, 0.15);
-    color: #d4af37;
-    border: 1.5px solid #d4af37;
-    padding: 10px 24px;
-    margin-bottom: 15px;
-    border-radius: 6px;
-    font-size: 15px;
-    font-weight: 700;
-    text-transform: uppercase;
-    text-decoration: none;
-}
-                           .prices-block .btn-main {
+
+            .mobile-review-btn {
+                display: inline-block;
+                background: rgba(212, 175, 55, 0.15);
+                color: #d4af37;
+                border: 1.5px solid #d4af37;
+                padding: 10px 24px;
+                margin-bottom: 15px;
+                border-radius: 6px;
+                font-size: 15px;
+                font-weight: 700;
+                text-transform: uppercase;
+                text-decoration: none;
+            }
+
+            .prices-block .btn-main {
                 padding: 10px 16px !important;
                 font-size: 13px !important;
                 width: auto !important;
@@ -660,8 +683,60 @@
             color: #d4af37 !important;
         }
 
-  
+        /* Компактный блок географии и ЖК в футере */
+        .geo-details {
+            margin: 20px auto 15px auto;
+            max-width: 800px;
+            text-align: center;
+        }
 
+        .geo-summary {
+            display: inline-block;
+            cursor: pointer;
+            padding: 8px 18px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--accent-color);
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            border-radius: 6px;
+            list-style: none;
+            transition: all 0.2s;
+        }
+
+        .geo-summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .geo-summary:hover {
+            background: rgba(212, 175, 55, 0.15);
+        }
+
+        .geo-links-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 14px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .geo-links-grid a {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            padding: 5px 10px;
+            background: rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 4px;
+            transition: all 0.2s;
+        }
+
+        .geo-links-grid a:hover {
+            color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
     </style>
 
     <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -673,7 +748,7 @@
     <link rel="manifest" href="site.webmanifest">
     <link rel="preload" as="image" href="image/glass-bg.webp" fetchpriority="high">
     <!-- Микроразметка Schema.org: Организация -->
-   <script type="application/ld+json">
+    <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
@@ -769,7 +844,7 @@
 }
 </script>
 
-       <!-- Yandex.Metrika counter -->
+    <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
         if (window.location.search.includes('im_admin=1')) {
             localStorage.setItem('doka_admin', 'true');
@@ -999,7 +1074,7 @@
                         <p>Строительная бригада «Дока-Тим» <br> Телефон для связи:</p>
                         <a href="tel:+79773379393" class="footer-phone"
                             onclick="ym(109769602, 'reachGoal', 'phone_call'); return true;">+7 (977) 337-9393</a>
-                        
+
                         <a href="https://t.me/DOKA_TEAM_Remont"
                             onclick="ym(109769602, 'reachGoal', 'telegram_click'); return true;">✈️ Telegram</a>
                         <a href="mailto:info@doka-team.ru"
@@ -1030,9 +1105,31 @@
                 </div>
                 <div class="footer-bottom">
                     <div class="footer-bottom">
-    <a href="add-review.html" class="mobile-review-btn">✍️ Оставить отзыв</a>
-    <p>© 2026 DOKA-TEAM/Дока-Тим. Все права защищены. Проектирование, строительство домов и ремонт квартир премиум-класса.</p>
-</div>
+                        <details class="geo-details">
+                            <summary class="geo-summary">📍 География работ: районы Москвы, МО и ЖК ▾</summary>
+                            <div class="geo-links-grid">
+                                <a href="remont-zelenograd.html">Зеленоград</a>
+                                <a href="maliarnye-raboty-zelenograd.html">Малярные работы (Зеленоград)</a>
+                                <a href="remont-zhk-zelenograd-siti.html">ЖК Зеленоград Сити</a>
+                                <a href="remont-zhk-melodiya-lesa.html">ЖК Мелодия Леса</a>
+                                <a href="remont-zhk-zhemchuzhina.html">ЖК Жемчужина</a>
+                                <a href="remont-krasnogorsk.html">Красногорск</a>
+                                <a href="remont-odincovo.html">Одинцово</a>
+                                <a href="remont-mitino.html">Митино</a>
+                                <a href="remont-strogino.html">Строгино</a>
+                                <a href="remont-hamovniki.html">Хамовники</a>
+                                <a href="remont-vdnh.html">ВДНХ</a>
+                                <a href="remont-butovo.html">Бутово</a>
+                                <a href="remont-chertanovo.html">Чертаново</a>
+                                <a href="remont-lyublino.html">Люблино</a>
+                                <a href="remont-maryino.html">Марьино</a>
+                            </div>
+                        </details>
+
+                        <a href="add-review.html" class="mobile-review-btn">✍️ Оставить отзыв</a>
+                        <p>© 2026 DOKA-TEAM/Дока-Тим. Все права защищены. Проектирование, строительство домов и ремонт
+                            квартир премиум-класса.</p>
+                    </div>
                 </div>
                 <div id="qr" style="text-align:center; margin-top:10px;">
                     <img src="image/QR.png" alt="QR-код на заявку Дока-Тим" style="width:120px; height:120px;">
