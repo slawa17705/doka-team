@@ -249,7 +249,7 @@
 
         .works-grid img {
             width: 100%;
-            height: 100%;
+            height: auto;
             max-width: 780px;
             aspect-ratio: 16/9;
             object-fit: cover;
@@ -1216,15 +1216,16 @@
             var label = document.getElementById('menuLabel');
             if (!label) return;
             if (!localStorage.getItem('menuHintShown')) {
-                label.style.display = 'block';
+                label.style.opacity = '1';
                 setTimeout(function () {
-                    label.style.display = 'none';
+                    label.style.opacity = '0';
                     localStorage.setItem('menuHintShown', 'true');
                 }, 15000);
             } else {
-                label.style.display = 'none';
+                label.style.opacity = '0';
             }
         });
+
 
     </script>
 
