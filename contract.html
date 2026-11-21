@@ -8,7 +8,7 @@
     <title>Уговор | Дока-Тим</title>
     <meta name="description"
         content="Дока-Тим (Doka-Team) — ремонт квартир под ключ, отделка стен, потолка и полов, шпаклевка, покраска, плитка, натяжные потолки, штукатурные работы, малярные работы, строительство домов в Москве и МО. Проект бесплатно, смета фиксированная. Гарантия.">
-    <style>
+       <style>
         * {
             margin: 0;
             padding: 0;
@@ -16,11 +16,8 @@
         }
 
         *:focus {
-    outline: none !important;
-}
-* {
-    caret-color: transparent !important;
-}
+            outline: none !important;
+        }
 
         body {
             background-color: #2c2c2c;
@@ -29,16 +26,13 @@
             align-items: center;
             min-height: 100vh;
             padding: 20px;
-            body {
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            -webkit-user-select: none;
+            user-select: none;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 650px;
             width: 100%;
             text-align: center;
         }
@@ -48,21 +42,49 @@
             height: auto;
             border-radius: 4px;
             box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+            display: block;
+            margin: 0 auto;
         }
 
-        .back-link {
+        .links-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+            margin-top: 24px;
+        }
+
+        .smeta-link {
             display: inline-block;
-            margin-top: 20px;
+            padding: 12px 24px;
+            background: rgba(212, 175, 55, 0.15);
+            border: 1.5px solid #d4af37;
+            border-radius: 6px;
             color: #d4af37;
             text-decoration: none;
             font-weight: 700;
-            font-size: 16px;
+            font-size: 15px;
+            transition: background 0.2s;
+        }
+
+        .smeta-link:hover {
+            background: rgba(212, 175, 55, 0.3);
+        }
+
+        .back-link {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            opacity: 0.85;
         }
 
         .back-link:hover {
-            text-decoration: underline;
+            color: #d4af37;
+            opacity: 1;
         }
     </style>
+
 
 <script type="application/ld+json">
 {
@@ -186,19 +208,20 @@
             });
         }
     </script>
-    <noscript>
-        <div><img src="https://yandex.ru" style="position:absolute; left:-9999px;" alt="" /></div>
-    </noscript>
+
     <!-- /Yandex.Metrika counter -->
 </head>
 
 <body>
     <div class="container">
-        <img src="image/beresta.png"
+        <img src="image/beresta.png" width="600" height="860"
             alt="Уговор Дока-Тим — традиции отцов, за слова отвечаем. Ремонт квартир, строительство, отделка Москва.">
-        <a href="doka-smeta.pdf" download>📄 Скачать пример сметы (PDF)</a>
-        <a href="index.html" class="back-link">← На главную</a>
+        <div class="links-group">
+            <a href="doka-smeta.pdf" class="smeta-link" download>📄 Скачать пример сметы (PDF)</a>
+            <a href="index.html" class="back-link">← На главную</a>
+        </div>
     </div>
 </body>
+
 
 </html>
