@@ -201,19 +201,22 @@
 }
 </script>
 
-    <!-- Yandex.Metrika counter -->
+   <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
+        window.ym = window.ym || function () { (window.ym.a = window.ym.a || []).push(arguments); };
+
         if (window.location.search.includes('im_admin=1')) {
             localStorage.setItem('doka_admin', 'true');
         }
-        if (window.location.hostname === 'doka-team.ru' && localStorage.getItem('doka_admin') !== 'true') {
+       if (window.location.hostname.endsWith('doka-team.ru') && localStorage.getItem('doka_admin') !== 'true')
+{
             (function (m, e, t, r, i, k, a) {
                 m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
                 m[i].l = 1 * new Date();
                 for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) return; }
                 k = e.createElement(t); k.async = 1; k.src = r;
                 e.head.appendChild(k);
-            })(window, document, "script", "https://yandex.ru" + "/metrika/tag.js?id=109769602", "ym");
+            })(window, document, "script", "https://mc.yandex.ru" + "/metrika/tag.js?id=109769602", "ym");
 
             ym(109769602, "init", {
                 ssr: true,
@@ -227,9 +230,6 @@
             });
         }
     </script>
-    <noscript>
-        <div><img src="https://yandex.ru" style="position:absolute; left:-9999px;" alt="" /></div>
-    </noscript>
     <!-- /Yandex.Metrika counter -->
 </head>
 
