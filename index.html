@@ -857,10 +857,13 @@
 
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
+        window.ym = window.ym || function () { (window.ym.a = window.ym.a || []).push(arguments); };
+
         if (window.location.search.includes('im_admin=1')) {
             localStorage.setItem('doka_admin', 'true');
         }
-        if (window.location.hostname === 'doka-team.ru' && localStorage.getItem('doka_admin') !== 'true') {
+       if (window.location.hostname.endsWith('doka-team.ru') && localStorage.getItem('doka_admin') !== 'true')
+{
             (function (m, e, t, r, i, k, a) {
                 m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
                 m[i].l = 1 * new Date();
@@ -1221,7 +1224,7 @@
                 setTimeout(function () {
                     label.style.opacity = '0';
                     localStorage.setItem('menuHintShown', 'true');
-                }, 15000);
+                }, 45000);
             } else {
                 label.style.opacity = '0';
             }
