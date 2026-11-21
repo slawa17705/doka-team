@@ -490,7 +490,7 @@
                 display: none;
             }
 
-            .grid {
+             .grid {
                 grid-template-columns: 1fr;
             }
 
@@ -499,11 +499,14 @@
             }
 
             .works-grid {
-                grid-template-columns: 1fr;
+                display: block;
+                width: 100%;
+                aspect-ratio: 16 / 9;
             }
 
             .works-grid img {
-                aspect-ratio: 16/9;
+                width: 100%;
+                height: 100%;
                 object-fit: cover;
             }
 
@@ -514,7 +517,6 @@
             .hero .container,
             .stages .container,
             .prices-block .container,
-            /* Добавил класс для нового блока */
             .footer .container,
             .works .container {
                 padding: 10px 20px;
@@ -528,12 +530,16 @@
                 font-size: 14px;
             }
 
-                  main {
+            main {
                 display: grid;
             }
 
             .works {
                 grid-row: 1;
+            }
+
+            .hero {
+                grid-row: 2;
             }
 
 
